@@ -1,6 +1,25 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory, request
+import os
 
 app = Flask(__name__)
+
+# Cache static files for 1 year in production
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
+
+BASE_URL = os.environ.get('BASE_URL', 'https://ternsexim.com').rstrip('/')
+
+@app.context_processor
+def inject_seo():
+    """Inject canonical_url into every template automatically."""
+    path = request.path.rstrip('/') or '/'
+    return {'canonical_url': BASE_URL + path}
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+        os.path.join(app.root_path, 'static', 'images'),
+        'favicon.png', mimetype='image/png'
+    )
 
 @app.route('/')
 def home():
@@ -17,6 +36,21 @@ def products():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.after_request
+def add_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    # Allow images from flagcdn for country flags
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "font-src 'self' https://fonts.gstatic.com; "
+        "script-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: https://flagcdn.com https://ternsexim.com; "
+        "connect-src 'self';"
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(debug=False)

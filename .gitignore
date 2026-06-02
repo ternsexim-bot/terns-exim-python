@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Environment variables
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Flask session / instance
+instance/
+flask_session/
+
+# Logs
+*.log
+
+# NOTE: static/ is intentionally NOT ignored.
+# All images, CSS and JS must be committed to git
+# so they are available on Render after deployment.
