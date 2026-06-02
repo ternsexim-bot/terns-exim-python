@@ -239,7 +239,7 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
         <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
-        <li><a href="{{ url_for('products') }}" class="nav-link {% if request.endpoint == 'products' %}active{% endif %}">Products</a></li>
+        <li><a href="{{ url_for('products') }}" class="nav-link {% if request.endpoint in ['products','hex_bolts','anchor_bolts','foundation_bolts','nuts','washers','threaded_rods'] %}active{% endif %}">Products</a></li>
         <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
         <li>
           <a href="https://wa.me/916369097465" target="_blank" rel="noopener" class="nav-cta">
@@ -288,12 +288,12 @@
         <div class="footer-col">
           <h4>Products</h4>
           <ul>
-            <li><a href="{{ url_for('products') }}#hex-bolts">Hex Bolts</a></li>
-            <li><a href="{{ url_for('products') }}#nuts">Nuts &amp; Washers</a></li>
-            <li><a href="{{ url_for('products') }}#screws">Screws</a></li>
-            <li><a href="{{ url_for('products') }}#threaded-rods">Threaded Rods</a></li>
-            <li><a href="{{ url_for('products') }}#custom-fasteners">Custom Fasteners</a></li>
-            <li><a href="{{ url_for('products') }}">Merchant Export</a></li>
+            <li><a href="{{ url_for('hex_bolts') }}">Hex Bolts</a></li>
+            <li><a href="{{ url_for('anchor_bolts') }}">Anchor Bolts</a></li>
+            <li><a href="{{ url_for('foundation_bolts') }}">Foundation Bolts</a></li>
+            <li><a href="{{ url_for('nuts') }}">Nuts &amp; Washers</a></li>
+            <li><a href="{{ url_for('threaded_rods') }}">Threaded Rods</a></li>
+            <li><a href="{{ url_for('products') }}">All Products</a></li>
           </ul>
         </div>
 

@@ -51,6 +51,30 @@ def products():
 def contact():
     return render_template('contact.html')
 
+@app.route('/hex-bolts-exporter-india')
+def hex_bolts():
+    return render_template('hex_bolts.html')
+
+@app.route('/anchor-bolts-exporter-india')
+def anchor_bolts():
+    return render_template('anchor_bolts.html')
+
+@app.route('/foundation-bolts-exporter-india')
+def foundation_bolts():
+    return render_template('foundation_bolts.html')
+
+@app.route('/nuts-exporter-india')
+def nuts():
+    return render_template('nuts.html')
+
+@app.route('/washers-exporter-india')
+def washers():
+    return render_template('washers.html')
+
+@app.route('/threaded-rods-exporter-india')
+def threaded_rods():
+    return render_template('threaded_rods.html')
+
 @app.after_request
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'

@@ -62,7 +62,8 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll(
   '.feature-card, .product-card-preview, .market-card, .product-card, ' +
   '.faq-item, .mv-card, .merchant-card, .country-card, .industry-card, ' +
-  '.hp-catalog-card, .quality-item'
+  '.hp-catalog-card, .quality-item, ' +
+  '.pl-type-card, .pl-material-card, .pl-related-card'
 ).forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(28px)';
