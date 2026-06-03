@@ -1,6 +1,7 @@
 import logging
 import os
 import re
+import sys
 from datetime import datetime
 
 from flask import Flask, jsonify, render_template, request, redirect, send_from_directory, url_for
@@ -16,23 +17,44 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# ── Environment detection ─────────────────────────────────────────────────────
+# Render sets RENDER=true automatically on all deployed services.
+IS_PRODUCTION = os.environ.get('RENDER', '').lower() in ('true', '1', 'yes')
+
+# ── Database configuration ────────────────────────────────────────────────────
+_DB_URL = os.environ.get('DATABASE_URL', '').strip()
+
+# Render provides postgres:// but SQLAlchemy requires postgresql://
+if _DB_URL.startswith('postgres://'):
+    _DB_URL = _DB_URL.replace('postgres://', 'postgresql://', 1)
+
+if IS_PRODUCTION and not _DB_URL:
+    logger.critical(
+        '[CRITICAL] DATABASE_URL is not set in production. '
+        'Refusing to start with ephemeral SQLite. '
+        'Link a Render PostgreSQL database via render.yaml (databases section) '
+        'or set DATABASE_URL manually in Render Environment Settings.'
+    )
+    sys.exit(1)
+
+if _DB_URL:
+    _DB_URI = _DB_URL
+    logger.info('[STARTUP] [DATABASE CONNECTED] PostgreSQL active — data is persistent')
+else:
+    # SQLite only for local development
+    _SQLITE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'crm.db')
+    _DB_URI = f'sqlite:///{_SQLITE_PATH}'
+    logger.warning(
+        '[STARTUP] No DATABASE_URL set — using SQLite @ %s. '
+        'LOCAL DEVELOPMENT ONLY. Do not deploy to production without DATABASE_URL.',
+        _SQLITE_PATH,
+    )
+
 # ── App ───────────────────────────────────────────────────────────────────────
 app = Flask(__name__)
 
-# Cache static files 1 year in production
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
-
-# ── Database (PostgreSQL via DATABASE_URL env var; SQLite fallback for dev) ───
-# Add DATABASE_URL in Render's Environment settings for persistent storage.
-# Free-tier Render instances use an ephemeral filesystem — SQLite data is lost
-# on restart unless DATABASE_URL points to a managed PostgreSQL service.
-_DB_URL = os.environ.get('DATABASE_URL', '')
-if _DB_URL.startswith('postgres://'):
-    # Render provides postgres:// but SQLAlchemy requires postgresql://
-    _DB_URL = _DB_URL.replace('postgres://', 'postgresql://', 1)
-
-_SQLITE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'crm.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = _DB_URL or f'sqlite:///{_SQLITE_PATH}'
+app.config['SQLALCHEMY_DATABASE_URI']   = _DB_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -40,17 +62,8 @@ db = SQLAlchemy(app)
 # CORS scoped only to /api/* so the CRM dashboard (Netlify) can reach it
 CORS(app, resources={r'/api/*': {'origins': '*'}})
 
-if _DB_URL:
-    logger.info('[STARTUP] [DATABASE CONNECTED] Using PostgreSQL (persistent)')
-else:
-    logger.warning(
-        '[STARTUP] No DATABASE_URL set — falling back to SQLite @ %s. '
-        'Leads WILL be lost on Render restart. '
-        'Add DATABASE_URL in Render Environment Settings for persistence.',
-        _SQLITE_PATH,
-    )
 
-# ── Lead model (inline — single source of truth) ──────────────────────────────
+# ── Lead model ────────────────────────────────────────────────────────────────
 class Lead(db.Model):
     __tablename__ = 'leads'
 
@@ -84,7 +97,8 @@ class Lead(db.Model):
 
 with app.app_context():
     db.create_all()
-    logger.info('[STARTUP] Database tables ready. Total leads: %d', Lead.query.count())
+    count = Lead.query.count()
+    logger.info('[STARTUP] Tables ready. Existing leads in DB: %d', count)
 
 
 BASE_URL = os.environ.get('BASE_URL', 'https://ternsexim.com').rstrip('/')
@@ -107,11 +121,13 @@ def favicon():
 
 @app.route('/robots.txt')
 def robots():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')
+    return send_from_directory(
+        os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')
 
 @app.route('/sitemap.xml')
 def sitemap():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml', mimetype='application/xml')
+    return send_from_directory(
+        os.path.join(app.root_path, 'static'), 'sitemap.xml', mimetype='application/xml')
 
 
 # ── Page routes ───────────────────────────────────────────────────────────────
@@ -157,7 +173,7 @@ def threaded_rods():
     return render_template('threaded_rods.html')
 
 
-# ── Lead validation helpers ───────────────────────────────────────────────────
+# ── Lead validation ───────────────────────────────────────────────────────────
 
 _PHONE_CHARS_RE = re.compile(r'^[\d\s+\-()\+]+$')
 _EMAIL_RE       = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
@@ -181,8 +197,8 @@ def submit_lead():
     product = request.form.get('product', '').strip()
     message = request.form.get('message', '').strip()
 
-    logger.info('[LEAD SUBMITTED] name=%r email=%r phone=%r company=%r country=%r product=%r',
-                name, email, phone, company, country, product)
+    logger.info('[LEAD SUBMITTED] name=%r email=%r company=%r country=%r product=%r',
+                name, email, company, country, product)
 
     if (not name or len(name) < 2
             or not email or not _EMAIL_RE.match(email)
@@ -192,11 +208,11 @@ def submit_lead():
         logger.warning('[LEAD REJECTED] Validation failed — name=%r email=%r phone=%r', name, email, phone)
         return redirect(url_for('contact'))
 
-    # ── CSV backup (legacy; also ephemeral on free Render tier) ───────────────
+    # CSV backup (also ephemeral on free Render, but kept for local audit trail)
     lead_dict = save_lead(name, phone, email, product, message, company=company, country=country)
     send_whatsapp_alert(lead_dict)
 
-    # ── Primary storage: SQLAlchemy (persistent when DATABASE_URL is set) ─────
+    # Primary storage — SQLAlchemy (PostgreSQL in production)
     try:
         lead = Lead(
             name=name, email=email, phone=phone,
@@ -206,8 +222,8 @@ def submit_lead():
         )
         db.session.add(lead)
         db.session.commit()
-        total = Lead.query.count()
-        logger.info('[LEAD SAVED] id=%d name=%r email=%r total_in_db=%d', lead.id, name, email, total)
+        logger.info('[LEAD SAVED] id=%d name=%r email=%r db=%s',
+                    lead.id, name, email, 'postgresql' if _DB_URL else 'sqlite')
     except Exception as exc:
         db.session.rollback()
         logger.error('[LEAD DB ERROR] %s', exc)
@@ -220,7 +236,7 @@ def thank_you():
     return render_template('thank_you.html')
 
 
-# ── CRM REST API  (/api/leads) ────────────────────────────────────────────────
+# ── CRM REST API ──────────────────────────────────────────────────────────────
 
 @app.route('/api/leads', methods=['GET'])
 def api_get_leads():
@@ -251,7 +267,8 @@ def api_create_lead():
     )
     db.session.add(lead)
     db.session.commit()
-    logger.info('[LEAD SAVED] id=%d name=%r source=api', lead.id, lead.name)
+    logger.info('[LEAD SAVED] id=%d name=%r source=api db=%s',
+                lead.id, lead.name, 'postgresql' if _DB_URL else 'sqlite')
     return jsonify(lead.to_dict()), 201
 
 
@@ -295,13 +312,15 @@ def api_health():
         logger.error('[HEALTH] DB check failed: %s', exc)
         total = -1
         db_ok = False
-    logger.info('[DATABASE CONNECTED] type=%s ok=%s total_leads=%d', db_type, db_ok, total)
+    logger.info('[DATABASE CONNECTED] type=%s ok=%s leads=%d env=%s',
+                db_type, db_ok, total, 'production' if IS_PRODUCTION else 'development')
     return jsonify({
-        'status':      'ok' if db_ok else 'error',
-        'database':    db_type,
-        'persistent':  bool(_DB_URL),
+        'status':       'ok' if db_ok else 'error',
+        'database':     db_type,
+        'persistent':   bool(_DB_URL),
         'db_connected': db_ok,
-        'total_leads': total,
+        'total_leads':  total,
+        'environment':  'production' if IS_PRODUCTION else 'development',
     })
 
 
@@ -311,7 +330,6 @@ def api_health():
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
-    # Skip CSP on API routes so the CRM dashboard (Netlify) can call freely
     if not request.path.startswith('/api/'):
         response.headers['Content-Security-Policy'] = (
             "default-src 'self'; "

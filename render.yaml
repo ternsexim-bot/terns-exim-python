@@ -2,6 +2,7 @@ services:
   - type: web
     name: terns-exim
     env: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app --workers 2 --threads 2 --timeout 120 --bind 0.0.0.0:$PORT
     envVars:
@@ -9,3 +10,14 @@ services:
         value: 3.11.0
       - key: FLASK_ENV
         value: production
+      # Render injects this automatically from the linked database below.
+      # Do NOT set this manually — it will be overwritten by the database link.
+      - key: DATABASE_URL
+        fromDatabase:
+          name: terns-exim-db
+          property: connectionString
+
+databases:
+  - name: terns-exim-db
+    plan: free
+    databaseName: ternsexim_crm
