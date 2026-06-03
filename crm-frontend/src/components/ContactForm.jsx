@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import { createLead } from '../api/leads'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -40,13 +40,13 @@ function validate({ name, email, phone }) {
   return errors
 }
 
-const BLANK = { name: '', email: '', phone: '', product: '', message: '' }
+const BLANK = { name: '', email: '', phone: '', product_interest: '', message: '' }
 
 export default function ContactForm() {
-  const [form, setForm]         = useState(BLANK)
-  const [errors, setErrors]     = useState({})
+  const [form, setForm]             = useState(BLANK)
+  const [errors, setErrors]         = useState({})
   const [submitting, setSubmitting] = useState(false)
-  const [status, setStatus]     = useState(null) // 'success' | 'error'
+  const [status, setStatus]         = useState(null) // 'success' | 'error'
 
   const set = (k) => (e) => setForm(prev => ({ ...prev, [k]: e.target.value }))
 
@@ -60,12 +60,15 @@ export default function ContactForm() {
     setSubmitting(true)
     setStatus(null)
     try {
-      await axios.post('https://terns-exim-api.onrender.com/submit-lead', {
-        name:    form.name.trim(),
-        email:   form.email.trim(),
-        phone:   form.phone.trim(),
-        product: form.product,
-        message: form.message,
+      // POST JSON to https://ternsexim.com/api/leads — same DB as the website form
+      await createLead({
+        name:             form.name.trim(),
+        email:            form.email.trim(),
+        phone:            form.phone.trim(),
+        product_interest: form.product_interest,
+        message:          form.message,
+        source:           'CRM Form',
+        status:           'New',
       })
       setStatus('success')
       setForm(BLANK)
@@ -133,7 +136,7 @@ export default function ContactForm() {
 
           <div className="form-group">
             <label>Product</label>
-            <select value={form.product} onChange={set('product')}>
+            <select value={form.product_interest} onChange={set('product_interest')}>
               <option value="">Select product (optional)</option>
               {PRODUCTS.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
