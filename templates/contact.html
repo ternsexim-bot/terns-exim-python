@@ -194,12 +194,13 @@
   </div>
 </section>
 
-<!-- ===== QUICK DIRECT ENQUIRY FORM ===== -->
+<!-- ===== DIRECT ENQUIRY FORM ===== -->
 <section class="section section-light" id="enquiry-form">
   <div class="container">
     <div class="lead-section-inner">
+
       <div class="lead-section-text">
-        <p class="section-eyebrow">Quick Enquiry</p>
+        <p class="section-eyebrow">Direct Enquiry</p>
         <h2 class="section-title">Send Us a <span class="text-accent">Direct Message</span></h2>
         <p>Fill in the form and our team will get back to you within 24 hours with a competitive export quote — no commitment required.</p>
         <ul class="lead-benefits">
@@ -227,42 +228,62 @@
           <form class="lead-form" action="/submit-lead" method="POST" novalidate
                 id="contact-enquiry-form" onsubmit="return validateContactForm(this)">
 
+            <!-- Row 1: Full Name + Email -->
             <div class="lead-form-row">
               <div class="form-group">
-                <label for="cf_name">Your Name <span class="form-required">*</span></label>
+                <label for="cf_name">Full Name <span class="form-required">*</span></label>
                 <input type="text" id="cf_name" name="name" required
-                       placeholder="Full name" autocomplete="name">
+                       placeholder="Your full name" autocomplete="name">
                 <span class="form-error" aria-live="polite"></span>
               </div>
               <div class="form-group">
-                <label for="cf_phone">Phone / WhatsApp <span class="form-required">*</span></label>
-                <input type="tel" id="cf_phone" name="phone" required
-                       placeholder="+91 63690 97465" autocomplete="tel">
+                <label for="cf_email">Email Address <span class="form-required">*</span></label>
+                <input type="email" id="cf_email" name="email" required
+                       placeholder="you@company.com" autocomplete="email">
                 <span class="form-error" aria-live="polite"></span>
               </div>
             </div>
 
-            <div class="form-group">
-              <label for="cf_email">Email Address <span class="form-required">*</span></label>
-              <input type="email" id="cf_email" name="email" required
-                     placeholder="you@company.com" autocomplete="email">
-              <span class="form-error" aria-live="polite"></span>
+            <!-- Row 2: Phone + Company -->
+            <div class="lead-form-row">
+              <div class="form-group">
+                <label for="cf_phone">Phone Number <span class="form-required">*</span></label>
+                <input type="tel" id="cf_phone" name="phone" required
+                       placeholder="+1 555 000 0000" autocomplete="tel">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf_company">Company Name <span class="form-required">*</span></label>
+                <input type="text" id="cf_company" name="company" required
+                       placeholder="Your company" autocomplete="organization">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label for="cf_product">Product of Interest <span class="form-optional">(optional)</span></label>
-              <select id="cf_product" name="product">
-                <option value="">Select a product…</option>
-                <option value="Hex Bolts">Hex Bolts</option>
-                <option value="Anchor Bolts">Anchor Bolts</option>
-                <option value="Foundation Bolts">Foundation Bolts</option>
-                <option value="Nuts">Nuts</option>
-                <option value="Washers">Washers</option>
-                <option value="Threaded Rods">Threaded Rods</option>
-                <option value="General Enquiry">General Enquiry / Other</option>
-              </select>
+            <!-- Row 3: Country + Product -->
+            <div class="lead-form-row">
+              <div class="form-group">
+                <label for="cf_country">Country <span class="form-required">*</span></label>
+                <input type="text" id="cf_country" name="country" required
+                       placeholder="USA, UAE, UK…" autocomplete="country-name">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf_product">Product of Interest <span class="form-optional">(optional)</span></label>
+                <select id="cf_product" name="product">
+                  <option value="">Select a product…</option>
+                  <option value="Hex Bolts">Hex Bolts</option>
+                  <option value="Anchor Bolts">Anchor Bolts</option>
+                  <option value="Foundation Bolts">Foundation Bolts</option>
+                  <option value="Nuts">Nuts</option>
+                  <option value="Washers">Washers</option>
+                  <option value="Threaded Rods">Threaded Rods</option>
+                  <option value="General Enquiry">General Enquiry / Other</option>
+                </select>
+              </div>
             </div>
 
+            <!-- Row 4: Message -->
             <div class="form-group">
               <label for="cf_message">Message / Requirements <span class="form-optional">(optional)</span></label>
               <textarea id="cf_message" name="message" rows="3"
@@ -293,63 +314,66 @@
         function validateContactForm(form) {
           var valid = true;
 
-          // ── Name: required, min 2 chars ───────────────────────────
-          var nameEl  = form.querySelector('[name="name"]');
-          var nameErr = nameEl.nextElementSibling;
-          var nameVal = nameEl.value.trim();
-          if (!nameVal) {
-            nameErr.textContent = 'Name is required.';
-            nameEl.classList.add('input-error');
-            valid = false;
-          } else if (nameVal.length < 2) {
-            nameErr.textContent = 'Name must be at least 2 characters.';
-            nameEl.classList.add('input-error');
-            valid = false;
-          } else {
-            nameErr.textContent = '';
-            nameEl.classList.remove('input-error');
-          }
-
-          // ── Phone: required, allowed chars, 7–15 digits ───────────
-          var phoneEl  = form.querySelector('[name="phone"]');
-          var phoneErr = phoneEl.nextElementSibling;
-          var phoneVal = phoneEl.value.trim();
-          if (!phoneVal) {
-            phoneErr.textContent = 'Phone is required.';
-            phoneEl.classList.add('input-error');
-            valid = false;
-          } else if (/[^\d\s+\-()]/.test(phoneVal)) {
-            phoneErr.textContent = 'Enter a valid phone number.';
-            phoneEl.classList.add('input-error');
-            valid = false;
-          } else {
-            var digits = phoneVal.replace(/\D/g, '');
-            if (digits.length < 7 || digits.length > 15) {
-              phoneErr.textContent = 'Enter a valid phone number.';
-              phoneEl.classList.add('input-error');
+          function check(el, testFn, emptyMsg, invalidMsg) {
+            var err = el.nextElementSibling;
+            var val = el.tagName === 'SELECT' ? el.value : el.value.trim();
+            if (!val) {
+              err.textContent = emptyMsg;
+              el.classList.add('input-error');
+              valid = false;
+            } else if (testFn && !testFn(val)) {
+              err.textContent = invalidMsg;
+              el.classList.add('input-error');
               valid = false;
             } else {
-              phoneErr.textContent = '';
-              phoneEl.classList.remove('input-error');
+              err.textContent = '';
+              el.classList.remove('input-error');
             }
           }
 
-          // ── Email: required, valid format ─────────────────────────
-          var emailEl  = form.querySelector('[name="email"]');
-          var emailErr = emailEl.nextElementSibling;
-          var emailVal = emailEl.value.trim();
-          if (!emailVal) {
-            emailErr.textContent = 'Email is required.';
-            emailEl.classList.add('input-error');
-            valid = false;
-          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-            emailErr.textContent = 'Enter a valid email.';
-            emailEl.classList.add('input-error');
-            valid = false;
-          } else {
-            emailErr.textContent = '';
-            emailEl.classList.remove('input-error');
-          }
+          // Full Name: required, min 2 chars
+          check(
+            form.querySelector('[name="name"]'),
+            function(v) { return v.length >= 2; },
+            'Full name is required.',
+            'Name must be at least 2 characters.'
+          );
+
+          // Email: required, valid format
+          check(
+            form.querySelector('[name="email"]'),
+            function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); },
+            'Email address is required.',
+            'Enter a valid email address.'
+          );
+
+          // Phone: required, allowed chars, 7–15 digits
+          check(
+            form.querySelector('[name="phone"]'),
+            function(v) {
+              if (/[^\d\s+\-()]/.test(v)) return false;
+              return v.replace(/\D/g, '').length >= 7 &&
+                     v.replace(/\D/g, '').length <= 15;
+            },
+            'Phone number is required.',
+            'Enter a valid international phone number.'
+          );
+
+          // Company Name: required
+          check(
+            form.querySelector('[name="company"]'),
+            null,
+            'Company name is required.',
+            ''
+          );
+
+          // Country: required
+          check(
+            form.querySelector('[name="country"]'),
+            null,
+            'Country is required.',
+            ''
+          );
 
           return valid;
         }

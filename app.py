@@ -92,12 +92,14 @@ def _valid_phone(phone):
         return False
     return 7 <= len(re.sub(r'\D', '', phone)) <= 15
 
-def _forward_to_crm(name, phone, email, product, message):
+def _forward_to_crm(name, phone, email, product, message, company='', country=''):
     """Best-effort background forward to CRM API."""
     payload = json.dumps({
         'name':             name,
         'phone':            phone,
         'email':            email,
+        'company':          company,
+        'country':          country,
         'product_interest': product,
         'message':          message,
         'source':           'Website',
@@ -116,22 +118,28 @@ def _forward_to_crm(name, phone, email, product, message):
 
 @app.route('/submit-lead', methods=['POST'])
 def submit_lead():
-    name    = request.form.get('name', '').strip()
-    phone   = request.form.get('phone', '').strip()
-    email   = request.form.get('email', '').strip()
+    name    = request.form.get('name',    '').strip()
+    email   = request.form.get('email',   '').strip()
+    phone   = request.form.get('phone',   '').strip()
+    company = request.form.get('company', '').strip()
+    country = request.form.get('country', '').strip()
     product = request.form.get('product', '').strip()
     message = request.form.get('message', '').strip()
 
     if (not name or len(name) < 2
+            or not email or not _EMAIL_RE.match(email)
             or not phone or not _valid_phone(phone)
-            or not email or not _EMAIL_RE.match(email)):
+            or not company
+            or not country):
         return redirect(url_for('contact'))
 
-    lead = save_lead(name, phone, email, product, message)
+    lead = save_lead(name, phone, email, product, message,
+                     company=company, country=country)
     send_whatsapp_alert(lead)
     threading.Thread(
         target=_forward_to_crm,
         args=(name, phone, email, product, message),
+        kwargs={'company': company, 'country': country},
         daemon=True,
     ).start()
     return redirect(url_for('thank_you'))
