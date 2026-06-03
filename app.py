@@ -40,8 +40,15 @@ db = SQLAlchemy(app)
 # CORS scoped only to /api/* so the CRM dashboard (Netlify) can reach it
 CORS(app, resources={r'/api/*': {'origins': '*'}})
 
-logger.info('[STARTUP] Database: %s',
-            'PostgreSQL' if _DB_URL else f'SQLite @ {_SQLITE_PATH}')
+if _DB_URL:
+    logger.info('[STARTUP] [DATABASE CONNECTED] Using PostgreSQL (persistent)')
+else:
+    logger.warning(
+        '[STARTUP] No DATABASE_URL set — falling back to SQLite @ %s. '
+        'Leads WILL be lost on Render restart. '
+        'Add DATABASE_URL in Render Environment Settings for persistence.',
+        _SQLITE_PATH,
+    )
 
 # ── Lead model (inline — single source of truth) ──────────────────────────────
 class Lead(db.Model):
@@ -276,6 +283,26 @@ def api_lead_stats():
         data[s.lower()] = Lead.query.filter_by(status=s).count()
     logger.info('[CRM LOAD] stats=%s', data)
     return jsonify(data)
+
+
+@app.route('/api/health', methods=['GET'])
+def api_health():
+    db_type = 'postgresql' if _DB_URL else 'sqlite'
+    try:
+        total = Lead.query.count()
+        db_ok = True
+    except Exception as exc:
+        logger.error('[HEALTH] DB check failed: %s', exc)
+        total = -1
+        db_ok = False
+    logger.info('[DATABASE CONNECTED] type=%s ok=%s total_leads=%d', db_type, db_ok, total)
+    return jsonify({
+        'status':      'ok' if db_ok else 'error',
+        'database':    db_type,
+        'persistent':  bool(_DB_URL),
+        'db_connected': db_ok,
+        'total_leads': total,
+    })
 
 
 # ── Security headers ──────────────────────────────────────────────────────────
