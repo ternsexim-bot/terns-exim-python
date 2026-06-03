@@ -195,7 +195,6 @@
 </section>
 
 <!-- ===== QUICK DIRECT ENQUIRY FORM ===== -->
-{% from '_lead_form.html' import lead_form %}
 <section class="section section-light" id="enquiry-form">
   <div class="container">
     <div class="lead-section-inner">
@@ -222,9 +221,141 @@
           </li>
         </ul>
       </div>
+
       <div class="lead-section-form">
-        {{ lead_form(show_product_select=true) }}
+        <div class="lead-form-wrap">
+          <form class="lead-form" action="/submit-lead" method="POST" novalidate
+                id="contact-enquiry-form" onsubmit="return validateContactForm(this)">
+
+            <div class="lead-form-row">
+              <div class="form-group">
+                <label for="cf_name">Your Name <span class="form-required">*</span></label>
+                <input type="text" id="cf_name" name="name" required
+                       placeholder="Full name" autocomplete="name">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf_phone">Phone / WhatsApp <span class="form-required">*</span></label>
+                <input type="tel" id="cf_phone" name="phone" required
+                       placeholder="+91 63690 97465" autocomplete="tel">
+                <span class="form-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cf_email">Email Address <span class="form-required">*</span></label>
+              <input type="email" id="cf_email" name="email" required
+                     placeholder="you@company.com" autocomplete="email">
+              <span class="form-error" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="cf_product">Product of Interest <span class="form-optional">(optional)</span></label>
+              <select id="cf_product" name="product">
+                <option value="">Select a product…</option>
+                <option value="Hex Bolts">Hex Bolts</option>
+                <option value="Anchor Bolts">Anchor Bolts</option>
+                <option value="Foundation Bolts">Foundation Bolts</option>
+                <option value="Nuts">Nuts</option>
+                <option value="Washers">Washers</option>
+                <option value="Threaded Rods">Threaded Rods</option>
+                <option value="General Enquiry">General Enquiry / Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cf_message">Message / Requirements <span class="form-optional">(optional)</span></label>
+              <textarea id="cf_message" name="message" rows="3"
+                        placeholder="Grade, size, quantity, destination port, delivery timeline…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary lead-submit-btn">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9"/>
+              </svg>
+              Send Enquiry
+            </button>
+
+            <p class="lead-form-footer">
+              Prefer instant chat?
+              <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20am%20interested%20in%20your%20products"
+                 target="_blank" rel="noopener" class="lead-wa-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp +91 63690 97465
+              </a>
+            </p>
+          </form>
+        </div>
+
+        <script>
+        function validateContactForm(form) {
+          var valid = true;
+
+          // ── Name: required, min 2 chars ───────────────────────────
+          var nameEl  = form.querySelector('[name="name"]');
+          var nameErr = nameEl.nextElementSibling;
+          var nameVal = nameEl.value.trim();
+          if (!nameVal) {
+            nameErr.textContent = 'Name is required.';
+            nameEl.classList.add('input-error');
+            valid = false;
+          } else if (nameVal.length < 2) {
+            nameErr.textContent = 'Name must be at least 2 characters.';
+            nameEl.classList.add('input-error');
+            valid = false;
+          } else {
+            nameErr.textContent = '';
+            nameEl.classList.remove('input-error');
+          }
+
+          // ── Phone: required, allowed chars, 7–15 digits ───────────
+          var phoneEl  = form.querySelector('[name="phone"]');
+          var phoneErr = phoneEl.nextElementSibling;
+          var phoneVal = phoneEl.value.trim();
+          if (!phoneVal) {
+            phoneErr.textContent = 'Phone is required.';
+            phoneEl.classList.add('input-error');
+            valid = false;
+          } else if (/[^\d\s+\-()]/.test(phoneVal)) {
+            phoneErr.textContent = 'Enter a valid phone number.';
+            phoneEl.classList.add('input-error');
+            valid = false;
+          } else {
+            var digits = phoneVal.replace(/\D/g, '');
+            if (digits.length < 7 || digits.length > 15) {
+              phoneErr.textContent = 'Enter a valid phone number.';
+              phoneEl.classList.add('input-error');
+              valid = false;
+            } else {
+              phoneErr.textContent = '';
+              phoneEl.classList.remove('input-error');
+            }
+          }
+
+          // ── Email: required, valid format ─────────────────────────
+          var emailEl  = form.querySelector('[name="email"]');
+          var emailErr = emailEl.nextElementSibling;
+          var emailVal = emailEl.value.trim();
+          if (!emailVal) {
+            emailErr.textContent = 'Email is required.';
+            emailEl.classList.add('input-error');
+            valid = false;
+          } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+            emailErr.textContent = 'Enter a valid email.';
+            emailEl.classList.add('input-error');
+            valid = false;
+          } else {
+            emailErr.textContent = '';
+            emailEl.classList.remove('input-error');
+          }
+
+          return valid;
+        }
+        </script>
       </div>
+
     </div>
   </div>
 </section>

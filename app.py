@@ -1,6 +1,9 @@
 from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+import json
 import os
 import re
+import threading
+import urllib.request
 
 from leads import save_lead, send_whatsapp_alert
 
@@ -81,7 +84,35 @@ def threaded_rods():
 
 # ── Lead Capture ──────────────────────────────────────────────────────────────
 
-_PHONE_RE = re.compile(r'^[\d\s\+\-\(\)]{7,20}$')
+_PHONE_CHARS_RE = re.compile(r'^[\d\s+\-()\+]+$')
+_EMAIL_RE       = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
+
+def _valid_phone(phone):
+    if not _PHONE_CHARS_RE.match(phone):
+        return False
+    return 7 <= len(re.sub(r'\D', '', phone)) <= 15
+
+def _forward_to_crm(name, phone, email, product, message):
+    """Best-effort background forward to CRM API."""
+    payload = json.dumps({
+        'name':             name,
+        'phone':            phone,
+        'email':            email,
+        'product_interest': product,
+        'message':          message,
+        'source':           'Website',
+        'status':           'New',
+    }).encode('utf-8')
+    req = urllib.request.Request(
+        'https://terns-exim-api.onrender.com/leads',
+        data=payload,
+        headers={'Content-Type': 'application/json'},
+        method='POST',
+    )
+    try:
+        urllib.request.urlopen(req, timeout=8)
+    except Exception:
+        pass  # non-blocking; CSV lead already saved
 
 @app.route('/submit-lead', methods=['POST'])
 def submit_lead():
@@ -91,11 +122,18 @@ def submit_lead():
     product = request.form.get('product', '').strip()
     message = request.form.get('message', '').strip()
 
-    if not name or not phone or not _PHONE_RE.match(phone):
+    if (not name or len(name) < 2
+            or not phone or not _valid_phone(phone)
+            or not email or not _EMAIL_RE.match(email)):
         return redirect(url_for('contact'))
 
     lead = save_lead(name, phone, email, product, message)
     send_whatsapp_alert(lead)
+    threading.Thread(
+        target=_forward_to_crm,
+        args=(name, phone, email, product, message),
+        daemon=True,
+    ).start()
     return redirect(url_for('thank_you'))
 
 
