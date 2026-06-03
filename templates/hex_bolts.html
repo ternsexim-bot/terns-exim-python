@@ -263,6 +263,37 @@
   </div>
 </section>
 
+<!-- REQUEST QUOTE FORM -->
+{% from '_lead_form.html' import lead_form %}
+<section class="section section-light" id="request-quote">
+  <div class="container">
+    <div class="lead-section-inner">
+      <div class="lead-section-text">
+        <p class="section-eyebrow">Request a Quote</p>
+        <h2 class="section-title">Get Your <span class="text-accent">Hex Bolt Quote</span></h2>
+        <p>Fill in your requirements below and we'll respond within 24 hours with a competitive export price, grade availability, and shipping options.</p>
+        <ul class="lead-benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Free quote — Grade 4.6 to 12.9
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            DIN, ISO, ASTM certified stock
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Trial orders accepted from new buyers
+          </li>
+        </ul>
+      </div>
+      <div class="lead-section-form">
+        {{ lead_form(product='Hex Bolts') }}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="container">

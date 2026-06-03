@@ -2480,3 +2480,248 @@ h1, h2, h3, h4, h5, h6 {
   .pl-related-grid   { grid-template-columns: 1fr 1fr; }
   .pl-product-img    { height: 180px; }
 }
+
+/* =============================================
+   LEAD CAPTURE FORM — Phase 1 CRM
+   ============================================= */
+
+/* Two-column layout: text left, form right */
+.lead-section-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.lead-section-text .section-eyebrow { margin-bottom: 8px; }
+.lead-section-text .section-title   { font-size: 1.75rem; margin-bottom: 12px; }
+.lead-section-text p                { color: var(--text-light); line-height: 1.7; }
+
+.lead-benefits {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lead-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+.lead-benefits li svg { color: var(--gold); flex-shrink: 0; }
+
+/* Form card */
+.lead-form-wrap {
+  background: var(--white);
+  border: 1.5px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Two-column name + phone row */
+.lead-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Individual field */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--navy);
+}
+
+.form-required { color: #e53e3e; margin-left: 2px; }
+.form-optional { color: var(--gray-500); font-weight: 400; font-size: 0.8rem; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--gray-300);
+  border-radius: var(--radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93rem;
+  color: var(--text);
+  background: var(--off-white);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237f8ca4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.form-group textarea { resize: vertical; min-height: 88px; }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(212,175,55,0.18);
+}
+
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error {
+  border-color: #e53e3e;
+  box-shadow: 0 0 0 3px rgba(229,62,62,0.12);
+}
+
+.form-error {
+  font-size: 0.8rem;
+  color: #e53e3e;
+  min-height: 1em;
+}
+
+/* Submit button */
+.lead-submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 13px 28px;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+/* Footer: WhatsApp fallback */
+.lead-form-footer {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 4px;
+  line-height: 1.6;
+}
+
+.lead-wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--green-wa);
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+.lead-wa-link:hover { opacity: 0.85; }
+
+/* ── Thank You Page ──────────────────────────────────────────────────────── */
+.thank-you-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  background: var(--off-white);
+}
+
+.thank-you-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 56px 48px;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ty-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+
+.thank-you-card h1 {
+  font-size: 1.9rem;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+.ty-message {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.ty-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  background: var(--off-white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.ty-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
+  color: var(--text-light);
+}
+.ty-detail-item svg { color: var(--gold); flex-shrink: 0; }
+
+.ty-urgent {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.ty-wa-btn {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.ty-back-link {
+  display: inline-block;
+  color: var(--navy-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+.ty-back-link:hover { color: var(--gold); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lead-section-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 600px) {
+  .lead-form-row  { grid-template-columns: 1fr; gap: 0; }
+  .lead-form-wrap { padding: 24px 18px; }
+  .thank-you-card { padding: 36px 20px; }
+  .thank-you-card h1 { font-size: 1.5rem; }
+}

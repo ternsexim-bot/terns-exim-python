@@ -36,3 +36,8 @@ flask_session/
 # NOTE: static/ is intentionally NOT ignored.
 # All images, CSS and JS must be committed to git
 # so they are available on Render after deployment.
+
+# CRM
+crm/*.db
+crm-frontend/node_modules/
+crm-frontend/dist/

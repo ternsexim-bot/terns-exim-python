@@ -260,6 +260,37 @@
   </div>
 </section>
 
+<!-- REQUEST QUOTE FORM -->
+{% from '_lead_form.html' import lead_form %}
+<section class="section section-light" id="request-quote">
+  <div class="container">
+    <div class="lead-section-inner">
+      <div class="lead-section-text">
+        <p class="section-eyebrow">Request a Quote</p>
+        <h2 class="section-title">Get Your <span class="text-accent">Washers Export Quote</span></h2>
+        <p>Tell us the washer type, material, size range, and order quantity. We respond within 24 hours.</p>
+        <ul class="lead-benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Flat, Spring, Lock, Belleville washers
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            DIN 125/127, ISO 7089, ASTM F436
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            M3–M100, zinc or HDG finish
+          </li>
+        </ul>
+      </div>
+      <div class="lead-section-form">
+        {{ lead_form(product='Washers') }}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="container">

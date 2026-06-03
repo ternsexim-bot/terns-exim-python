@@ -260,6 +260,37 @@
   </div>
 </section>
 
+<!-- REQUEST QUOTE FORM -->
+{% from '_lead_form.html' import lead_form %}
+<section class="section section-light" id="request-quote">
+  <div class="container">
+    <div class="lead-section-inner">
+      <div class="lead-section-text">
+        <p class="section-eyebrow">Request a Quote</p>
+        <h2 class="section-title">Get Your <span class="text-accent">Nuts Export Quote</span></h2>
+        <p>Tell us the nut type, grade, size range, and quantity needed. Our team responds within 24 hours with a competitive price.</p>
+        <ul class="lead-benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Hex, Lock, Flange, Nyloc, Castle nuts
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            DIN 934/985, ISO 4032, ASTM A563
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Carbon steel, SS 304/316, M3–M80
+          </li>
+        </ul>
+      </div>
+      <div class="lead-section-form">
+        {{ lead_form(product='Nuts') }}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="container">

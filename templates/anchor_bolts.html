@@ -260,6 +260,37 @@
   </div>
 </section>
 
+<!-- REQUEST QUOTE FORM -->
+{% from '_lead_form.html' import lead_form %}
+<section class="section section-light" id="request-quote">
+  <div class="container">
+    <div class="lead-section-inner">
+      <div class="lead-section-text">
+        <p class="section-eyebrow">Request a Quote</p>
+        <h2 class="section-title">Get Your <span class="text-accent">Anchor Bolt Quote</span></h2>
+        <p>Share your bolt type, grade, diameter, length, and quantity. We'll send a competitive export price within 24 hours.</p>
+        <ul class="lead-benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            J-Bolt, L-Bolt, U-Bolt, Eye Bolt
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            ASTM F1554 certified, custom sizes
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Mill Test Certificates on every shipment
+          </li>
+        </ul>
+      </div>
+      <div class="lead-section-form">
+        {{ lead_form(product='Anchor Bolts') }}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="container">

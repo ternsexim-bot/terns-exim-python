@@ -194,6 +194,41 @@
   </div>
 </section>
 
+<!-- ===== QUICK DIRECT ENQUIRY FORM ===== -->
+{% from '_lead_form.html' import lead_form %}
+<section class="section section-light" id="enquiry-form">
+  <div class="container">
+    <div class="lead-section-inner">
+      <div class="lead-section-text">
+        <p class="section-eyebrow">Quick Enquiry</p>
+        <h2 class="section-title">Send Us a <span class="text-accent">Direct Message</span></h2>
+        <p>Fill in the form and our team will get back to you within 24 hours with a competitive export quote — no commitment required.</p>
+        <ul class="lead-benefits">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Free quotation — no strings attached
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Response within 24 business hours
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Detailed pricing, grade &amp; lead-time info
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Mill Test Certificates on every order
+          </li>
+        </ul>
+      </div>
+      <div class="lead-section-form">
+        {{ lead_form(show_product_select=true) }}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
 <section class="section section-dark">
   <div class="container">

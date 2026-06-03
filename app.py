@@ -1,5 +1,8 @@
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for
 import os
+import re
+
+from leads import save_lead, send_whatsapp_alert
 
 app = Flask(__name__)
 
@@ -74,6 +77,32 @@ def washers():
 @app.route('/threaded-rods')
 def threaded_rods():
     return render_template('threaded_rods.html')
+
+
+# ── Lead Capture ──────────────────────────────────────────────────────────────
+
+_PHONE_RE = re.compile(r'^[\d\s\+\-\(\)]{7,20}$')
+
+@app.route('/submit-lead', methods=['POST'])
+def submit_lead():
+    name    = request.form.get('name', '').strip()
+    phone   = request.form.get('phone', '').strip()
+    email   = request.form.get('email', '').strip()
+    product = request.form.get('product', '').strip()
+    message = request.form.get('message', '').strip()
+
+    if not name or not phone or not _PHONE_RE.match(phone):
+        return redirect(url_for('contact'))
+
+    lead = save_lead(name, phone, email, product, message)
+    send_whatsapp_alert(lead)
+    return redirect(url_for('thank_you'))
+
+
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank_you.html')
+
 
 @app.after_request
 def add_security_headers(response):
