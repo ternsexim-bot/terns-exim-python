@@ -1,45 +1,113 @@
-from flask import Flask, render_template, send_from_directory, request, redirect, url_for
-import json
+import logging
 import os
 import re
-import threading
-import urllib.request
+from datetime import datetime
+
+from flask import Flask, jsonify, render_template, request, redirect, send_from_directory, url_for
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 
 from leads import save_lead, send_whatsapp_alert
 
+# ── Logging ───────────────────────────────────────────────────────────────────
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+)
+logger = logging.getLogger(__name__)
+
+# ── App ───────────────────────────────────────────────────────────────────────
 app = Flask(__name__)
 
-# Cache static files for 1 year in production
+# Cache static files 1 year in production
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
+
+# ── Database (PostgreSQL via DATABASE_URL env var; SQLite fallback for dev) ───
+# Add DATABASE_URL in Render's Environment settings for persistent storage.
+# Free-tier Render instances use an ephemeral filesystem — SQLite data is lost
+# on restart unless DATABASE_URL points to a managed PostgreSQL service.
+_DB_URL = os.environ.get('DATABASE_URL', '')
+if _DB_URL.startswith('postgres://'):
+    # Render provides postgres:// but SQLAlchemy requires postgresql://
+    _DB_URL = _DB_URL.replace('postgres://', 'postgresql://', 1)
+
+_SQLITE_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'crm.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = _DB_URL or f'sqlite:///{_SQLITE_PATH}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+# CORS scoped only to /api/* so the CRM dashboard (Netlify) can reach it
+CORS(app, resources={r'/api/*': {'origins': '*'}})
+
+logger.info('[STARTUP] Database: %s',
+            'PostgreSQL' if _DB_URL else f'SQLite @ {_SQLITE_PATH}')
+
+# ── Lead model (inline — single source of truth) ──────────────────────────────
+class Lead(db.Model):
+    __tablename__ = 'leads'
+
+    id               = db.Column(db.Integer, primary_key=True)
+    name             = db.Column(db.String(100), nullable=False)
+    email            = db.Column(db.String(120), default='')
+    phone            = db.Column(db.String(30),  default='')
+    company          = db.Column(db.String(150), default='')
+    country          = db.Column(db.String(100), default='')
+    product_interest = db.Column(db.String(200), default='')
+    message          = db.Column(db.Text,        default='')
+    status           = db.Column(db.String(30),  default='New')
+    source           = db.Column(db.String(50),  default='Website')
+    created_at       = db.Column(db.DateTime,    default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            'id':               self.id,
+            'name':             self.name,
+            'email':            self.email,
+            'phone':            self.phone,
+            'company':          self.company,
+            'country':          self.country,
+            'product_interest': self.product_interest,
+            'message':          self.message,
+            'status':           self.status,
+            'source':           self.source,
+            'created_at':       self.created_at.isoformat() if self.created_at else None,
+        }
+
+
+with app.app_context():
+    db.create_all()
+    logger.info('[STARTUP] Database tables ready. Total leads: %d', Lead.query.count())
+
 
 BASE_URL = os.environ.get('BASE_URL', 'https://ternsexim.com').rstrip('/')
 
+
 @app.context_processor
 def inject_seo():
-    """Inject canonical_url into every template automatically."""
     path = request.path.rstrip('/') or '/'
     return {'canonical_url': BASE_URL + path}
+
+
+# ── Static / file routes ──────────────────────────────────────────────────────
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(
         os.path.join(app.root_path, 'static', 'images'),
-        'favicon.png', mimetype='image/png'
+        'favicon.png', mimetype='image/png',
     )
 
 @app.route('/robots.txt')
 def robots():
-    return send_from_directory(
-        os.path.join(app.root_path, 'static'),
-        'robots.txt', mimetype='text/plain'
-    )
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')
 
 @app.route('/sitemap.xml')
 def sitemap():
-    return send_from_directory(
-        os.path.join(app.root_path, 'static'),
-        'sitemap.xml', mimetype='application/xml'
-    )
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'sitemap.xml', mimetype='application/xml')
+
+
+# ── Page routes ───────────────────────────────────────────────────────────────
 
 @app.route('/')
 def home():
@@ -82,39 +150,19 @@ def threaded_rods():
     return render_template('threaded_rods.html')
 
 
-# ── Lead Capture ──────────────────────────────────────────────────────────────
+# ── Lead validation helpers ───────────────────────────────────────────────────
 
 _PHONE_CHARS_RE = re.compile(r'^[\d\s+\-()\+]+$')
 _EMAIL_RE       = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
+
 
 def _valid_phone(phone):
     if not _PHONE_CHARS_RE.match(phone):
         return False
     return 7 <= len(re.sub(r'\D', '', phone)) <= 15
 
-def _forward_to_crm(name, phone, email, product, message, company='', country=''):
-    """Best-effort background forward to CRM API."""
-    payload = json.dumps({
-        'name':             name,
-        'phone':            phone,
-        'email':            email,
-        'company':          company,
-        'country':          country,
-        'product_interest': product,
-        'message':          message,
-        'source':           'Website',
-        'status':           'New',
-    }).encode('utf-8')
-    req = urllib.request.Request(
-        'https://terns-exim-api.onrender.com/leads',
-        data=payload,
-        headers={'Content-Type': 'application/json'},
-        method='POST',
-    )
-    try:
-        urllib.request.urlopen(req, timeout=8)
-    except Exception:
-        pass  # non-blocking; CSV lead already saved
+
+# ── Lead submission ───────────────────────────────────────────────────────────
 
 @app.route('/submit-lead', methods=['POST'])
 def submit_lead():
@@ -126,22 +174,37 @@ def submit_lead():
     product = request.form.get('product', '').strip()
     message = request.form.get('message', '').strip()
 
+    logger.info('[LEAD SUBMITTED] name=%r email=%r phone=%r company=%r country=%r product=%r',
+                name, email, phone, company, country, product)
+
     if (not name or len(name) < 2
             or not email or not _EMAIL_RE.match(email)
             or not phone or not _valid_phone(phone)
             or not company
             or not country):
+        logger.warning('[LEAD REJECTED] Validation failed — name=%r email=%r phone=%r', name, email, phone)
         return redirect(url_for('contact'))
 
-    lead = save_lead(name, phone, email, product, message,
-                     company=company, country=country)
-    send_whatsapp_alert(lead)
-    threading.Thread(
-        target=_forward_to_crm,
-        args=(name, phone, email, product, message),
-        kwargs={'company': company, 'country': country},
-        daemon=True,
-    ).start()
+    # ── CSV backup (legacy; also ephemeral on free Render tier) ───────────────
+    lead_dict = save_lead(name, phone, email, product, message, company=company, country=country)
+    send_whatsapp_alert(lead_dict)
+
+    # ── Primary storage: SQLAlchemy (persistent when DATABASE_URL is set) ─────
+    try:
+        lead = Lead(
+            name=name, email=email, phone=phone,
+            company=company, country=country,
+            product_interest=product or 'General Enquiry',
+            message=message, source='Website', status='New',
+        )
+        db.session.add(lead)
+        db.session.commit()
+        total = Lead.query.count()
+        logger.info('[LEAD SAVED] id=%d name=%r email=%r total_in_db=%d', lead.id, name, email, total)
+    except Exception as exc:
+        db.session.rollback()
+        logger.error('[LEAD DB ERROR] %s', exc)
+
     return redirect(url_for('thank_you'))
 
 
@@ -150,22 +213,90 @@ def thank_you():
     return render_template('thank_you.html')
 
 
+# ── CRM REST API  (/api/leads) ────────────────────────────────────────────────
+
+@app.route('/api/leads', methods=['GET'])
+def api_get_leads():
+    status = request.args.get('status')
+    query  = Lead.query.order_by(Lead.created_at.desc())
+    if status:
+        query = query.filter_by(status=status)
+    leads = query.all()
+    logger.info('[LEAD READ] count=%d filter=%r', len(leads), status)
+    return jsonify([l.to_dict() for l in leads])
+
+
+@app.route('/api/leads', methods=['POST'])
+def api_create_lead():
+    data = request.get_json() or {}
+    if not data.get('name', '').strip():
+        return jsonify({'error': 'Name is required'}), 400
+    lead = Lead(
+        name=data.get('name', '').strip(),
+        email=data.get('email', ''),
+        phone=data.get('phone', ''),
+        company=data.get('company', ''),
+        country=data.get('country', ''),
+        product_interest=data.get('product_interest', ''),
+        message=data.get('message', ''),
+        status=data.get('status', 'New'),
+        source=data.get('source', 'Manual'),
+    )
+    db.session.add(lead)
+    db.session.commit()
+    logger.info('[LEAD SAVED] id=%d name=%r source=api', lead.id, lead.name)
+    return jsonify(lead.to_dict()), 201
+
+
+@app.route('/api/leads/<int:lead_id>', methods=['PUT'])
+def api_update_lead(lead_id):
+    lead = db.get_or_404(Lead, lead_id)
+    data = request.get_json() or {}
+    for field in ['name', 'email', 'phone', 'company', 'country',
+                  'product_interest', 'message', 'status', 'source']:
+        if field in data:
+            setattr(lead, field, data[field])
+    db.session.commit()
+    return jsonify(lead.to_dict())
+
+
+@app.route('/api/leads/<int:lead_id>', methods=['DELETE'])
+def api_delete_lead(lead_id):
+    lead = db.get_or_404(Lead, lead_id)
+    db.session.delete(lead)
+    db.session.commit()
+    return jsonify({'message': 'deleted'})
+
+
+@app.route('/api/leads/stats', methods=['GET'])
+def api_lead_stats():
+    statuses = ['New', 'Contacted', 'Negotiation', 'Won', 'Lost']
+    data = {'total': Lead.query.count()}
+    for s in statuses:
+        data[s.lower()] = Lead.query.filter_by(status=s).count()
+    logger.info('[CRM LOAD] stats=%s', data)
+    return jsonify(data)
+
+
+# ── Security headers ──────────────────────────────────────────────────────────
+
 @app.after_request
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
-    # Allow images from flagcdn for country flags
-    response.headers['Content-Security-Policy'] = (
-        "default-src 'self'; "
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-        "font-src 'self' https://fonts.gstatic.com; "
-        "script-src 'self' 'unsafe-inline'; "
-        "img-src 'self' data: https://flagcdn.com https://ternsexim.com; "
-        "connect-src 'self';"
-    )
+    # Skip CSP on API routes so the CRM dashboard (Netlify) can call freely
+    if not request.path.startswith('/api/'):
+        response.headers['Content-Security-Policy'] = (
+            "default-src 'self'; "
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+            "font-src 'self' https://fonts.gstatic.com; "
+            "script-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data: https://flagcdn.com https://ternsexim.com; "
+            "connect-src 'self';"
+        )
     return response
 
+
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 10000))
     app.run(host='0.0.0.0', port=port)
