@@ -1,5 +1,11 @@
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, redirect, url_for
+import json
 import os
+import re
+import threading
+import urllib.request
+
+from leads import save_lead, send_whatsapp_alert
 
 app = Flask(__name__)
 
@@ -75,6 +81,75 @@ def washers():
 def threaded_rods():
     return render_template('threaded_rods.html')
 
+
+# ── Lead Capture ──────────────────────────────────────────────────────────────
+
+_PHONE_CHARS_RE = re.compile(r'^[\d\s+\-()\+]+$')
+_EMAIL_RE       = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
+
+def _valid_phone(phone):
+    if not _PHONE_CHARS_RE.match(phone):
+        return False
+    return 7 <= len(re.sub(r'\D', '', phone)) <= 15
+
+def _forward_to_crm(name, phone, email, product, message, company='', country=''):
+    """Best-effort background forward to CRM API."""
+    payload = json.dumps({
+        'name':             name,
+        'phone':            phone,
+        'email':            email,
+        'company':          company,
+        'country':          country,
+        'product_interest': product,
+        'message':          message,
+        'source':           'Website',
+        'status':           'New',
+    }).encode('utf-8')
+    req = urllib.request.Request(
+        'https://terns-exim-api.onrender.com/leads',
+        data=payload,
+        headers={'Content-Type': 'application/json'},
+        method='POST',
+    )
+    try:
+        urllib.request.urlopen(req, timeout=8)
+    except Exception:
+        pass  # non-blocking; CSV lead already saved
+
+@app.route('/submit-lead', methods=['POST'])
+def submit_lead():
+    name    = request.form.get('name',    '').strip()
+    email   = request.form.get('email',   '').strip()
+    phone   = request.form.get('phone',   '').strip()
+    company = request.form.get('company', '').strip()
+    country = request.form.get('country', '').strip()
+    product = request.form.get('product', '').strip()
+    message = request.form.get('message', '').strip()
+
+    if (not name or len(name) < 2
+            or not email or not _EMAIL_RE.match(email)
+            or not phone or not _valid_phone(phone)
+            or not company
+            or not country):
+        return redirect(url_for('contact'))
+
+    lead = save_lead(name, phone, email, product, message,
+                     company=company, country=country)
+    send_whatsapp_alert(lead)
+    threading.Thread(
+        target=_forward_to_crm,
+        args=(name, phone, email, product, message),
+        kwargs={'company': company, 'country': country},
+        daemon=True,
+    ).start()
+    return redirect(url_for('thank_you'))
+
+
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank_you.html')
+
+
 @app.after_request
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
@@ -91,4 +166,6 @@ def add_security_headers(response):
     return response
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    import os
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
