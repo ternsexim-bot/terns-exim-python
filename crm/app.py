@@ -2,7 +2,10 @@ import os
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from models import db, Lead
+try:
+    from crm.models import db, Lead   # when run as crm.app:app from repo root
+except ImportError:
+    from models import db, Lead       # when run as app:app from crm/ directory
 
 app = Flask(__name__)
 CORS(app)
