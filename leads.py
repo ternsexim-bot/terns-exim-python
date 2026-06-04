@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 _BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 LEADS_CSV  = os.environ.get('LEADS_CSV_PATH',
                              os.path.join(_BASE_DIR, 'leads.csv'))
-FIELDNAMES = ['timestamp', 'name', 'email', 'phone', 'company', 'country', 'product', 'message']
+FIELDNAMES = ['timestamp', 'name', 'email', 'phone', 'company', 'country', 'product', 'quantity', 'message']
 
 # ── Phase 3 config (disabled until env vars are set) ─────────────────────────
 _WA_ENABLED = os.environ.get('WHATSAPP_ALERT_ENABLED', '').lower() == 'true'
@@ -29,7 +29,7 @@ _WA_PHONE   = os.environ.get('WHATSAPP_PHONE', '916369097465')
 
 # ── Phase 1 & 2: Lead Storage ─────────────────────────────────────────────────
 
-def save_lead(name, phone, email='', product='', message='', company='', country=''):
+def save_lead(name, phone, email='', product='', message='', company='', country='', quantity=''):
     """
     Append a lead to leads.csv (Phase 1).
     Returns the lead dict for logging / Phase 3 alerting.
@@ -46,6 +46,7 @@ def save_lead(name, phone, email='', product='', message='', company='', country
         'company':   company,
         'country':   country,
         'product':   product or 'General Enquiry',
+        'quantity':  quantity,
         'message':   message,
     }
 

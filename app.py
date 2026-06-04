@@ -109,8 +109,9 @@ def _valid_phone(phone):
 
 _CRM_API_URL = 'https://terns-exim-api.onrender.com/leads'
 
-def _forward_to_crm(name, phone, email, product, message, company='', country=''):
+def _forward_to_crm(name, phone, email, product, message, company='', country='', quantity=''):
     """Forward lead to CRM API (primary persistent storage). One retry on failure."""
+    full_message = f"Qty: {quantity}\n{message}".strip() if quantity else message
     payload = json.dumps({
         'name':             name,
         'phone':            phone,
@@ -118,7 +119,7 @@ def _forward_to_crm(name, phone, email, product, message, company='', country=''
         'company':          company,
         'country':          country,
         'product_interest': product,
-        'message':          message,
+        'message':          full_message,
         'source':           'Website',
         'status':           'New',
     }).encode('utf-8')
@@ -153,28 +154,30 @@ def _forward_to_crm(name, phone, email, product, message, company='', country=''
 
 @app.route('/submit-lead', methods=['POST'])
 def submit_lead():
-    name    = request.form.get('name',    '').strip()
-    email   = request.form.get('email',   '').strip()
-    phone   = request.form.get('phone',   '').strip()
-    company = request.form.get('company', '').strip()
-    country = request.form.get('country', '').strip()
-    product = request.form.get('product', '').strip()
-    message = request.form.get('message', '').strip()
+    name     = request.form.get('name',     '').strip()
+    email    = request.form.get('email',    '').strip()
+    phone    = request.form.get('phone',    '').strip()
+    company  = request.form.get('company',  '').strip()
+    country  = request.form.get('country',  '').strip()
+    product  = request.form.get('product',  '').strip()
+    quantity = request.form.get('quantity', '').strip()
+    message  = request.form.get('message',  '').strip()
 
     if (not name or len(name) < 2
             or not email or not _EMAIL_RE.match(email)
             or not phone or not _valid_phone(phone)
             or not company
-            or not country):
+            or not country
+            or not product):
         return redirect(url_for('contact'))
 
     lead = save_lead(name, phone, email, product, message,
-                     company=company, country=country)
+                     company=company, country=country, quantity=quantity)
     send_whatsapp_alert(lead)
     threading.Thread(
         target=_forward_to_crm,
         args=(name, phone, email, product, message),
-        kwargs={'company': company, 'country': country},
+        kwargs={'company': company, 'country': country, 'quantity': quantity},
         daemon=True,
     ).start()
     return redirect(url_for('thank_you'))

@@ -124,278 +124,200 @@
         </div>
       </div>
 
-      <!-- Inquiry Forms Panel -->
+      <!-- Quotation Form Panel -->
       <div class="contact-forms-panel">
-        <h2>Submit an Inquiry</h2>
-        <p class="contact-intro">Choose the type of inquiry that best matches your needs. We'll get back to you with a detailed quote within 24 hours.</p>
+        <h2>Get a Free Quotation</h2>
+        <p class="contact-intro">Fill in the form below and our export team will respond with a detailed quote within 24 hours — no commitment required.</p>
 
-        <div class="inquiry-card">
-          <div class="inquiry-card-header">
-            <div class="inquiry-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><path d="M8 6l4-4 4 4M8 18l4 4 4-4"/><rect x="8" y="9" width="8" height="6" rx="1"/></svg>
-            </div>
-            <div>
-              <h3>Fastener Quotation</h3>
-              <p>For bolts, nuts, screws, washers, threaded rods, and all other fastener requirements.</p>
-            </div>
+        <div class="enquiry-trust" style="margin-bottom:1.5rem;">
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>24-hour response</span>
           </div>
-          <ul class="inquiry-features">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Specify product, grade, size, and quantity
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Receive detailed quotation with pricing &amp; lead time
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Response within 24 working hours
-            </li>
-          </ul>
-          <a href="https://forms.gle/4XJ4rEYL65Y83fUS9" target="_blank" rel="noopener" class="btn btn-primary btn-block">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Open Fastener Quote Form
-          </a>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Export docs included</span>
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span>Ships worldwide</span>
+          </div>
         </div>
 
-        <div class="inquiry-card">
-          <div class="inquiry-card-header">
-            <div class="inquiry-icon accent">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <form action="/submit-lead" method="POST" novalidate
+              id="contact-quote-form" onsubmit="return validateQuoteForm(this)">
+
+          <!-- Row 1: Name + Company -->
+          <div class="eq-form-grid">
+            <div class="eq-field">
+              <label class="eq-label">Full Name <span class="eq-required">*</span></label>
+              <input type="text" name="name" class="eq-input" required
+                     placeholder="Your full name" autocomplete="name">
+              <span class="eq-field-error" aria-live="polite"></span>
             </div>
-            <div>
-              <h3>Merchant Export Inquiry</h3>
-              <p>For multi-product sourcing, consolidated exports, or non-fastener goods from India.</p>
+            <div class="eq-field">
+              <label class="eq-label">Company Name <span class="eq-required">*</span></label>
+              <input type="text" name="company" class="eq-input" required
+                     placeholder="Your company" autocomplete="organization">
+              <span class="eq-field-error" aria-live="polite"></span>
             </div>
           </div>
-          <ul class="inquiry-features">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Multiple product categories under one export
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Custom sourcing from Indian manufacturers
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              Full export documentation and compliance
-            </li>
-          </ul>
-          <a href="https://forms.gle/9kFFp3riNosqZmvx6" target="_blank" rel="noopener" class="btn btn-accent btn-block">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            Open Export Inquiry Form
-          </a>
-        </div>
+
+          <!-- Row 2: Country + Email -->
+          <div class="eq-form-grid">
+            <div class="eq-field">
+              <label class="eq-label">Country <span class="eq-required">*</span></label>
+              <select name="country" class="eq-select" required>
+                <option value="">Select country…</option>
+                <option>United States</option>
+                <option>United Arab Emirates</option>
+                <option>Saudi Arabia</option>
+                <option>Qatar</option>
+                <option>Kuwait</option>
+                <option>Bahrain</option>
+                <option>Oman</option>
+                <option>United Kingdom</option>
+                <option>Germany</option>
+                <option>France</option>
+                <option>Netherlands</option>
+                <option>Italy</option>
+                <option>Spain</option>
+                <option>Australia</option>
+                <option>New Zealand</option>
+                <option>Singapore</option>
+                <option>Malaysia</option>
+                <option>Thailand</option>
+                <option>Indonesia</option>
+                <option>Philippines</option>
+                <option>Vietnam</option>
+                <option>Japan</option>
+                <option>South Korea</option>
+                <option>Bangladesh</option>
+                <option>South Africa</option>
+                <option>Nigeria</option>
+                <option>Kenya</option>
+                <option>Brazil</option>
+                <option>Mexico</option>
+                <option>Canada</option>
+                <option>Other</option>
+              </select>
+              <span class="eq-field-error" aria-live="polite"></span>
+            </div>
+            <div class="eq-field">
+              <label class="eq-label">Email Address <span class="eq-required">*</span></label>
+              <input type="email" name="email" class="eq-input" required
+                     placeholder="you@company.com" autocomplete="email">
+              <span class="eq-field-error" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <!-- Row 3: Phone + Product -->
+          <div class="eq-form-grid">
+            <div class="eq-field">
+              <label class="eq-label">Phone / WhatsApp <span class="eq-required">*</span></label>
+              <input type="tel" name="phone" class="eq-input" required
+                     placeholder="+1 555 000 0000" autocomplete="tel">
+              <span class="eq-field-error" aria-live="polite"></span>
+            </div>
+            <div class="eq-field">
+              <label class="eq-label">Product Interest <span class="eq-required">*</span></label>
+              <select name="product" class="eq-select" required>
+                <option value="">Select product…</option>
+                <option value="Hex Bolts">Hex Bolts</option>
+                <option value="Nuts">Nuts</option>
+                <option value="Screws">Screws</option>
+                <option value="Washers">Washers</option>
+                <option value="Threaded Rods">Threaded Rods</option>
+                <option value="Anchor Bolts">Anchor Bolts</option>
+                <option value="Custom/OEM">Custom / OEM</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="eq-field-error" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <!-- Row 4: Quantity (full width) -->
+          <div class="eq-form-full">
+            <div class="eq-field">
+              <label class="eq-label">Quantity Required <span class="eq-optional">(optional)</span></label>
+              <input type="text" name="quantity" class="eq-input"
+                     placeholder="e.g. 5000 pcs, 500 kg, 2 MT">
+            </div>
+          </div>
+
+          <!-- Row 5: Message (full width) -->
+          <div class="eq-form-full">
+            <div class="eq-field">
+              <label class="eq-label">Message / Specifications <span class="eq-optional">(optional)</span></label>
+              <textarea name="message" class="eq-textarea" rows="3"
+                        placeholder="Grade, size, standard (ISO/DIN/ASTM), destination port, delivery timeline…"></textarea>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="eq-submit-wrap">
+            <button type="submit" class="btn btn-primary btn-block eq-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9"/>
+              </svg>
+              Get Quotation
+            </button>
+          </div>
+
+          <div class="eq-footer">
+            <span class="eq-footer-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Your information is confidential and never shared.
+            </span>
+            <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20a%20quotation"
+               target="_blank" rel="noopener" class="eq-wa-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Prefer WhatsApp? Chat Now
+            </a>
+          </div>
+
+        </form>
+
+        <script>
+        function validateQuoteForm(form) {
+          var valid = true;
+          function checkField(el, testFn, emptyMsg, invalidMsg) {
+            var err = el.nextElementSibling;
+            if (!err || !err.classList.contains('eq-field-error')) return;
+            var val = (el.tagName === 'SELECT') ? el.value : el.value.trim();
+            if (!val) {
+              err.textContent = emptyMsg; el.classList.add('eq-error'); valid = false;
+            } else if (testFn && !testFn(val)) {
+              err.textContent = invalidMsg; el.classList.add('eq-error'); valid = false;
+            } else {
+              err.textContent = ''; el.classList.remove('eq-error');
+            }
+          }
+          checkField(form.querySelector('[name="name"]'),
+            function(v){return v.length>=2;}, 'Full name is required.', 'Name must be at least 2 characters.');
+          checkField(form.querySelector('[name="company"]'),
+            null, 'Company name is required.', '');
+          checkField(form.querySelector('[name="country"]'),
+            null, 'Please select your country.', '');
+          checkField(form.querySelector('[name="email"]'),
+            function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);},
+            'Email is required.', 'Enter a valid email address.');
+          checkField(form.querySelector('[name="phone"]'),
+            function(v){var d=v.replace(/\D/g,'');return d.length>=7&&d.length<=15;},
+            'Phone number is required.', 'Enter a valid phone number.');
+          checkField(form.querySelector('[name="product"]'),
+            null, 'Please select a product.', '');
+          return valid;
+        }
+        </script>
 
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== REQUEST A QUOTE ===== -->
-<section class="enquiry-section" id="enquiry-form">
-  <div class="container">
-
-    <!-- Section heading -->
-    <div class="enquiry-header">
-      <p class="section-eyebrow">Get a Quotation</p>
-      <h2>Request a <span class="text-accent">Quote</span></h2>
-      <p>Fill in the form below and our export team will respond with a detailed quotation within 24 hours — no commitment required.</p>
-    </div>
-
-    <!-- Trust strip -->
-    <div class="enquiry-trust">
-      <div class="trust-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>Response within 24 Hours</span>
-      </div>
-      <div class="trust-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        <span>Export Documentation Support</span>
-      </div>
-      <div class="trust-item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-        <span>Global Shipping Worldwide</span>
-      </div>
-    </div>
-
-    <!-- Form card -->
-    <div class="enquiry-card">
-      <form action="/submit-lead" method="POST" novalidate
-            id="contact-enquiry-form" onsubmit="return validateContactForm(this)">
-
-        <!-- Row 1: Name + Email -->
-        <div class="eq-form-grid">
-          <div class="eq-field">
-            <label class="eq-label">
-              Full Name <span class="eq-required">*</span>
-            </label>
-            <input type="text" name="name" class="eq-input" required
-                   placeholder="Your full name" autocomplete="name">
-            <span class="eq-field-error" aria-live="polite"></span>
-          </div>
-          <div class="eq-field">
-            <label class="eq-label">
-              Email Address <span class="eq-required">*</span>
-            </label>
-            <input type="email" name="email" class="eq-input" required
-                   placeholder="you@company.com" autocomplete="email">
-            <span class="eq-field-error" aria-live="polite"></span>
-          </div>
-        </div>
-
-        <!-- Row 2: Phone + Company -->
-        <div class="eq-form-grid">
-          <div class="eq-field">
-            <label class="eq-label">
-              Phone Number <span class="eq-required">*</span>
-            </label>
-            <input type="tel" name="phone" class="eq-input" required
-                   placeholder="+1 555 000 0000" autocomplete="tel">
-            <span class="eq-field-error" aria-live="polite"></span>
-          </div>
-          <div class="eq-field">
-            <label class="eq-label">
-              Company Name <span class="eq-required">*</span>
-            </label>
-            <input type="text" name="company" class="eq-input" required
-                   placeholder="Your company" autocomplete="organization">
-            <span class="eq-field-error" aria-live="polite"></span>
-          </div>
-        </div>
-
-        <!-- Row 3: Country + Product -->
-        <div class="eq-form-grid">
-          <div class="eq-field">
-            <label class="eq-label">
-              Country <span class="eq-required">*</span>
-            </label>
-            <input type="text" name="country" class="eq-input" required
-                   placeholder="USA, UAE, UK…" autocomplete="country-name">
-            <span class="eq-field-error" aria-live="polite"></span>
-          </div>
-          <div class="eq-field">
-            <label class="eq-label">
-              Product of Interest
-              <span class="eq-optional">(optional)</span>
-            </label>
-            <select name="product" class="eq-select">
-              <option value="">Select a product…</option>
-              <option value="Hex Bolts">Hex Bolts</option>
-              <option value="Anchor Bolts">Anchor Bolts</option>
-              <option value="Foundation Bolts">Foundation Bolts</option>
-              <option value="Nuts">Nuts</option>
-              <option value="Washers">Washers</option>
-              <option value="Threaded Rods">Threaded Rods</option>
-              <option value="General Enquiry">General Enquiry / Other</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Message – full width -->
-        <div class="eq-form-full">
-          <div class="eq-field">
-            <label class="eq-label">
-              Message / Requirements
-              <span class="eq-optional">(optional)</span>
-            </label>
-            <textarea name="message" class="eq-textarea" rows="4"
-                      placeholder="Grade, size, quantity, destination port, delivery timeline…"></textarea>
-          </div>
-        </div>
-
-        <!-- Submit -->
-        <div class="eq-submit-wrap">
-          <button type="submit" class="btn btn-primary btn-block eq-submit">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22 2 15 22 11 13 2 9"/>
-            </svg>
-            Send Enquiry — Get a Free Quote
-          </button>
-        </div>
-
-        <!-- Footer row -->
-        <div class="eq-footer">
-          <span class="eq-footer-note">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            Your information is confidential and never shared.
-          </span>
-          <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20am%20interested%20in%20your%20products"
-             target="_blank" rel="noopener" class="eq-wa-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Prefer WhatsApp? Chat Now
-          </a>
-        </div>
-
-      </form>
-    </div>
-
-  </div>
-</section>
-
-<script>
-function validateContactForm(form) {
-  var valid = true;
-
-  function check(el, testFn, emptyMsg, invalidMsg) {
-    var err = el.nextElementSibling;
-    var val = el.tagName === 'SELECT' ? el.value : el.value.trim();
-    if (!val) {
-      err.textContent = emptyMsg;
-      el.classList.add('eq-error');
-      valid = false;
-    } else if (testFn && !testFn(val)) {
-      err.textContent = invalidMsg;
-      el.classList.add('eq-error');
-      valid = false;
-    } else {
-      err.textContent = '';
-      el.classList.remove('eq-error');
-    }
-  }
-
-  check(
-    form.querySelector('[name="name"]'),
-    function(v) { return v.length >= 2; },
-    'Full name is required.',
-    'Name must be at least 2 characters.'
-  );
-  check(
-    form.querySelector('[name="email"]'),
-    function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); },
-    'Email address is required.',
-    'Enter a valid email address.'
-  );
-  check(
-    form.querySelector('[name="phone"]'),
-    function(v) {
-      if (/[^\d\s+\-()]/.test(v)) return false;
-      var d = v.replace(/\D/g, '');
-      return d.length >= 7 && d.length <= 15;
-    },
-    'Phone number is required.',
-    'Enter a valid international phone number.'
-  );
-  check(
-    form.querySelector('[name="company"]'),
-    null,
-    'Company name is required.',
-    ''
-  );
-  check(
-    form.querySelector('[name="country"]'),
-    null,
-    'Country is required.',
-    ''
-  );
-
-  return valid;
-}
-</script>
 
 <!-- ===== FAQ ===== -->
 <section class="section section-dark">
