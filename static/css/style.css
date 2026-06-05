@@ -2731,11 +2731,11 @@ h1, h2, h3, h4, h5, h6 {
    ============================================= */
 
 #enquiry-overlay {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
   background: rgba(0, 21, 47, 0.72);
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;

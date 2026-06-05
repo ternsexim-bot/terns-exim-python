@@ -416,14 +416,18 @@
 
   <script>
   function openEnquiryModal() {
-    document.getElementById('enquiry-overlay').classList.add('open');
+    var overlay = document.getElementById('enquiry-overlay');
+    overlay.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    setTimeout(function() { overlay.classList.add('open'); }, 10);
     document.getElementById('em_name').focus();
   }
 
   function closeEnquiryModal() {
-    document.getElementById('enquiry-overlay').classList.remove('open');
+    var overlay = document.getElementById('enquiry-overlay');
+    overlay.classList.remove('open');
     document.body.style.overflow = '';
+    setTimeout(function() { overlay.style.display = 'none'; }, 250);
   }
 
   document.getElementById('enquiry-overlay').addEventListener('click', function(e) {
