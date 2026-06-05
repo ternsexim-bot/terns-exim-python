@@ -41,3 +41,4 @@ flask_session/
 crm/*.db
 crm-frontend/node_modules/
 crm-frontend/dist/
+crm-frontend/.netlify/
