@@ -259,11 +259,15 @@
     <div id="enquiry-modal">
 
       <div class="em-header">
-        <h2 id="enquiry-modal-title">Send Enquiry</h2>
+        <div class="em-header-text">
+          <h2 id="enquiry-modal-title">Send Enquiry</h2>
+          <p class="em-subtitle">Our team responds within 24 working hours</p>
+        </div>
         <button class="em-close" id="enquiry-close" aria-label="Close">&times;</button>
       </div>
 
       <div class="em-body">
+        <p class="em-intro">Fill in your details and we'll get back to you with pricing and availability.</p>
         <form id="enquiry-modal-form" action="/submit-lead" method="POST" novalidate
               onsubmit="return validateEnquiryModal(this)">
 
@@ -389,6 +393,7 @@
               <option value="Nuts">Nuts</option>
               <option value="Washers">Washers</option>
               <option value="Threaded Rods">Threaded Rods</option>
+              <option value="Screws">Screws</option>
               <option value="General Enquiry">Merchant / Other Products</option>
             </select>
           </div>

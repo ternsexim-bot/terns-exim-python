@@ -2752,9 +2752,10 @@ h1, h2, h3, h4, h5, h6 {
 #enquiry-modal {
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 24px 80px rgba(0, 21, 47, 0.45);
+  box-shadow: 0 25px 60px rgba(0,21,47,0.35);
+  border-top: 4px solid #c9a84c;
   width: 100%;
-  max-width: 560px;
+  max-width: 580px;
   max-height: 90vh;
   overflow-y: auto;
   transform: translateY(20px) scale(0.97);
@@ -2768,7 +2769,7 @@ h1, h2, h3, h4, h5, h6 {
 .em-header {
   background: #1a2b5e;
   border-radius: 12px 12px 0 0;
-  padding: 20px 28px;
+  padding: 24px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2786,6 +2787,14 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+.em-header-text { flex: 1; }
+
+.em-subtitle {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+}
+
 .em-close {
   background: none;
   border: none;
@@ -2800,6 +2809,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .em-body {
   padding: 28px;
+}
+
+.em-intro {
+  font-size: 0.9rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .em-body form {
@@ -2823,8 +2839,10 @@ h1, h2, h3, h4, h5, h6 {
 .em-group label {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #1a2b5e;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .em-required { color: #e53e3e; margin-left: 2px; }
@@ -2834,14 +2852,14 @@ h1, h2, h3, h4, h5, h6 {
 .em-group select,
 .em-group textarea {
   width: 100%;
-  padding: 10px 13px;
-  border: 1.5px solid #c8cedd;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #dde2ee;
+  border-radius: 6px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.92rem;
-  color: #111827;
-  background: #f4f6fb;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  font-size: 0.95rem;
+  color: #1a2b5e;
+  background: #f8f9fc;
+  transition: all 0.2s ease;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -2862,7 +2880,7 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
   border-color: #c9a84c;
   background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.18);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
 }
 
 .em-group input.em-input-error,
@@ -2884,23 +2902,25 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 8px;
   width: 100%;
-  padding: 13px 24px;
-  background: #c9a84c;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #c9a84c, #b8962e);
   color: #1a2b5e;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+  box-shadow: 0 4px 15px rgba(201,168,76,0.4);
 }
 
 .em-submit:hover {
-  background: #b8962e;
+  background: linear-gradient(135deg, #d4b45a, #c9a84c);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.5);
 }
 
 /* Navbar "Get a Quote" button */
