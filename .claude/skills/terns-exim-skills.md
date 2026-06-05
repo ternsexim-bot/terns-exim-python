@@ -1,4 +1,5 @@
 # TERNS EXIM — Complete Project Skills
+**Last Updated: 2026-06-05**
 
 ## 1. Project Overview
 
@@ -140,6 +141,22 @@ Master layout with full SEO implementation:
 - Keywords: fastener export, OEM supplier, merchant export, DIN/ISO/ASTM standards
 - 30+ target countries across 5 continents
 
+**Popup Enquiry Modal** (added 2026-06-05):
+- JS functions: `openEnquiryModal()` / `closeEnquiryModal()` defined in `base.html`
+- Hidden by default, animates open/closed
+- **All 31 CTA buttons sitewide** use `href="#" onclick="openEnquiryModal(); return false;"` — covers index.html (4), products.html (10), about.html (1), all 7 product detail pages (2 each), and base.html footer (2)
+- Fields: Name*, Email*, Phone*, Company*, Country* (required), Product dropdown (optional), Message (optional)
+- Product dropdown option: `<option value="General Enquiry">Merchant / Other Products</option>`
+- Submits to `POST /submit-lead` — same server handler as the inline lead form
+- Navbar "Contact" link, WhatsApp button, and `contact.html` itself are NOT wired to the modal
+
+### Contact Page (`templates/contact.html`)
+
+- **Fastener Quotation** button (L156) — opens popup modal via `openEnquiryModal()`
+- **Export Inquiry** button (L186) — opens popup modal via `openEnquiryModal()`
+- Both previously linked to external Google Forms (removed 2026-06-05)
+- WhatsApp buttons and the inline direct enquiry form (`POST /submit-lead`) remain unchanged
+
 ### Reusable Lead Form (`templates/_lead_form.html`)
 
 Jinja2 macro — import and call anywhere:
@@ -147,10 +164,11 @@ Jinja2 macro — import and call anywhere:
 {% from "_lead_form.html" import lead_form %}
 {{ lead_form(product="Hex Bolts", show_product_select=false) }}
 ```
-- Fields: Name, Phone, Email, Product (hidden or dropdown), Message
-- Client-side validation via `validateLeadForm()` in `main.js`
-- Phone regex: `/^[\d\s\+\-\(\)]{7,20}$/`
+- Fields: Name*, Phone*, Email*, Company*, Country* (required), Product (hidden or dropdown, optional), Message (optional)
+- Client-side validation via `validateLeadForm()` defined in `_lead_form.html`'s own `<script>` block — NOT in `main.js`
+- Phone validation: disallows non-digit/space/+/-/() chars; digit count must be 7–15
 - Submits to `POST /submit-lead`
+- **All 5 required fields must match server validation in `app.py:165-169` or lead silently redirects to `/contact`**
 
 ### Product Pages
 
@@ -398,7 +416,7 @@ venv/
 - **Open Graph** tags for social sharing
 - **Twitter Card** meta tags
 - **Robots.txt** — all crawlers allowed (including AI bots like GPTBot, Claude-Web)
-- **Sitemap.xml** — all public URLs with `<lastmod>` and `<priority>`
+- **Sitemap.xml** — all public URLs with `<lastmod>` and `<priority>`; all 11 URLs last updated `2026-06-05`
 - **Canonical URL** — injected via Flask context processor using `BASE_URL` env var
 - **Keywords** — DIN/ISO/ASTM standards, merchant export, OEM supplier, 30+ countries
 
