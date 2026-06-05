@@ -87,6 +87,10 @@ def washers():
 def threaded_rods():
     return render_template('threaded_rods.html')
 
+@app.route('/screws')
+def screws():
+    return render_template('screws.html')
+
 @app.route('/thank-you')
 def thank_you():
     return render_template('thank_you.html')
