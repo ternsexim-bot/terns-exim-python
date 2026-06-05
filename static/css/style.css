@@ -2753,7 +2753,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 25px 60px rgba(0,21,47,0.35);
-  border-top: 4px solid #c9a84c;
   width: 100%;
   max-width: 580px;
   max-height: 90vh;
@@ -2769,6 +2768,7 @@ h1, h2, h3, h4, h5, h6 {
 .em-header {
   background: #1a2b5e;
   border-radius: 12px 12px 0 0;
+  border-top: 4px solid #c9a84c;
   padding: 24px 32px;
   display: flex;
   align-items: center;
