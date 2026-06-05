@@ -247,9 +247,257 @@
             WhatsApp
           </a>
         </li>
+        <li>
+          <button class="nav-quote-btn" onclick="openEnquiryModal()">Get a Quote</button>
+        </li>
       </ul>
     </div>
   </nav>
+
+  <!-- ===== ENQUIRY POPUP MODAL ===== -->
+  <div id="enquiry-overlay" role="dialog" aria-modal="true" aria-labelledby="enquiry-modal-title">
+    <div id="enquiry-modal">
+
+      <div class="em-header">
+        <h2 id="enquiry-modal-title">Send Enquiry</h2>
+        <button class="em-close" id="enquiry-close" aria-label="Close">&times;</button>
+      </div>
+
+      <div class="em-body">
+        <form id="enquiry-modal-form" action="/submit-lead" method="POST" novalidate
+              onsubmit="return validateEnquiryModal(this)">
+
+          <!-- Row 1: Name + Phone -->
+          <div class="em-row">
+            <div class="em-group">
+              <label for="em_name">Full Name <span class="em-required">*</span></label>
+              <input type="text" id="em_name" name="name" required
+                     placeholder="Your full name" autocomplete="name">
+              <span class="em-error" aria-live="polite"></span>
+            </div>
+            <div class="em-group">
+              <label for="em_phone">Phone / WhatsApp <span class="em-required">*</span></label>
+              <input type="tel" id="em_phone" name="phone" required
+                     placeholder="+1 555 000 0000" autocomplete="tel">
+              <span class="em-error" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <!-- Row 2: Email + Company -->
+          <div class="em-row">
+            <div class="em-group">
+              <label for="em_email">Email Address <span class="em-required">*</span></label>
+              <input type="email" id="em_email" name="email" required
+                     placeholder="you@company.com" autocomplete="email">
+              <span class="em-error" aria-live="polite"></span>
+            </div>
+            <div class="em-group">
+              <label for="em_company">Company Name <span class="em-required">*</span></label>
+              <input type="text" id="em_company" name="company" required
+                     placeholder="Your company" autocomplete="organization">
+              <span class="em-error" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <!-- Country -->
+          <div class="em-group">
+            <label for="em_country">Country <span class="em-required">*</span></label>
+            <select id="em_country" name="country" required>
+              <option value="">Select your country…</option>
+              <optgroup label="Middle East">
+                <option value="UAE">UAE</option>
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Kuwait">Kuwait</option>
+                <option value="Oman">Oman</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Iraq">Iraq</option>
+              </optgroup>
+              <optgroup label="Africa">
+                <option value="Nigeria">Nigeria</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Egypt">Egypt</option>
+                <option value="Morocco">Morocco</option>
+                <option value="Algeria">Algeria</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Angola">Angola</option>
+                <option value="Sudan">Sudan</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Cameroon">Cameroon</option>
+              </optgroup>
+              <optgroup label="Europe">
+                <option value="UK">UK</option>
+                <option value="Germany">Germany</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="France">France</option>
+                <option value="Italy">Italy</option>
+                <option value="Spain">Spain</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Poland">Poland</option>
+                <option value="Sweden">Sweden</option>
+                <option value="Norway">Norway</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Finland">Finland</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Austria">Austria</option>
+                <option value="Portugal">Portugal</option>
+              </optgroup>
+              <optgroup label="Americas">
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Chile">Chile</option>
+                <option value="Peru">Peru</option>
+              </optgroup>
+              <optgroup label="Asia Pacific">
+                <option value="Australia">Australia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Malaysia">Malaysia</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Japan">Japan</option>
+                <option value="South Korea">South Korea</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="Other">Other</option>
+              </optgroup>
+            </select>
+            <span class="em-error" aria-live="polite"></span>
+          </div>
+
+          <!-- Product -->
+          <div class="em-group">
+            <label for="em_product">Product of Interest <span class="em-optional">(optional)</span></label>
+            <select id="em_product" name="product">
+              <option value="">Select a product…</option>
+              <option value="Hex Bolts">Hex Bolts</option>
+              <option value="Anchor Bolts">Anchor Bolts</option>
+              <option value="Foundation Bolts">Foundation Bolts</option>
+              <option value="Nuts">Nuts</option>
+              <option value="Washers">Washers</option>
+              <option value="Threaded Rods">Threaded Rods</option>
+              <option value="General Enquiry">General Enquiry / Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="em-group">
+            <label for="em_message">Message / Requirements <span class="em-optional">(optional)</span></label>
+            <textarea id="em_message" name="message" rows="3"
+                      placeholder="Grade, size, quantity, destination port, delivery timeline…"></textarea>
+          </div>
+
+          <button type="submit" class="em-submit">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9"/>
+            </svg>
+            Send Enquiry
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function openEnquiryModal() {
+    document.getElementById('enquiry-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('em_name').focus();
+  }
+
+  function closeEnquiryModal() {
+    document.getElementById('enquiry-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('enquiry-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeEnquiryModal();
+  });
+
+  document.getElementById('enquiry-close').addEventListener('click', closeEnquiryModal);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeEnquiryModal();
+  });
+
+  function validateEnquiryModal(form) {
+    var valid = true;
+
+    function check(el, testFn, emptyMsg, invalidMsg) {
+      var err = el.nextElementSibling;
+      var val = el.tagName === 'SELECT' ? el.value : el.value.trim();
+      if (!val) {
+        if (err) err.textContent = emptyMsg;
+        el.classList.add('em-input-error');
+        valid = false;
+      } else if (testFn && !testFn(val)) {
+        if (err) err.textContent = invalidMsg;
+        el.classList.add('em-input-error');
+        valid = false;
+      } else {
+        if (err) err.textContent = '';
+        el.classList.remove('em-input-error');
+      }
+    }
+
+    check(
+      form.querySelector('[name="name"]'),
+      function(v) { return v.length >= 2; },
+      'Full name is required.',
+      'Name must be at least 2 characters.'
+    );
+
+    check(
+      form.querySelector('[name="email"]'),
+      function(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); },
+      'Email address is required.',
+      'Enter a valid email address.'
+    );
+
+    check(
+      form.querySelector('[name="phone"]'),
+      function(v) {
+        if (/[^\d\s+\-()]/.test(v)) return false;
+        return v.replace(/\D/g, '').length >= 7 &&
+               v.replace(/\D/g, '').length <= 15;
+      },
+      'Phone number is required.',
+      'Enter a valid international phone number.'
+    );
+
+    check(
+      form.querySelector('[name="company"]'),
+      null,
+      'Company name is required.',
+      ''
+    );
+
+    check(
+      form.querySelector('[name="country"]'),
+      null,
+      'Country is required.',
+      ''
+    );
+
+    return valid;
+  }
+  </script>
 
   <!-- ===== PAGE CONTENT ===== -->
   <main>
