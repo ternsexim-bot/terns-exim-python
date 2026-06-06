@@ -7,7 +7,7 @@ import threading
 import time
 import urllib.request
 
-from leads import save_lead, send_whatsapp_alert
+from leads import save_lead, send_whatsapp_alert, send_telegram_alert
 
 app = Flask(__name__)
 
@@ -176,6 +176,7 @@ def submit_lead():
     lead = save_lead(name, phone, email, product, message,
                      company=company, country=country)
     send_whatsapp_alert(lead)
+    send_telegram_alert(lead)
     threading.Thread(
         target=_forward_to_crm,
         args=(name, phone, email, product, message),

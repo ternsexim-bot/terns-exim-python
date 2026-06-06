@@ -14,6 +14,8 @@ import os
 import sys
 from datetime import datetime
 
+import requests
+
 logger = logging.getLogger(__name__)
 
 _BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
@@ -120,3 +122,31 @@ def send_whatsapp_alert(lead):
     except Exception as exc:
         logger.warning('[WA_ALERT] Failed (non-blocking): %s', exc)
         return False
+
+
+# ── Phase 3b: Telegram Alert ──────────────────────────────────────────────────
+
+def send_telegram_alert(lead_data):
+    try:
+        bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
+        chat_id = os.environ.get('TELEGRAM_CHAT_ID')
+        if not bot_token or not chat_id:
+            return
+        message = (
+            "🔩 *New Lead — Terns Exim*\n\n"
+            f"👤 *Name:* {lead_data.get('name')}\n"
+            f"🏢 *Company:* {lead_data.get('company')}\n"
+            f"🌍 *Country:* {lead_data.get('country')}\n"
+            f"📞 *Phone:* {lead_data.get('phone')}\n"
+            f"📧 *Email:* {lead_data.get('email')}\n"
+            f"🔧 *Product:* {lead_data.get('product')}\n"
+            f"💬 *Message:* {lead_data.get('message', 'N/A')}\n"
+        )
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+        requests.post(url, json={
+            'chat_id': chat_id,
+            'text': message,
+            'parse_mode': 'Markdown'
+        }, timeout=5)
+    except Exception:
+        pass
