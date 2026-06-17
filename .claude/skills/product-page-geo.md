@@ -207,9 +207,9 @@ After adding, `grep -c "application/ld+json"` on the page must return **3** (Pro
 | Template | Status |
 |---|---|
 | `templates/hex_bolts.html` | ✅ Done — commit `84d7943` |
-| `templates/anchor_bolts.html` | ⬜ Pending |
-| `templates/foundation_bolts.html` | ⬜ Pending |
 | `templates/nuts.html` | ✅ Done — commit `55cf08c` |
-| `templates/washers.html` | ⬜ Pending |
-| `templates/screws.html` | ⬜ Pending |
-| `templates/threaded_rods.html` | ⬜ Pending |
+| `templates/washers.html` | ✅ Done — commit `bfe2cae` |
+| `templates/screws.html` | ✅ Done — commit `4c1c8f7` |
+| `templates/threaded_rods.html` | ✅ Done — commit `11bca41` |
+| `templates/anchor_bolts.html` | ✅ Done — commit `58462d6` |
+| `templates/foundation_bolts.html` | ✅ Done — commit `a665341` |
