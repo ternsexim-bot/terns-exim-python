@@ -63,6 +63,10 @@ def products():
 def contact():
     return render_template('contact.html')
 
+@app.route('/brochure')
+def brochure():
+    return render_template('brochure.html')
+
 @app.route('/hex-bolts')
 def hex_bolts():
     return render_template('hex_bolts.html')
@@ -198,7 +202,8 @@ def add_security_headers(response):
         "font-src 'self' https://fonts.gstatic.com; "
         "script-src 'self' 'unsafe-inline'; "
         "img-src 'self' data: https://flagcdn.com https://ternsexim.com; "
-        "connect-src 'self';"
+        "connect-src 'self'; "
+        "frame-src https://ternsexim-bot.github.io;"
     )
     return response
 

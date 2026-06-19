@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Product Brochure | TERNS EXIM{% endblock %}
+{% block meta_description %}Browse TERNS EXIM's complete export-grade fastener brochure — hex bolts, nuts, screws, washers, threaded rods, anchor bolts and custom OEM fasteners. DIN/ISO/ASTM certified, shipped worldwide from India.{% endblock %}
+{% block canonical %}https://ternsexim.com/brochure{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <span>Brochure</span>
+    </div>
+    <h1>Our <span class="text-accent">Product Brochure</span></h1>
+    <p>Browse our complete range of export-grade fasteners. For enquiries, visit our
+      <a href="/contact" style="color:#c9a84c; font-weight:bold;">contact page</a>.</p>
+  </div>
+</section>
+
+<!-- ===== EMBEDDED BROCHURE ===== -->
+<section style="max-width:1100px; margin:0 auto; padding:40px 20px 60px;">
+  <div style="position:relative; width:100%; border:1px solid #e2e5ec; border-radius:6px; overflow:hidden; box-shadow:0 4px 16px rgba(26,43,94,0.08);">
+    <iframe
+      src="https://ternsexim-bot.github.io/e-business-card/"
+      style="width:100%; height:85vh; border:0; display:block;"
+      title="TERNS EXIM Product Brochure"
+      loading="lazy">
+    </iframe>
+  </div>
+  <div style="text-align:center; margin-top:24px;">
+    <a href="https://ternsexim-bot.github.io/e-business-card/" target="_blank" rel="noopener"
+       style="display:inline-block; background-color:#c9a84c; color:#1a2b5e; font-weight:bold; text-decoration:none; padding:12px 28px; border-radius:4px; letter-spacing:0.5px; font-size:0.95rem;">
+      Open Brochure in New Tab &#8594;
+    </a>
+  </div>
+</section>
+
+{% endblock %}
