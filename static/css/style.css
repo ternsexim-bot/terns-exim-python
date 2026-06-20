@@ -30,6 +30,45 @@
   --transition:   0.25s ease;
 }
 
+/* ===== SKIP LINK (keyboard accessibility) ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 10px 20px;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ===== FOCUS-VISIBLE (keyboard navigation) ===== */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) { outline: none; }
+
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -544,7 +583,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-seo-text {
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.42);
+  color: rgba(255,255,255,0.58);
   max-width: 620px;
   line-height: 1.7;
   margin-bottom: 32px;

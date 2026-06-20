@@ -175,7 +175,7 @@ def submit_lead():
             or not phone or not _valid_phone(phone)
             or not company
             or not country):
-        return redirect(url_for('contact'))
+        return redirect(url_for('contact') + '#enquiry-form')
 
     lead = save_lead(name, phone, email, product, message,
                      company=company, country=country)
@@ -196,6 +196,8 @@ def submit_lead():
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'camera=(), microphone=(), geolocation=()'
     response.headers['Content-Security-Policy'] = (
         "default-src 'self'; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
@@ -203,6 +205,7 @@ def add_security_headers(response):
         "script-src 'self' 'unsafe-inline'; "
         "img-src 'self' data: https://flagcdn.com https://ternsexim.com; "
         "connect-src 'self'; "
+        "form-action 'self'; "
         "frame-src https://ternsexim-bot.github.io;"
     )
     return response
