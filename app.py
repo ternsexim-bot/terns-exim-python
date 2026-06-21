@@ -75,6 +75,18 @@ def uk():
 def netherlands():
     return render_template('netherlands.html')
 
+@app.route('/blog')
+def blog_index():
+    return render_template('blog_index.html')
+
+@app.route('/blog/bolt-grades-8-8-vs-10-9-vs-12-9')
+def blog_bolt_grades():
+    return render_template('blog_bolt_grades.html')
+
+@app.route('/blog/how-to-import-fasteners-from-india')
+def blog_import_guide():
+    return render_template('blog_import_guide.html')
+
 @app.route('/products')
 def products():
     return render_template('products.html')

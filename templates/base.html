@@ -111,6 +111,7 @@
         <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a></li>
         <li><a href="{{ url_for('products') }}" class="nav-link {% if request.endpoint in ['products','hex_bolts','anchor_bolts','foundation_bolts','nuts','washers','threaded_rods'] %}active{% endif %}">Products</a></li>
         <li><a href="{{ url_for('export_process') }}" class="nav-link {% if request.endpoint == 'export_process' %}active{% endif %}">Export Process</a></li>
+        <li><a href="{{ url_for('blog_index') }}" class="nav-link {% if request.endpoint in ['blog_index','blog_bolt_grades','blog_import_guide'] %}active{% endif %}">Blog</a></li>
         <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
         <li>
           <a href="https://wa.me/916369097465" target="_blank" rel="noopener" class="nav-cta">
@@ -424,6 +425,7 @@
             <li><a href="{{ url_for('about') }}">About Us</a></li>
             <li><a href="{{ url_for('products') }}">Products</a></li>
             <li><a href="{{ url_for('export_process') }}">Export Process</a></li>
+            <li><a href="{{ url_for('blog_index') }}">Blog</a></li>
             <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
           </ul>
         </div>
