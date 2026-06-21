@@ -2570,6 +2570,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  align-items: start;
 }
 
 /* Individual field */
@@ -2865,6 +2866,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  align-items: start;
 }
 
 .em-group {
