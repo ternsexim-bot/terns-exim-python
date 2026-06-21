@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block title %}FOB vs CIF for Fastener Imports: Which Incoterm Should You Choose? | TERNS EXIM{% endblock %}
+{% block meta_description %}A clear explanation of FOB and CIF Incoterms for fastener imports — who handles freight, insurance, and risk under each term, the cost implications, and which to choose as a new or experienced importer.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/fob-vs-cif-fastener-imports{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/fob-vs-cif-fastener-imports{% endblock %}
+{% block og_title %}FOB vs CIF for Fastener Imports: Which Incoterm to Choose | TERNS EXIM{% endblock %}
+{% block og_description %}FOB vs CIF explained for fastener buyers — who pays freight, who takes risk, when each term is better, and what TERNS EXIM offers on both terms.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "FOB vs CIF for Fastener Imports: Which Incoterm Should You Choose?",
+  "description": "A practical comparison of FOB and CIF Incoterms for buyers importing fasteners from India — covering risk transfer, freight responsibility, cost implications, and when each term is the right choice.",
+  "url": "https://ternsexim.com/blog/fob-vs-cif-fastener-imports",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "url": "https://ternsexim.com"},
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "FOB vs CIF", "item": "https://ternsexim.com/blog/fob-vs-cif-fastener-imports"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does FOB mean in fastener exports from India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FOB stands for Free on Board, followed by the named port of shipment (e.g., FOB Chennai, FOB Nhava Sheva). Under FOB, the Indian exporter is responsible for all costs and risks up to the point the goods are loaded onto the vessel at the named port. Once on board, all risk and cost transfers to the buyer — you arrange and pay for ocean freight, marine insurance, and any destination-port charges. FOB is the most common Incoterm for Indian fastener exports and is the base pricing term most Indian manufacturers quote."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does CIF mean and how does it differ from FOB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CIF stands for Cost, Insurance, and Freight, followed by the named destination port (e.g., CIF Jebel Ali, CIF Rotterdam). Under CIF, the exporter pays for ocean freight and marine insurance to the destination port. Risk still transfers to the buyer when goods are loaded onto the vessel at the origin port — but the seller has already contracted and paid for the main carriage. The practical difference for the buyer: under CIF you receive a single all-in price and don't need to arrange freight; under FOB you need to engage a freight forwarder and add freight cost on top of the FOB price. CIF simplifies the first import; FOB gives experienced importers more control and often a lower total cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is FOB or CIF better for a first-time fastener import from India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For first-time importers, CIF to your destination port is usually simpler and lower-risk. The exporter handles freight booking and insurance, you receive a single landed cost, and there are fewer moving parts to manage. The downside is that you have less visibility into freight cost and carrier selection, and the CIF freight rate may be higher than what an experienced importer could negotiate directly. Once you have an established freight forwarder relationship and a feel for sea freight rates on the India–your country lane, switching to FOB is usually more cost-effective. Most experienced importers prefer FOB for this reason."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who pays for customs clearance at the destination under FOB and CIF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under both FOB and CIF, the buyer pays for customs clearance, import duties, and any destination-port handling charges. These costs are the buyer's responsibility regardless of Incoterm — they happen after the goods arrive at the destination port. Neither FOB nor CIF includes customs clearance at destination. The Incoterm only defines who pays for main carriage (ocean freight) and insurance during transit. If you want the exporter to handle destination customs too, you would need DDP (Delivered Duty Paid), which is rarely used for Indian fastener exports."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>FOB vs CIF</span>
+    </div>
+    <h1>FOB vs CIF for Fastener Imports: <span class="text-accent">Which Incoterm Should You Choose?</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">Buyer's Guide</span>
+      <span>21 June 2026</span>
+      <span>5 min read</span>
+      <span>Incoterms 2020</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#what-are-incoterms">What are Incoterms?</a></li>
+          <li><a href="#fob">FOB — Free on Board</a></li>
+          <li><a href="#cif">CIF — Cost, Insurance, and Freight</a></li>
+          <li><a href="#comparison">Side-by-side comparison table</a></li>
+          <li><a href="#which-to-choose">Which to choose: new vs experienced importers</a></li>
+          <li><a href="#other-terms">Other Incoterms you may encounter</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>When you receive a fastener quotation from India, one of the first things to check is the Incoterm — the three-letter code that defines where the supplier's responsibility ends and yours begins. The two terms you'll encounter most often are <strong>FOB</strong> and <strong>CIF</strong>. Comparing prices quoted on different terms without understanding what they include is one of the most common errors in international procurement.</p>
+
+        <h2 id="what-are-incoterms">What Are Incoterms?</h2>
+
+        <p>Incoterms (International Commercial Terms) are a set of 11 standardised trade terms published by the International Chamber of Commerce (ICC). The current edition is Incoterms® 2020. Each term defines three things: who is responsible for <strong>freight costs</strong>, who carries <strong>risk</strong> during transit, and who handles <strong>export/import formalities</strong>. They do not define payment terms or title of goods — those are separate contractual matters.</p>
+
+        <p>For sea freight from India, FOB and CIF are by far the most common terms used. Understanding the difference between them tells you what is and isn't included in the price you're being quoted.</p>
+
+        <h2 id="fob">FOB — Free on Board (named port of shipment)</h2>
+
+        <p>Under FOB, the exporter's responsibility ends the moment the goods are loaded on board the vessel at the named Indian port. Up to that point, the exporter handles everything: inland transport to the port, export clearance, port handling, and loading charges. Once on board, <strong>all risk and cost passes to you</strong>.</p>
+
+        <p><strong>What the FOB price includes:</strong></p>
+        <ul>
+          <li>Manufacturing and packaging</li>
+          <li>Inland transport from factory to the origin port</li>
+          <li>Export customs clearance and documentation</li>
+          <li>Port handling and loading onto the vessel</li>
+        </ul>
+
+        <p><strong>What you arrange and pay on top of FOB:</strong></p>
+        <ul>
+          <li>Ocean freight (you book with your freight forwarder or shipping line)</li>
+          <li>Marine cargo insurance (you arrange with your insurer)</li>
+          <li>Destination port charges (unloading, terminal handling)</li>
+          <li>Import customs clearance and duties</li>
+          <li>Inland delivery to your warehouse</li>
+        </ul>
+
+        <p>A FOB Chennai price of USD 5,000 means you will spend an additional USD 800–2,500 on ocean freight (depending on destination and container type), plus insurance and destination charges, to get the goods to your door.</p>
+
+        <h2 id="cif">CIF — Cost, Insurance, and Freight (named destination port)</h2>
+
+        <p>Under CIF, the exporter pays for ocean freight and marine insurance to the named destination port. The price you receive already includes these costs — you can compare it directly to your landed cost without adding freight on top.</p>
+
+        <p><strong>What the CIF price includes:</strong></p>
+        <ul>
+          <li>Everything in FOB, plus:</li>
+          <li>Ocean freight to the destination port</li>
+          <li>Minimum marine cargo insurance (ICC Clause C — note: this is the minimum; you may want to arrange additional coverage)</li>
+        </ul>
+
+        <p><strong>What you arrange and pay on top of CIF:</strong></p>
+        <ul>
+          <li>Destination port charges (unloading, terminal handling)</li>
+          <li>Import customs clearance and duties</li>
+          <li>Inland delivery to your warehouse</li>
+        </ul>
+
+        <blockquote>Important: Under CIF, risk still transfers to the buyer when goods are loaded on the vessel at the origin port — not when they arrive at the destination. If goods are lost or damaged at sea, you file a claim with the marine insurance the exporter arranged. For this reason, some experienced importers prefer FOB with their own comprehensive marine insurance policy.</blockquote>
+
+        <h2 id="comparison">FOB vs CIF: Side-by-Side</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr><th>Factor</th><th>FOB</th><th>CIF</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Who books ocean freight</td><td>Buyer</td><td>Exporter</td></tr>
+              <tr><td>Who pays ocean freight</td><td>Buyer</td><td>Exporter (included in price)</td></tr>
+              <tr><td>Who arranges marine insurance</td><td>Buyer</td><td>Exporter (minimum coverage)</td></tr>
+              <tr><td>Where risk transfers</td><td>On board vessel, origin port</td><td>On board vessel, origin port</td></tr>
+              <tr><td>Export customs clearance</td><td>Exporter</td><td>Exporter</td></tr>
+              <tr><td>Import customs clearance</td><td>Buyer</td><td>Buyer</td></tr>
+              <tr><td>Destination port charges</td><td>Buyer</td><td>Buyer</td></tr>
+              <tr><td>Price transparency</td><td>Easier to compare across suppliers</td><td>Includes freight — varies by destination</td></tr>
+              <tr><td>Buyer control of freight</td><td>Full control — choose your carrier</td><td>Exporter selects carrier</td></tr>
+              <tr><td>Best for</td><td>Experienced importers with freight relationships</td><td>First-time importers; simpler process</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="which-to-choose">Which to Choose</h2>
+
+        <p><strong>Choose CIF if:</strong></p>
+        <ul>
+          <li>This is your first import from India and you don't have a freight forwarder relationship</li>
+          <li>You want a single all-in price to compare against local procurement cost</li>
+          <li>The order is small (LCL / less-than-container-load) and freight optimisation matters less</li>
+          <li>You want the exporter to handle the logistics complexity for this shipment</li>
+        </ul>
+
+        <p><strong>Choose FOB if:</strong></p>
+        <ul>
+          <li>You have an established freight forwarder who can negotiate competitive rates on your shipping lane</li>
+          <li>You want full control over carrier selection (preferred carrier, transit time, sustainability rating)</li>
+          <li>You want to arrange your own comprehensive marine insurance rather than the minimum ICC Clause C that exporters typically provide</li>
+          <li>You are consolidating shipments from multiple Indian suppliers into one container</li>
+          <li>You import regularly and want consistent, negotiated freight rates</li>
+        </ul>
+
+        <p>TERNS EXIM supplies on both FOB and CIF terms from any major Indian port: Chennai, Tuticorin, Mumbai/Nhava Sheva, and Mundra. We quote CIF to Jebel Ali, Felixstowe, Rotterdam, and New York on request.</p>
+
+        <h2 id="other-terms">Other Incoterms You May Encounter</h2>
+
+        <p>While FOB and CIF cover the vast majority of Indian fastener exports, you may occasionally see:</p>
+        <ul>
+          <li><strong>EXW (Ex Works):</strong> The supplier makes goods available at their factory gate. You handle all transport, export clearance, freight, and insurance. Rarely used for international fastener trade — complex for the buyer.</li>
+          <li><strong>CFR (Cost and Freight):</strong> Like CIF but without the marine insurance element. The exporter pays freight; you arrange insurance. Less common than CIF.</li>
+          <li><strong>DAP (Delivered at Place):</strong> The exporter delivers to a named destination — your warehouse — but you handle import duties. Used occasionally for high-value or urgent small shipments.</li>
+          <li><strong>DDP (Delivered Duty Paid):</strong> The exporter handles everything including import duties. Very rarely used for Indian fastener exports — Indian exporters typically cannot handle duty payment in foreign jurisdictions.</li>
+        </ul>
+
+        <p>Regardless of the Incoterm agreed, always ensure it appears explicitly on the commercial invoice and purchase order — "FOB Chennai" or "CIF Rotterdam" — with the specific named port included. An Incoterm without a named port is incomplete and legally ambiguous.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need a Quote on FOB or CIF Terms?</h2>
+      <p>Tell us your destination port and whether you prefer FOB or CIF — we'll provide a clear quotation on your preferred terms within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%27d%20like%20a%20fastener%20quote%20on%20CIF%20%2F%20FOB%20terms.%20My%20destination%20port%20is%20..." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

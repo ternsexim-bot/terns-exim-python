@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block title %}Choosing Fasteners for Marine &amp; Coastal Environments: A Corrosion Guide | TERNS EXIM{% endblock %}
+{% block meta_description %}A corrosion selection guide for marine and coastal fasteners — stainless A4/316 vs A2/304, hot-dip galvanized vs plain, galvanic corrosion warnings, and the right material for each marine environment.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/fasteners-for-marine-coastal-corrosion{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/fasteners-for-marine-coastal-corrosion{% endblock %}
+{% block og_title %}Fasteners for Marine &amp; Coastal Environments: Corrosion Guide | TERNS EXIM{% endblock %}
+{% block og_description %}A4/316 vs A2/304 stainless steel, hot-dip galvanized, and galvanic corrosion guidance for marine jetties, offshore structures, coastal buildings, and seawater applications.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Choosing Fasteners for Marine & Coastal Environments: A Corrosion Guide",
+  "description": "Material and coating selection guidance for fasteners in marine and coastal environments — stainless A4/316 vs A2/304, hot-dip galvanizing, galvanic corrosion risks, and application-by-environment recommendations.",
+  "url": "https://ternsexim.com/blog/fasteners-for-marine-coastal-corrosion",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "url": "https://ternsexim.com"},
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Marine Fasteners Corrosion Guide", "item": "https://ternsexim.com/blog/fasteners-for-marine-coastal-corrosion"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between A2 and A4 stainless steel fasteners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A2 and A4 are ISO 3506 austenitic stainless steel grades. A2 corresponds to 304 stainless steel (18% chromium, 8% nickel, no molybdenum). It provides good general corrosion resistance in indoor, mildly acidic, and non-chloride environments. A4 corresponds to 316 stainless steel (16% chromium, 10% nickel, 2% molybdenum). The molybdenum addition is the critical difference — it substantially improves resistance to chloride-induced pitting corrosion, the dominant failure mode in marine and coastal environments. For any application within 1–5 km of the coastline, offshore, or in direct contact with seawater, A4/316 is the correct specification. A2/304 is not suitable for these environments — it will develop visible pitting corrosion within months of coastal outdoor exposure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can hot-dip galvanized bolts be used in marine environments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hot-dip galvanized (HDG) carbon steel fasteners are suitable for coastal outdoor applications above the waterline — such as structural steel in coastal buildings, jetty decking hardware, and marine-adjacent construction. The zinc coating provides sacrificial cathodic protection and barrier resistance to salt spray. However, HDG fasteners are NOT suitable for continuous immersion in seawater or the splash/tidal zone, where the zinc is consumed rapidly in the chloride-rich environment and carbon steel corrosion begins quickly afterwards. For permanently wet or splash-zone marine service, specify A4/316 stainless steel or super-duplex (S31803/S32205) for high-strength structural requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is galvanic corrosion and how do I avoid it with marine fasteners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Galvanic corrosion occurs when two dissimilar metals are in electrical contact in the presence of an electrolyte (such as seawater). The more 'active' (anodic) metal corrodes preferentially to protect the more 'noble' (cathodic) metal. In marine fastener applications, common problem combinations include: stainless steel bolts in aluminium structures (aluminium corrodes), carbon steel or galvanized bolts connecting to copper alloy fittings (zinc or steel corrodes), and mixed stainless grades. To avoid galvanic corrosion: match fastener and substrate metals as closely as possible; use isolating sleeves or washers (nylon, PTFE) to break the electrical connection between dissimilar metals; ensure the anode area is large relative to the cathode (a small stainless fastener in a large aluminium plate is more problematic than the reverse)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use A4/316 stainless steel bolts in structural marine applications?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A4/316 stainless fasteners are available in property class 70 (tensile strength 700 MPa) and property class 80 (800 MPa), per ISO 3506. A4-70 is sufficient for most marine structural connections. However, stainless steel fasteners should not be preloaded to high tension in structural friction-grip connections — austenitic stainless is susceptible to stress corrosion cracking (SCC) in chloride environments under sustained tensile stress. For high-load structural marine connections requiring preloading, specify duplex stainless steel (EN 1.4462 / S31803) which offers higher strength (0.2% proof stress ~450 MPa vs ~200 MPa for A4-70) and better SCC resistance. TERNS EXIM supplies A2-70, A4-70, and A4-80 stainless fasteners for marine applications."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>Marine Fasteners Guide</span>
+    </div>
+    <h1>Choosing Fasteners for Marine &amp; Coastal Environments: <span class="text-accent">A Corrosion Guide</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">Application Guide</span>
+      <span>21 June 2026</span>
+      <span>6 min read</span>
+      <span>Marine Corrosion Engineering</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#why-marine-is-different">Why marine environments are uniquely corrosive</a></li>
+          <li><a href="#stainless-a2-vs-a4">A2/304 vs A4/316 stainless steel</a></li>
+          <li><a href="#hdg">Hot-dip galvanized in coastal settings</a></li>
+          <li><a href="#galvanic">Galvanic corrosion — the hidden risk</a></li>
+          <li><a href="#selection-table">Material selection by environment</a></li>
+          <li><a href="#offshore">Offshore and subsea considerations</a></li>
+          <li><a href="#supply">Supply from TERNS EXIM</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>No environment corrodes fasteners more aggressively than a marine or coastal setting. Salt-laden air, cyclic wetting and drying, seawater immersion, and the electrochemical effects of dissimilar metal contact combine to destroy inadequately specified fasteners within months. The correct material or coating choice extends service life from months to decades — often with negligible cost difference per kilogram on large orders.</p>
+
+        <p>This guide provides practical material and coating selection guidance for marine jetties, coastal structures, offshore platforms, and marine-adjacent construction.</p>
+
+        <h2 id="why-marine-is-different">Why Marine Environments Are Uniquely Corrosive</h2>
+
+        <p>Three factors make marine and coastal environments uniquely aggressive for carbon steel:</p>
+
+        <ol>
+          <li><strong>Chloride ions:</strong> Salt (NaCl) dissociates in water to produce chloride ions. Chlorides penetrate passive oxide films on steel and stainless steel, initiating pitting corrosion at localised points. Even well-coated carbon steel eventually loses its coating at edges, scratches, and thread roots — and chloride corrosion begins immediately.</li>
+          <li><strong>Humidity and cycling:</strong> Marine air is almost always humid, and the wetting-drying cycles in the splash and tidal zones are the most aggressive condition of all — far worse than continuous immersion, because oxygen-rich conditions alternate with wet conditions, accelerating the corrosion reaction.</li>
+          <li><strong>Electrolytic conductivity:</strong> Seawater is an excellent electrolyte. When two dissimilar metals are in contact in seawater, galvanic corrosion proceeds rapidly — far faster than the same combination in freshwater or air.</li>
+        </ol>
+
+        <h2 id="stainless-a2-vs-a4">A2/304 vs A4/316 Stainless Steel</h2>
+
+        <p>Stainless steel fasteners for marine use are specified per <strong>ISO 3506</strong>, which defines two primary austenitic grades:</p>
+
+        <p><strong>A2 (AISI 304 / EN 1.4301):</strong> 18% chromium, 8% nickel, no molybdenum. Provides good corrosion resistance in atmospheric, freshwater, and mildly acidic environments. However, A2 is <em>not suitable</em> for chloride environments. Pitting corrosion in A2 stainless begins within months of coastal outdoor exposure — visible as rust-brown spots on the fastener surface despite it being "stainless." Do not specify A2 within 1–5 km of the coastline or in any direct seawater contact.</p>
+
+        <p><strong>A4 (AISI 316 / EN 1.4401):</strong> 16% chromium, 10% nickel, 2% molybdenum. The addition of molybdenum is the defining difference — it dramatically increases pitting corrosion resistance in chloride environments by stabilising the passive oxide film against chloride attack. A4/316 is the standard marine stainless specification for most offshore, coastal, and seawater applications.</p>
+
+        <blockquote>If you are specifying stainless fasteners within 5 km of the coast, in a splash zone, or in contact with seawater — the answer is always A4/316, not A2/304.</blockquote>
+
+        <p>Both grades are available in property class 70 (700 MPa tensile) and 80 (800 MPa tensile). A4-70 covers most structural and mechanical marine applications; A4-80 provides higher strength where load requirements demand it.</p>
+
+        <h2 id="hdg">Hot-Dip Galvanized in Coastal Settings</h2>
+
+        <p>Hot-dip galvanized (HDG) carbon steel fasteners are appropriate for <strong>coastal above-waterline applications</strong> where A4 stainless is cost-prohibitive and the environment is marine-adjacent rather than fully marine:</p>
+
+        <ul>
+          <li>Structural steel in coastal buildings and warehouses (inland face, not splash zone)</li>
+          <li>Jetty decking and superstructure connections above the splash zone</li>
+          <li>Coastal fencing, portal frames, and light industrial structures</li>
+          <li>Marine-adjacent infrastructure at 500m+ from the shoreline</li>
+        </ul>
+
+        <p>The zinc coating provides cathodic (sacrificial) protection — zinc corrodes preferentially, protecting the steel underneath. In a typical coastal above-waterline environment, HDG fasteners to ISO 1461 provide 10–20 years service life before zinc depletion exposes the base steel. After depletion, active corrosion begins rapidly.</p>
+
+        <p>HDG is NOT appropriate for:</p>
+        <ul>
+          <li>Permanent submersion in seawater</li>
+          <li>Tidal or splash zones (highly aggressive, zinc consumed rapidly)</li>
+          <li>Direct contact with copper alloys or copper-alloyed bronze (severe galvanic risk)</li>
+        </ul>
+
+        <h2 id="galvanic">Galvanic Corrosion — The Hidden Risk</h2>
+
+        <p>Galvanic corrosion is a common failure mode on marine structures that have mixed metal components. It occurs when two dissimilar metals are in electrical contact in the presence of an electrolyte (seawater or humid salt air). The galvanic series ranks metals by their electrochemical potential; when two metals in the series are connected, the more anodic (less noble) metal corrodes to protect the more cathodic (more noble) metal.</p>
+
+        <p>Critical combinations to avoid or manage:</p>
+        <ul>
+          <li><strong>Stainless steel bolts + aluminium structure:</strong> Aluminium is strongly anodic to stainless — severe aluminium corrosion around bolt holes. Solution: use nylon or PTFE isolating washers/sleeves to break the electrical connection, or use A5 aluminium alloy fasteners.</li>
+          <li><strong>Carbon steel / galvanized bolts + copper alloy fittings:</strong> Zinc and steel are anodic to copper — rapid zinc and steel corrosion adjacent to the copper. Solution: use stainless fasteners, or isolate the connection.</li>
+          <li><strong>A2 stainless + aluminium:</strong> Same problem as A4 stainless — stainless is cathodic to aluminium.</li>
+          <li><strong>HDG bolts + stainless plate:</strong> Zinc is anodic to stainless — zinc consumed rapidly at the contact point. Acceptable if zinc area is large and stainless area is small (ratio matters).</li>
+        </ul>
+
+        <p>The galvanic series principle: the larger the gap in the series and the more conductive the electrolyte (seawater conducts well), the faster the corrosion. Isolation, sacrificial anodes, or material matching are the engineering solutions.</p>
+
+        <h2 id="selection-table">Material Selection by Environment</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr><th>Environment</th><th>Recommended Material</th><th>Acceptable Alternative</th><th>Not Suitable</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Indoor / dry industrial</td><td>Carbon steel, zinc-plated</td><td>A2 stainless</td><td>—</td></tr>
+              <tr><td>Outdoor inland (&gt;5 km from coast)</td><td>Carbon steel, HDG (ISO 1461)</td><td>A2 stainless</td><td>Plain carbon steel</td></tr>
+              <tr><td>Coastal outdoor (1–5 km, above waterline)</td><td>A4/316 stainless</td><td>HDG (reduced life)</td><td>A2/304, plain carbon</td></tr>
+              <tr><td>Marine splash zone / tidal zone</td><td>A4/316 stainless</td><td>Duplex 2205 (higher load)</td><td>HDG, A2, carbon steel</td></tr>
+              <tr><td>Continuous seawater immersion</td><td>A4/316 stainless</td><td>Duplex 2205 / titanium grade 2</td><td>HDG, A2, carbon steel</td></tr>
+              <tr><td>Offshore platform (above waterline)</td><td>A4/316 stainless</td><td>Duplex 2205</td><td>HDG, carbon steel</td></tr>
+              <tr><td>O&amp;G flange / high-temp seawater</td><td>A193 B7 (alloy) + coating</td><td>Duplex / super-duplex stainless</td><td>A2, standard carbon</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="offshore">Offshore and Subsea Considerations</h2>
+
+        <p>Offshore structures (platforms, jackets, wind monopiles) operate in the most aggressive corrosive environment on earth. Fastener specifications for offshore typically involve:</p>
+        <ul>
+          <li><strong>A4-70 or A4-80 stainless</strong> for above-waterline fittings, handrails, grating clips, cable trays</li>
+          <li><strong>Duplex stainless (EN 1.4462 / S31803)</strong> for structural connections requiring higher strength and improved stress corrosion cracking resistance under sustained load in chloride environments</li>
+          <li><strong>Super-duplex (EN 1.4410 / S32750)</strong> for highly aggressive subsea or sour service environments (H₂S present)</li>
+          <li><strong>Cathodic protection systems</strong> (sacrificial aluminium or zinc anodes) that protect the structure — but fasteners must still be specified correctly because cathodic protection coverage at complex geometry points (threads, recesses) is uneven</li>
+        </ul>
+
+        <p>For offshore applications, third-party material certification per NACE MR0175 / ISO 15156 (sour service) or NORSOK M-630 (Norwegian offshore) may be required. Confirm material traceability requirements with your project specification before ordering.</p>
+
+        <h2 id="supply">Supply from TERNS EXIM</h2>
+
+        <p>TERNS EXIM supplies A2-70, A4-70, and A4-80 stainless steel hex bolts, hex nuts, and washers for marine and coastal applications, with Mill Test Certificates confirming chemical composition (including molybdenum content for A4 verification) and mechanical properties per ISO 3506. We also supply hot-dip galvanized carbon steel fasteners (ISO 1461) for coastal above-waterline structural applications. Full documentation sets including MTC, Certificate of Origin, and coating test reports are provided as standard.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need A4/316 Stainless or HDG Fasteners for a Marine Project?</h2>
+      <p>Share your application environment, fastener specification, and quantity — we'll advise the correct material and provide a CIF or FOB quotation within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20stainless%20(A4%2F316)%20or%20HDG%20fasteners%20for%20a%20marine%20%2F%20coastal%20project.%20Please%20advise." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

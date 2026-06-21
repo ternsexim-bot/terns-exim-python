@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}DIN vs ISO vs ASTM: Fastener Standards Explained for International Buyers | TERNS EXIM{% endblock %}
+{% block meta_description %}DIN, ISO, and ASTM fastener standards explained — what each system covers, where it is used, how DIN and ISO map to each other, common equivalents, and which standard to specify when sourcing from India.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/din-iso-astm-fastener-standards{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/din-iso-astm-fastener-standards{% endblock %}
+{% block og_title %}DIN vs ISO vs ASTM Fastener Standards: An International Buyer's Guide | TERNS EXIM{% endblock %}
+{% block og_description %}What DIN, ISO, and ASTM standards mean, where each is used, how they map to each other, and which to specify when ordering fasteners from India for the USA, EU, UK, or Middle East.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "DIN vs ISO vs ASTM: Fastener Standards Explained for International Buyers",
+  "description": "A practical guide for global buyers on DIN, ISO, and ASTM fastener standards — coverage, geographic use, interoperability, common equivalents, and how to specify correctly when sourcing from India.",
+  "url": "https://ternsexim.com/blog/din-iso-astm-fastener-standards",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "url": "https://ternsexim.com"},
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "DIN vs ISO vs ASTM", "item": "https://ternsexim.com/blog/din-iso-astm-fastener-standards"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between DIN and ISO fastener standards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DIN (Deutsches Institut für Normung) is the German national standards body. Its fastener standards (DIN 931, DIN 933, DIN 934, etc.) were the dominant metric fastener specification in Germany and across Europe from the 1950s onward. ISO (International Organization for Standardization) subsequently developed international equivalents — ISO 4014 and ISO 4017 replaced DIN 931 and DIN 933 respectively, ISO 4032 replaced DIN 934, and so on. In practice, DIN and ISO equivalents are dimensionally interchangeable for most common fastener types. The main difference is the standard number on the MTC and any minor tolerance or material requirement variations. Most European and global buyers now specify ISO standards, but DIN numbers remain in widespread use especially in legacy specifications and the Middle East."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are ASTM fasteners compatible with DIN/ISO metric fasteners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not directly, because ASTM primarily governs imperial (inch) fasteners, while DIN and ISO are metric systems. They use different thread forms (UNC/UNF for ASTM imperial vs M-thread per ISO 68-1), different grade designations (ASTM uses letter/number grades like A307, A325, A490 versus ISO property classes 4.6, 8.8, 10.9), and different dimensional standards. However, ASTM also publishes standards for metric fasteners (e.g., ASTM F568 for metric bolts, ASTM A193 B7M for metric studs) and these specify ISO metric threads and dimensions. When ordering from India for US projects, you can usually specify either: (a) ASTM metric (F568 class 8.8, ISO thread) or (b) ISO 4014 class 8.8 and note ASTM equivalence in the purchase order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which standard should I specify when sourcing fasteners from India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most markets: specify ISO standards with property class (e.g., 'Hex Bolt ISO 4014, Class 8.8, M16 × 80mm, Hot-Dip Galvanized per ISO 1461'). ISO is internationally understood, unambiguous, and is what most Indian manufacturers test and certify against. If your project calls for DIN numbers (common in Middle East or older European specifications), these are equivalent to ISO for most common types — the manufacturer will supply to the same dimensions. For USA projects requiring ASTM compliance, specify the ASTM standard explicitly (A307, A325, A193 B7, F1554, etc.) — not all Indian manufacturers test to ASTM, so confirm capability upfront. TERNS EXIM supplies to DIN, ISO, ASTM, BS, JIS, and BIS standards with Mill Test Certificates referencing the specified standard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does BS EN ISO mean on a fastener standard?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BS EN ISO is the designation used in the UK for standards that were originally developed by ISO, adopted by the European Committee for Standardization (EN), and then incorporated into the British Standards catalogue (BS). For example, BS EN ISO 4014 is the British adoption of the European adoption of ISO 4014 — the full-thread hex bolt standard. The dimensional and mechanical requirements are identical to ISO 4014. Before Brexit, these were called BS EN ISO; post-Brexit they are often referred to simply as BS ISO. For procurement purposes, a fastener certified to ISO 4014 satisfies BS EN ISO 4014 and BS ISO 4014 requirements — they are the same standard under different national labels."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>DIN vs ISO vs ASTM</span>
+    </div>
+    <h1>DIN vs ISO vs ASTM: <span class="text-accent">Fastener Standards Explained for International Buyers</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">Technical Guide</span>
+      <span>21 June 2026</span>
+      <span>6 min read</span>
+      <span>Standards &amp; Specifications</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#why-standards-matter">Why standards matter in fastener procurement</a></li>
+          <li><a href="#din">DIN — German National Standards</a></li>
+          <li><a href="#iso">ISO — International Standards</a></li>
+          <li><a href="#astm">ASTM — American Standards</a></li>
+          <li><a href="#others">BS, JIS, and BIS</a></li>
+          <li><a href="#equivalents">Common equivalents table</a></li>
+          <li><a href="#which-to-specify">Which standard to specify when ordering from India</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>When you order fasteners internationally, a simple size ("M12 × 80 hex bolt") is not a specification. The same size exists under DIN 931, ISO 4014, ASTM F568, and half a dozen other standards — with subtly different tolerances, material requirements, and property class designations. Getting this wrong means receiving product that technically fulfils your purchase order but doesn't comply with your project's engineering requirements.</p>
+
+        <p>This guide explains what each major standard system covers, where it is used, how they relate to each other, and which to specify when sourcing from India.</p>
+
+        <h2 id="why-standards-matter">Why Standards Matter in Fastener Procurement</h2>
+
+        <p>A fastener standard defines three things: <strong>dimensions</strong> (thread form, pitch, head size, length tolerances), <strong>mechanical properties</strong> (tensile strength, yield strength, hardness), and <strong>material requirements</strong> (chemical composition, heat treatment). Without a specified standard, the supplier makes assumptions — and those assumptions may not match your engineer's intent.</p>
+
+        <p>Standards also define what a <strong>Mill Test Certificate (MTC)</strong> must contain and what tests must be performed. A fastener certified to ISO 898-1 Class 8.8 has been tested to specific tensile, yield, and hardness requirements and the MTC must record the results. An uncertified "8.8" bolt may or may not meet those requirements.</p>
+
+        <h2 id="din">DIN — Deutsches Institut für Normung (German Standards)</h2>
+
+        <p>DIN fastener standards were developed by Germany's national standards body and became the de facto European metric fastener specification from the 1950s through the 1990s. DIN numbers are still widely used in specifications, purchase orders, and technical drawings across Europe, the Middle East, and parts of Asia — particularly in older infrastructure, legacy projects, and countries that adopted German industrial practice early.</p>
+
+        <p>DIN standards you will commonly encounter:</p>
+        <ul>
+          <li><strong>DIN 931</strong> — Hex bolt, partially threaded (now largely superseded by ISO 4014)</li>
+          <li><strong>DIN 933</strong> — Hex bolt, fully threaded (ISO 4017 equivalent)</li>
+          <li><strong>DIN 934</strong> — Hex nut (ISO 4032 equivalent)</li>
+          <li><strong>DIN 125A</strong> — Plain washer (ISO 7089 equivalent)</li>
+          <li><strong>DIN 127B</strong> — Spring lock washer</li>
+          <li><strong>DIN 975 / 976</strong> — Threaded rod (metre length / cut length)</li>
+          <li><strong>DIN 529</strong> — Foundation bolt (J-bolt)</li>
+          <li><strong>DIN 7990</strong> — Structural bolt assembly (superseded by EN 14399)</li>
+        </ul>
+
+        <p>DIN standards are published in German; property classes reference ISO 898-1 (4.6, 8.8, etc.). Many DIN standards have been officially withdrawn and replaced by their ISO equivalents, but the DIN numbers remain in common use.</p>
+
+        <h2 id="iso">ISO — International Organization for Standardization</h2>
+
+        <p>ISO fastener standards are internationally agreed specifications developed by a committee of national standards bodies. They are the current best practice and are adopted (with national labels) by most countries: BS EN ISO in the UK, DIN EN ISO in Germany, NF EN ISO in France, etc. For metric fasteners, ISO standards are the most precise and internationally unambiguous specification you can use.</p>
+
+        <p>Key ISO fastener standards:</p>
+        <ul>
+          <li><strong>ISO 4014</strong> — Hex bolt, partially threaded, grades 5.6–10.9</li>
+          <li><strong>ISO 4017</strong> — Hex bolt, fully threaded</li>
+          <li><strong>ISO 4032</strong> — Hex nut, style 1</li>
+          <li><strong>ISO 4033</strong> — Hex nut, style 2 (higher)</li>
+          <li><strong>ISO 7089</strong> — Plain washer, normal series</li>
+          <li><strong>ISO 7093</strong> — Plain washer, large series</li>
+          <li><strong>ISO 898-1</strong> — Mechanical properties of bolts (property classes)</li>
+          <li><strong>ISO 898-2</strong> — Mechanical properties of nuts</li>
+          <li><strong>ISO 1461</strong> — Hot-dip galvanizing specification</li>
+          <li><strong>EN 14399</strong> — High-strength structural bolt assemblies for preloading</li>
+        </ul>
+
+        <h2 id="astm">ASTM — American Society for Testing and Materials</h2>
+
+        <p>ASTM standards are the dominant specification in the USA and are widely used in the Middle East oil and gas sector, parts of Latin America, and some Southeast Asian markets that follow US engineering codes. ASTM uses a fundamentally different system from DIN/ISO: it specifies fasteners by <strong>application grade</strong> (A307, A325, A490, etc.) rather than property class number, and primarily addresses inch-series (imperial) fasteners, though metric ASTM standards exist.</p>
+
+        <p>Key ASTM fastener standards:</p>
+        <ul>
+          <li><strong>ASTM A307 Grade A</strong> — Low-strength hex bolts (inch), ~414 MPa tensile, general purpose</li>
+          <li><strong>ASTM A325</strong> — High-strength structural bolts (inch), 830 MPa tensile, ~ISO 8.8 equivalent</li>
+          <li><strong>ASTM A490</strong> — High-strength structural bolts (inch), 1040 MPa tensile, ~ISO 10.9 equivalent</li>
+          <li><strong>ASTM A193 Grade B7</strong> — Alloy steel stud bolts and headed bolts for high-temp/pressure flanges</li>
+          <li><strong>ASTM A194 Grade 2H</strong> — Nuts for high-pressure service, pairs with A193 B7</li>
+          <li><strong>ASTM F1554</strong> — Anchor bolts, grades 36/55/105</li>
+          <li><strong>ASTM F593 / F594</strong> — Stainless steel bolts and nuts, inch series</li>
+          <li><strong>ASTM F568</strong> — Metric carbon and alloy steel bolts (specifies ISO thread and ISO property classes)</li>
+        </ul>
+
+        <h2 id="others">BS, JIS, and BIS</h2>
+
+        <p>Other standards you may encounter:</p>
+        <ul>
+          <li><strong>BS (British Standards):</strong> BS 3692, BS 4190 for hex bolts; BS 4882 for stud bolts. Post-Brexit, the UK is transitioning these to BS ISO. Mostly interchangeable with ISO for common types.</li>
+          <li><strong>JIS (Japanese Industrial Standards):</strong> Used in Japan and some Southeast Asian markets. JIS B 1180 (hex bolts) is dimensionally similar to ISO but with different mechanical property designations.</li>
+          <li><strong>BIS (Bureau of Indian Standards):</strong> IS 1364 covers hex bolts and nuts; IS 5624 covers foundation bolts. BIS standards generally align with ISO dimensions and ISO 898-1 mechanical requirements. Used for domestic Indian projects; international buyers almost always specify DIN/ISO/ASTM.</li>
+        </ul>
+
+        <h2 id="equivalents">Common Equivalents Table</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr><th>Fastener Type</th><th>DIN</th><th>ISO</th><th>ASTM (approx.)</th><th>BS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Hex bolt, partial thread</td><td>DIN 931</td><td>ISO 4014</td><td>ASTM F568 (metric) / A307 (inch)</td><td>BS 3692 / BS EN ISO 4014</td></tr>
+              <tr><td>Hex bolt, full thread</td><td>DIN 933</td><td>ISO 4017</td><td>ASTM F568 (metric)</td><td>BS 4190 / BS EN ISO 4017</td></tr>
+              <tr><td>Hex nut, style 1</td><td>DIN 934</td><td>ISO 4032</td><td>ASTM A563 (inch)</td><td>BS 3692 / BS EN ISO 4032</td></tr>
+              <tr><td>Plain washer</td><td>DIN 125A</td><td>ISO 7089</td><td>ASTM F844 (inch)</td><td>BS 4320 / BS EN ISO 7089</td></tr>
+              <tr><td>Spring lock washer</td><td>DIN 127B</td><td>ISO 7090</td><td>ASME B18.21.1 (inch)</td><td>BS 4464</td></tr>
+              <tr><td>Threaded rod</td><td>DIN 975 / 976</td><td>ISO 4027 / custom</td><td>ASTM A193 B7 (alloy)</td><td>BS 4882</td></tr>
+              <tr><td>Foundation bolt</td><td>DIN 529</td><td>—</td><td>ASTM F1554</td><td>BS 7419</td></tr>
+              <tr><td>Property class (8.8 equiv.)</td><td>ISO 898-1 Cl. 8.8</td><td>ISO 898-1 Cl. 8.8</td><td>ASTM A325 (inch) / F568 Cl. 8.8 (metric)</td><td>ISO 898-1 Cl. 8.8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8rem; color:#6b7280; margin-top:-0.75rem; margin-bottom:1.5rem;">Note: DIN and ISO are dimensionally interchangeable for most common fastener types. ASTM inch and metric are NOT interchangeable — verify thread form and size explicitly.</p>
+
+        <h2 id="which-to-specify">Which Standard to Specify When Ordering from India</h2>
+
+        <p><strong>For Europe, Middle East, Africa, and most of Asia:</strong> Specify ISO standards with property class. This is unambiguous, internationally tested, and what Indian manufacturers certify against. Example: <em>"Hex Bolt ISO 4014, Class 8.8, M16 × 2.0 × 80mm, Hot-Dip Galvanized ISO 1461."</em></p>
+
+        <p><strong>For legacy DIN specifications:</strong> DIN numbers are accepted — just add the ISO property class for clarity since DIN and ISO are equivalent for most types.</p>
+
+        <p><strong>For USA / ASTM projects:</strong> Specify ASTM explicitly — A307, A325, A193 B7, F1554, etc. Confirm the supplier's ASTM test capability and ensure the MTC references the ASTM standard and grade, not just ISO property class.</p>
+
+        <p><strong>For UK post-Brexit:</strong> BS EN ISO or BS ISO standards are fine. The dimensions and properties are identical to ISO.</p>
+
+        <p>TERNS EXIM manufactures and exports to DIN, ISO, ASTM, BS, JIS, and BIS standards. All shipments include Mill Test Certificates referencing your specified standard, with chemical composition and mechanical test results per that standard's requirements.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need Fasteners to DIN, ISO, ASTM, or BS Standards?</h2>
+      <p>Specify your standard, property class, size, and quantity — we'll supply with a Mill Test Certificate referencing your exact specification. Quote within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20fasteners%20to%20a%20specific%20standard%20(DIN%20%2F%20ISO%20%2F%20ASTM%20%2F%20BS).%20Please%20advise." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

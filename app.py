@@ -87,6 +87,30 @@ def blog_bolt_grades():
 def blog_import_guide():
     return render_template('blog_import_guide.html')
 
+@app.route('/blog/galvanized-vs-zinc-plated-vs-geomet')
+def blog_coatings():
+    return render_template('blog_coatings.html')
+
+@app.route('/blog/din-iso-astm-fastener-standards')
+def blog_standards():
+    return render_template('blog_standards.html')
+
+@app.route('/blog/fob-vs-cif-fastener-imports')
+def blog_fob_cif():
+    return render_template('blog_fob_cif.html')
+
+@app.route('/blog/how-to-verify-indian-fastener-exporter')
+def blog_verify_exporter():
+    return render_template('blog_verify_exporter.html')
+
+@app.route('/blog/best-fasteners-for-construction')
+def blog_construction():
+    return render_template('blog_construction.html')
+
+@app.route('/blog/fasteners-for-marine-coastal-corrosion')
+def blog_marine():
+    return render_template('blog_marine.html')
+
 @app.route('/products')
 def products():
     return render_template('products.html')

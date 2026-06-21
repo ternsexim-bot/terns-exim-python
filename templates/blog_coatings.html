@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+
+{% block title %}Hot-Dip Galvanized vs Zinc Plated vs Geomet: Fastener Coatings Compared | TERNS EXIM{% endblock %}
+{% block meta_description %}A practical comparison of fastener coatings — hot-dip galvanizing, zinc electroplating, and Geomet. Covers salt-spray hours, coating thickness, cost, temperature limits, and which to specify for outdoor, marine, and industrial use.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/galvanized-vs-zinc-plated-vs-geomet{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/galvanized-vs-zinc-plated-vs-geomet{% endblock %}
+{% block og_title %}Hot-Dip Galvanized vs Zinc Plated vs Geomet: Fastener Coatings Compared | TERNS EXIM{% endblock %}
+{% block og_description %}Salt-spray hours, coating thickness, cost, grade compatibility, and application guidance for the three most common fastener corrosion protection systems.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Hot-Dip Galvanized vs Zinc Plated vs Geomet: Fastener Coatings Compared",
+  "description": "A practical comparison of the three most common fastener coatings — hot-dip galvanizing, zinc electroplating, and Geomet — covering corrosion protection, thickness, cost, and application suitability.",
+  "url": "https://ternsexim.com/blog/galvanized-vs-zinc-plated-vs-geomet",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "url": "https://ternsexim.com"},
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Fastener Coatings Compared", "item": "https://ternsexim.com/blog/galvanized-vs-zinc-plated-vs-geomet"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many salt-spray hours does hot-dip galvanizing provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hot-dip galvanizing to ISO 1461 provides a minimum coating thickness of 45 µm on fasteners (up to 85 µm on some bolt sizes), which typically yields 500–1,000+ hours of salt-spray resistance in neutral salt-spray testing per ISO 9227. In real-world outdoor conditions this translates to 20–40 years of service life in moderate environments and 10–25 years in coastal or industrial atmospheres. Actual life depends on coating thickness, surface preparation, and exposure conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between zinc electroplating and hot-dip galvanizing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zinc electroplating (also called electrodeposited zinc or zinc plating) deposits a thin layer of zinc (5–25 µm) onto the fastener surface using an electrolytic process. It produces a smooth, consistent, bright finish but provides limited corrosion protection (96–200 hours salt spray for 8–12 µm deposits). Hot-dip galvanizing immerses the fastener in molten zinc at ~450°C, producing a much thicker coating (45–85 µm) with far superior corrosion resistance (500–1,000+ hours). HDG also provides cathodic (sacrificial) protection that zinc electroplating does not at thin thicknesses. The tradeoff is that HDG creates a rougher finish and can affect thread fit — hot-dip galvanized bolts are typically paired with nuts tapped one ISO tolerance class larger to accommodate the additional zinc thickness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Geomet coating and when should I use it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Geomet (also marketed as Delta Tone, Delta Seal, and similar proprietary names) is a water-based, chromium-free zinc flake coating applied by dipping or spraying and then oven-cured at 200–300°C. It deposits a thin (8–10 µm) but highly protective coating that provides 720–1,000+ hours of salt-spray resistance — comparable to much thicker HDG coatings. Geomet contains no hydrogen in the application process, making it the preferred choice for high-strength fasteners (grade 10.9 and 12.9) where hydrogen embrittlement risk must be eliminated. It is also REACH-compliant (no hexavalent chromium) and dimensionally precise, preserving thread tolerances. Use Geomet when you need high corrosion resistance on high-strength fasteners, or where tight thread tolerances must be maintained."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use hot-dip galvanized bolts in marine environments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hot-dip galvanized (HDG) fasteners are suitable for coastal and marine-adjacent applications — outdoor structures near the coast, jetties, marine infrastructure above the waterline. However, they are not suitable for continuous submersion in seawater. In fully immersed marine service, the zinc coating accelerates galvanic corrosion when in contact with dissimilar metals, and the zinc itself is consumed relatively quickly in high-chloride seawater. For submerged or splash-zone applications, A4/316 stainless steel (austenitic, molybdenum-alloyed) is the standard specification. HDG is excellent for inland outdoor, industrial, and moderate coastal above-waterline use."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>Fastener Coatings Compared</span>
+    </div>
+    <h1>Hot-Dip Galvanized vs Zinc Plated vs Geomet: <span class="text-accent">Fastener Coatings Compared</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">Technical Guide</span>
+      <span>21 June 2026</span>
+      <span>6 min read</span>
+      <span>Corrosion Protection</span>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#why-coating-matters">Why the coating choice matters</a></li>
+          <li><a href="#hdg">Hot-dip galvanizing (HDG)</a></li>
+          <li><a href="#zinc-plated">Zinc electroplating</a></li>
+          <li><a href="#geomet">Geomet / zinc flake coatings</a></li>
+          <li><a href="#comparison">Comparison table</a></li>
+          <li><a href="#grade-compatibility">Grade compatibility</a></li>
+          <li><a href="#which-to-choose">Which coating to specify</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>Specifying the right fastener coating is as important as specifying the right grade. A grade 8.8 bolt in the wrong coating will corrode prematurely; a high-strength bolt in the wrong coating process can fail catastrophically through hydrogen embrittlement. This guide compares the three most widely used coating systems — hot-dip galvanizing, zinc electroplating, and Geomet — across the criteria that matter for procurement decisions.</p>
+
+        <h2 id="why-coating-matters">Why the Coating Choice Matters</h2>
+
+        <p>Bare carbon steel fasteners rust rapidly in outdoor, humid, or saline environments. Corrosion does not just degrade the fastener surface — it can cause bolt seizure (preventing disassembly), galvanic corrosion between dissimilar metals, and loss of clamp load as rust products expand or corrode away the thread contact area. Choosing the right coating for the environment and the bolt grade prevents all of these outcomes.</p>
+
+        <p>Three variables drive coating selection:</p>
+        <ul>
+          <li><strong>Environment severity</strong> — indoor/dry, outdoor, coastal, industrial, fully marine</li>
+          <li><strong>Bolt grade</strong> — HDG and acid-based processes create hydrogen embrittlement risk on grades 10.9 and 12.9</li>
+          <li><strong>Thread fit requirement</strong> — thick coatings change thread dimensions and require oversize nuts</li>
+        </ul>
+
+        <h2 id="hdg">Hot-Dip Galvanizing (HDG)</h2>
+
+        <p>Hot-dip galvanizing immerses the fastener in molten zinc at approximately 450°C after acid pickling and fluxing. The zinc metallurgically bonds to the steel surface, forming a layered coating (eta, zeta, delta, gamma layers) that provides both barrier protection and <strong>cathodic (sacrificial) protection</strong> — the zinc corrodes preferentially, protecting the steel even at scratches or cut edges.</p>
+
+        <p>Key characteristics:</p>
+        <ul>
+          <li><strong>Coating thickness:</strong> 45–85 µm per ISO 1461 (fasteners ≥ 6mm)</li>
+          <li><strong>Salt-spray resistance:</strong> 500–1,000+ hours (ISO 9227)</li>
+          <li><strong>Outdoor service life:</strong> 20–40 years in moderate environments; 10–25 years coastal</li>
+          <li><strong>Thread fit:</strong> Requires nuts tapped one ISO tolerance class oversize (6AZ/6H tolerance) to accommodate zinc thickness on threads</li>
+          <li><strong>Appearance:</strong> Rough, matte grey; may have drip marks or uneven surface</li>
+          <li><strong>Grade limit:</strong> Safe on grade 8.8; not recommended on 10.9; prohibited on 12.9</li>
+          <li><strong>Standard:</strong> ISO 1461, ASTM A153</li>
+        </ul>
+
+        <blockquote>HDG is the dominant outdoor structural coating for grade 8.8 hex bolts, anchor bolts, and foundation bolts. TERNS EXIM supplies hot-dip galvanized fasteners per ISO 1461 with coating thickness test reports.</blockquote>
+
+        <h2 id="zinc-plated">Zinc Electroplating</h2>
+
+        <p>Zinc electroplating (electrodeposited zinc, ISO 4042) deposits zinc from an electrolyte solution onto the fastener using electric current. It produces a uniform, smooth, bright finish at much thinner coating depths than HDG. The acid pickling stage of the process introduces hydrogen into high-strength steel — the critical limitation of this process.</p>
+
+        <p>Key characteristics:</p>
+        <ul>
+          <li><strong>Coating thickness:</strong> 5–25 µm (typical commercial: 8–12 µm)</li>
+          <li><strong>Salt-spray resistance:</strong> 96–200 hours at 8–12 µm; up to 500 hours with chromate passivation</li>
+          <li><strong>Appearance:</strong> Bright, uniform silver or yellow (chromate passivated) finish</li>
+          <li><strong>Thread fit:</strong> Minimal dimensional impact at standard 8–12 µm; no special nut sizing needed</li>
+          <li><strong>Grade limit:</strong> Safe on grades up to 8.8; on grade 10.9 requires hydrogen embrittlement relief bake (190°C, ≥4 hours within 4 hours of plating, per ASTM B849); not recommended on 12.9</li>
+          <li><strong>Standard:</strong> ISO 4042, ASTM B633</li>
+        </ul>
+
+        <p>Zinc electroplating is the default finish for interior mechanical fasteners and light-duty outdoor applications. Its low corrosion resistance makes it unsuitable for structural outdoor or coastal work without additional topcoats (e.g., clear or yellow chromate passivation).</p>
+
+        <h2 id="geomet">Geomet and Zinc Flake Coatings</h2>
+
+        <p>Geomet, Delta Tone, Dacromet, and similar products are <strong>zinc flake coatings</strong> — water-based suspensions of zinc and aluminium flakes applied by dipping or spraying and oven-cured at 200–300°C. The process contains no acid pickling step and no electrolytic hydrogen generation, making it the safest choice for high-strength fasteners.</p>
+
+        <p>Key characteristics:</p>
+        <ul>
+          <li><strong>Coating thickness:</strong> 8–12 µm (typically two coat-and-cure cycles of 4–6 µm each)</li>
+          <li><strong>Salt-spray resistance:</strong> 720–1,000+ hours — far exceeding zinc electroplating at the same thickness</li>
+          <li><strong>Appearance:</strong> Smooth, dark grey metallic; consistent and dimensionally precise</li>
+          <li><strong>Thread fit:</strong> Minimal impact; no oversize nut required</li>
+          <li><strong>Grade compatibility:</strong> Safe on all grades including 10.9 and 12.9 — no hydrogen embrittlement risk</li>
+          <li><strong>Temperature resistance:</strong> Up to 300°C service temperature (HDG de-zincs above ~200°C)</li>
+          <li><strong>REACH compliance:</strong> Chromium-free formulations comply with EU chemical regulations</li>
+          <li><strong>Standard:</strong> ISO 10683 (non-electrolytically applied zinc flake coatings)</li>
+        </ul>
+
+        <h2 id="comparison">Coating Comparison Table</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Hot-Dip Galvanized</th>
+                <th>Zinc Electroplated</th>
+                <th>Geomet / Zinc Flake</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Coating thickness</td><td>45–85 µm</td><td>5–25 µm</td><td>8–12 µm</td></tr>
+              <tr><td>Salt-spray hours (ISO 9227)</td><td>500–1,000+</td><td>96–200 (plain) / up to 500 (passivated)</td><td>720–1,000+</td></tr>
+              <tr><td>Cathodic protection</td><td>Yes (strong)</td><td>Yes (limited at thin deposits)</td><td>Yes</td></tr>
+              <tr><td>Appearance</td><td>Rough, matte grey</td><td>Smooth, bright silver/yellow</td><td>Smooth, dark grey</td></tr>
+              <tr><td>Thread tolerance impact</td><td>High — oversize nut required</td><td>Low</td><td>Very low</td></tr>
+              <tr><td>H₂ embrittlement risk</td><td>Yes (pickling stage)</td><td>Yes (acid + electrolytic H)</td><td>None</td></tr>
+              <tr><td>Max service temperature</td><td>~200°C</td><td>~120°C</td><td>~300°C</td></tr>
+              <tr><td>Safe on grade 8.8</td><td style="color:#16a34a;">Yes</td><td style="color:#16a34a;">Yes</td><td style="color:#16a34a;">Yes</td></tr>
+              <tr><td>Safe on grade 10.9</td><td style="color:#dc2626;">Not recommended</td><td style="color:#ca8a04;">With bake relief</td><td style="color:#16a34a;">Yes</td></tr>
+              <tr><td>Safe on grade 12.9</td><td style="color:#dc2626;">Prohibited</td><td style="color:#dc2626;">Not recommended</td><td style="color:#16a34a;">Yes</td></tr>
+              <tr><td>Relative cost</td><td>Medium</td><td>Low</td><td>Medium–High</td></tr>
+              <tr><td>Best suited for</td><td>Outdoor structural (≤8.8), long life</td><td>Interior, light-duty, low-cost</td><td>High-strength, precision, automotive</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="grade-compatibility">Grade Compatibility Summary</h2>
+
+        <p>The interaction between coating process and bolt grade is governed by <strong>hydrogen embrittlement</strong>. High-strength steels (above ~1000 MPa tensile strength) are sensitive to atomic hydrogen absorbed during acid pickling or electrolytic processes. The hydrogen diffuses into the steel lattice and can cause delayed brittle fracture under sustained load — often hours or days after installation, with no visible warning.</p>
+
+        <ul>
+          <li><strong>Grade 8.8:</strong> All three coatings permitted. HDG preferred for outdoor structural work.</li>
+          <li><strong>Grade 10.9:</strong> Avoid HDG. Electroplating permissible only with bake relief (190°C, ≥4 hours). Geomet preferred.</li>
+          <li><strong>Grade 12.9:</strong> HDG prohibited. Electroplating not recommended even with bake relief. Geomet or phosphate-and-oil only.</li>
+        </ul>
+
+        <h2 id="which-to-choose">Which Coating to Specify</h2>
+
+        <ul>
+          <li><strong>Outdoor structural, construction, civil engineering (grade 8.8):</strong> Hot-dip galvanized per ISO 1461. Best long-term value. Ensure nuts are oversize grade.</li>
+          <li><strong>General indoor machinery, enclosures, furniture:</strong> Zinc electroplated, 8–12 µm, yellow chromate passivation. Cost-effective, good appearance.</li>
+          <li><strong>High-strength fasteners (10.9/12.9), automotive, precision assemblies:</strong> Geomet or Delta Tone. No HE risk, tight tolerances maintained.</li>
+          <li><strong>Coastal outdoor or marine-adjacent (above waterline), grade 8.8:</strong> HDG — the zinc sacrificial action handles intermittent salt spray well.</li>
+          <li><strong>Fully marine/submerged:</strong> A4/316 stainless steel (not a coating — a material choice). See our <a href="{{ url_for('blog_marine') }}" style="color:#c9a84c;">marine fasteners guide</a>.</li>
+        </ul>
+
+        <p>TERNS EXIM supplies plain, zinc electroplated, and hot-dip galvanized fasteners as standard finishes. Geomet and other zinc flake coatings are available on request for high-strength orders. All coated fasteners are supplied with coating test reports confirming thickness and salt-spray compliance.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need Fasteners with the Right Coating for Your Environment?</h2>
+      <p>Tell us your application, environment, and bolt grade — we'll advise the correct coating and supply with full coating test reports. Quote within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20fasteners%20with%20a%20specific%20coating%20(HDG%20%2F%20zinc-plated%20%2F%20Geomet).%20Please%20advise." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

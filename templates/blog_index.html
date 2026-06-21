@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block title %}Blog | Fastener Guides &amp; Export Insights | TERNS EXIM{% endblock %}
-{% block meta_description %}Fastener technical guides and export insights from TERNS EXIM — bolt grades explained, how to import from India, DIN/ISO/ASTM standards, Incoterms, and more.{% endblock %}
+{% block meta_description %}Fastener technical guides and export insights from TERNS EXIM — bolt grades, coatings, DIN/ISO/ASTM standards, Incoterms, supplier verification, construction and marine applications.{% endblock %}
 {% block canonical %}https://ternsexim.com/blog{% endblock %}
 {% block og_url %}https://ternsexim.com/blog{% endblock %}
 {% block og_title %}Blog | Fastener Guides &amp; Export Insights | TERNS EXIM{% endblock %}
-{% block og_description %}Technical guides and practical export knowledge from TERNS EXIM — bolt grades, import process, standards, Incoterms, and supplier vetting. Written for global industrial buyers.{% endblock %}
+{% block og_description %}Technical guides and practical export knowledge from TERNS EXIM — bolt grades, coatings compared, import process, standards, Incoterms, and supplier vetting. Written for global industrial buyers.{% endblock %}
 
 {% block extra_schema %}
 <script type="application/ld+json">
@@ -39,41 +39,109 @@
   </div>
 </section>
 
-<!-- ===== ARTICLE GRID ===== -->
+<!-- ===== TECHNICAL GUIDES ===== -->
 <section class="section section-light">
   <div class="container">
-
+    <p class="section-eyebrow">Technical</p>
+    <h2 class="section-title" style="font-size:1.3rem; margin-bottom:1.5rem;">Technical Guides</h2>
     <div class="blog-grid">
 
-      <!-- Article 1: Bolt Grades -->
       <article class="blog-card">
         <span class="blog-card-tag">Technical Guide</span>
         <h3><a href="{{ url_for('blog_bolt_grades') }}" style="color:inherit; text-decoration:none;">Bolt Grades Explained: 8.8 vs 10.9 vs 12.9</a></h3>
         <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 7 min read</p>
-        <p>What do the numbers on a bolt head actually mean? This guide breaks down the ISO 898-1 property class system, compares tensile and yield strengths, explains head markings, and tells you exactly when to specify each grade.</p>
+        <p>What do the numbers on a bolt head actually mean? ISO 898-1 property classes, tensile and yield strengths, head markings, and when to specify each grade.</p>
         <a href="{{ url_for('blog_bolt_grades') }}" class="blog-card-link">Read article &rarr;</a>
       </article>
 
-      <!-- Article 2: Import Guide -->
+      <article class="blog-card">
+        <span class="blog-card-tag">Technical Guide</span>
+        <h3><a href="{{ url_for('blog_coatings') }}" style="color:inherit; text-decoration:none;">Hot-Dip Galvanized vs Zinc Plated vs Geomet: Fastener Coatings Compared</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 6 min read</p>
+        <p>How each coating works, salt-spray hours, thickness, cost, temperature and marine suitability — and which to specify for your application.</p>
+        <a href="{{ url_for('blog_coatings') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+      <article class="blog-card">
+        <span class="blog-card-tag">Technical Guide</span>
+        <h3><a href="{{ url_for('blog_standards') }}" style="color:inherit; text-decoration:none;">DIN vs ISO vs ASTM: Fastener Standards Explained for International Buyers</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 6 min read</p>
+        <p>What each standard system covers, where it is used, how DIN and ISO map to each other, and which system to specify when ordering from India.</p>
+        <a href="{{ url_for('blog_standards') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMERCIAL GUIDES ===== -->
+<section class="section" style="background:#f0f4f8;">
+  <div class="container">
+    <p class="section-eyebrow">Commercial</p>
+    <h2 class="section-title" style="font-size:1.3rem; margin-bottom:1.5rem;">Trade &amp; Sourcing Guides</h2>
+    <div class="blog-grid">
+
       <article class="blog-card">
         <span class="blog-card-tag">Buyer's Guide</span>
         <h3><a href="{{ url_for('blog_import_guide') }}" style="color:inherit; text-decoration:none;">How to Import Fasteners from India: A Complete Buyer's Guide</a></h3>
         <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 9 min read</p>
-        <p>A practical end-to-end guide covering supplier vetting, standards (DIN/ISO/ASTM), writing an RFQ, Incoterms, payment terms, quality assurance, shipping timelines, and the export documents you should expect to receive.</p>
+        <p>Supplier vetting, RFQ writing, Incoterms, payment terms, quality assurance, lead times, and the export documents you should receive.</p>
         <a href="{{ url_for('blog_import_guide') }}" class="blog-card-link">Read article &rarr;</a>
       </article>
 
-    </div>
+      <article class="blog-card">
+        <span class="blog-card-tag">Buyer's Guide</span>
+        <h3><a href="{{ url_for('blog_fob_cif') }}" style="color:inherit; text-decoration:none;">FOB vs CIF for Fastener Imports: Which Incoterm Should You Choose?</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 5 min read</p>
+        <p>Who handles freight, insurance, and risk under each term — and which suits new versus experienced importers.</p>
+        <a href="{{ url_for('blog_fob_cif') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
 
+      <article class="blog-card">
+        <span class="blog-card-tag">Buyer's Guide</span>
+        <h3><a href="{{ url_for('blog_verify_exporter') }}" style="color:inherit; text-decoration:none;">How to Verify an Indian Fastener Exporter: A Due-Diligence Guide</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 6 min read</p>
+        <p>IEC registration, Mill Test Certificates, third-party inspection, sample orders, and payment security — what to check before you commit.</p>
+        <a href="{{ url_for('blog_verify_exporter') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+    </div>
   </div>
 </section>
 
-<!-- ===== NEWSLETTER / CTA ===== -->
+<!-- ===== APPLICATION GUIDES ===== -->
+<section class="section section-light">
+  <div class="container">
+    <p class="section-eyebrow">Application</p>
+    <h2 class="section-title" style="font-size:1.3rem; margin-bottom:1.5rem;">Application Guides</h2>
+    <div class="blog-grid">
+
+      <article class="blog-card">
+        <span class="blog-card-tag">Application Guide</span>
+        <h3><a href="{{ url_for('blog_construction') }}" style="color:inherit; text-decoration:none;">Best Fasteners for Construction &amp; Structural Steel Projects</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 7 min read</p>
+        <p>Structural bolts, anchor bolts, foundation bolts — the right grades (8.8/10.9), coatings, and standards (ASTM A325/A490) for construction applications.</p>
+        <a href="{{ url_for('blog_construction') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+      <article class="blog-card">
+        <span class="blog-card-tag">Application Guide</span>
+        <h3><a href="{{ url_for('blog_marine') }}" style="color:inherit; text-decoration:none;">Choosing Fasteners for Marine &amp; Coastal Environments: A Corrosion Guide</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 6 min read</p>
+        <p>Stainless A4/316 vs A2/304 vs hot-dip galvanized — material and coating selection for saltwater, coastal, and offshore fastener applications.</p>
+        <a href="{{ url_for('blog_marine') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
 <section class="section section-dark" style="padding: 2.5rem 0;">
   <div class="container" style="text-align:center; max-width:600px;">
     <p class="section-eyebrow">Stay Informed</p>
     <h2 class="section-title" style="font-size:1.35rem; margin-bottom:0.75rem;">Have a Technical Question?</h2>
-    <p style="color:rgba(255,255,255,0.65); margin-bottom:1.5rem; font-size:0.95rem;">Our team is happy to advise on grade selection, standards, and sourcing. Send us your specification and we'll respond within 24 working hours.</p>
+    <p style="color:rgba(255,255,255,0.65); margin-bottom:1.5rem; font-size:0.95rem;">Our team advises on grade selection, standards, coatings, and sourcing. Send your specification and we'll respond within 24 working hours.</p>
     <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Our Team</a>
   </div>
 </section>
