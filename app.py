@@ -59,6 +59,22 @@ def about():
 def export_process():
     return render_template('export_process.html')
 
+@app.route('/fastener-supplier-usa')
+def usa():
+    return render_template('usa.html')
+
+@app.route('/fastener-supplier-uae')
+def uae():
+    return render_template('uae.html')
+
+@app.route('/fastener-supplier-uk')
+def uk():
+    return render_template('uk.html')
+
+@app.route('/fastener-supplier-netherlands')
+def netherlands():
+    return render_template('netherlands.html')
+
 @app.route('/products')
 def products():
     return render_template('products.html')
