@@ -128,6 +128,20 @@
       <span class="form-error" aria-live="polite"></span>
     </div>
 
+    <!-- Row: Destination Port + Quantity (export-specific, optional) -->
+    <div class="lead-form-row">
+      <div class="form-group">
+        <label for="lf_destination">Destination Port / Country <span class="form-optional">(optional)</span></label>
+        <input type="text" id="lf_destination" name="destination_port"
+               placeholder="e.g. Jebel Ali, UAE or Hamburg, Germany">
+      </div>
+      <div class="form-group">
+        <label for="lf_quantity">Quantity Required <span class="form-optional">(optional)</span></label>
+        <input type="text" id="lf_quantity" name="quantity"
+               placeholder="e.g. 5,000 pcs or 2 tons">
+      </div>
+    </div>
+
     {% if show_product_select %}
     <div class="form-group">
       <label for="lf_product">Product of Interest</label>

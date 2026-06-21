@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 _BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
 LEADS_CSV  = os.environ.get('LEADS_CSV_PATH',
                              os.path.join(_BASE_DIR, 'leads.csv'))
-FIELDNAMES = ['timestamp', 'name', 'email', 'phone', 'company', 'country', 'product', 'message']
+FIELDNAMES = ['timestamp', 'name', 'email', 'phone', 'company', 'country', 'product', 'message', 'quantity', 'destination_port']
 
 # ── Phase 3 config (disabled until env vars are set) ─────────────────────────
 _WA_ENABLED = os.environ.get('WHATSAPP_ALERT_ENABLED', '').lower() == 'true'
@@ -31,7 +31,8 @@ _WA_PHONE   = os.environ.get('WHATSAPP_PHONE', '916369097465')
 
 # ── Phase 1 & 2: Lead Storage ─────────────────────────────────────────────────
 
-def save_lead(name, phone, email='', product='', message='', company='', country=''):
+def save_lead(name, phone, email='', product='', message='', company='', country='',
+              quantity='', destination_port=''):
     """
     Append a lead to leads.csv (Phase 1).
     Returns the lead dict for logging / Phase 3 alerting.
@@ -41,14 +42,16 @@ def save_lead(name, phone, email='', product='', message='', company='', country
         The returned `lead` dict format stays identical.
     """
     lead = {
-        'timestamp': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
-        'name':      name,
-        'email':     email,
-        'phone':     phone,
-        'company':   company,
-        'country':   country,
-        'product':   product or 'General Enquiry',
-        'message':   message,
+        'timestamp':        datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC'),
+        'name':             name,
+        'email':            email,
+        'phone':            phone,
+        'company':          company,
+        'country':          country,
+        'product':          product or 'General Enquiry',
+        'message':          message,
+        'quantity':         quantity,
+        'destination_port': destination_port,
     }
 
     # ── Phase 1: CSV storage ──────────────────────────────────────────────────
@@ -140,6 +143,8 @@ def send_telegram_alert(lead_data):
             f"📞 *Phone:* {lead_data.get('phone')}\n"
             f"📧 *Email:* {lead_data.get('email')}\n"
             f"🔧 *Product:* {lead_data.get('product')}\n"
+            f"📦 *Quantity:* {lead_data.get('quantity') or '—'}\n"
+            f"🚢 *Destination Port:* {lead_data.get('destination_port') or '—'}\n"
             f"💬 *Message:* {lead_data.get('message', 'N/A')}\n"
         )
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"

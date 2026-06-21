@@ -119,8 +119,20 @@ def _valid_phone(phone):
 
 _CRM_API_URL = 'https://terns-exim-api.onrender.com/leads'
 
-def _forward_to_crm(name, phone, email, product, message, company='', country=''):
+def _forward_to_crm(name, phone, email, product, message, company='', country='',
+                    quantity='', destination_port=''):
     """Forward lead to CRM API (primary persistent storage). One retry on failure."""
+    # Fold quantity and destination_port into the message string so the CRM
+    # payload stays at its existing schema — no risk of unknown-field rejection.
+    parts = []
+    if quantity:
+        parts.append(f'Qty: {quantity}')
+    if destination_port:
+        parts.append(f'Port: {destination_port}')
+    if message:
+        parts.append(message)
+    crm_message = ' | '.join(parts)
+
     payload = json.dumps({
         'name':             name,
         'phone':            phone,
@@ -128,7 +140,7 @@ def _forward_to_crm(name, phone, email, product, message, company='', country=''
         'company':          company,
         'country':          country,
         'product_interest': product,
-        'message':          message,
+        'message':          crm_message,
         'source':           'Website',
         'status':           'New',
     }).encode('utf-8')
@@ -162,13 +174,15 @@ def _forward_to_crm(name, phone, email, product, message, company='', country=''
 
 @app.route('/submit-lead', methods=['POST'])
 def submit_lead():
-    name    = request.form.get('name',    '').strip()
-    email   = request.form.get('email',   '').strip()
-    phone   = request.form.get('phone',   '').strip()
-    company = request.form.get('company', '').strip()
-    country = request.form.get('country', '').strip()
-    product = request.form.get('product', '').strip()
-    message = request.form.get('message', '').strip()
+    name             = request.form.get('name',             '').strip()
+    email            = request.form.get('email',            '').strip()
+    phone            = request.form.get('phone',            '').strip()
+    company          = request.form.get('company',          '').strip()
+    country          = request.form.get('country',          '').strip()
+    product          = request.form.get('product',          '').strip()
+    message          = request.form.get('message',          '').strip()
+    quantity         = request.form.get('quantity',         '').strip()
+    destination_port = request.form.get('destination_port', '').strip()
 
     if (not name or len(name) < 2
             or not email or not _EMAIL_RE.match(email)
@@ -178,13 +192,15 @@ def submit_lead():
         return redirect(url_for('contact') + '#enquiry-form')
 
     lead = save_lead(name, phone, email, product, message,
-                     company=company, country=country)
+                     company=company, country=country,
+                     quantity=quantity, destination_port=destination_port)
     send_whatsapp_alert(lead)
     send_telegram_alert(lead)
     threading.Thread(
         target=_forward_to_crm,
         args=(name, phone, email, product, message),
-        kwargs={'company': company, 'country': country},
+        kwargs={'company': company, 'country': country,
+                'quantity': quantity, 'destination_port': destination_port},
         daemon=True,
     ).start()
     return redirect(url_for('thank_you'))
