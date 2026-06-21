@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{% block title %}Bolt Grades Explained: 8.8 vs 10.9 vs 12.9 | TERNS EXIM Blog{% endblock %}
+{% block meta_description %}What do bolt grade numbers mean? This guide explains the ISO 898-1 property class system, compares 8.8, 10.9, and 12.9 tensile and yield strengths, head markings, coating compatibility, and when to use each grade.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/bolt-grades-8-8-vs-10-9-vs-12-9{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/bolt-grades-8-8-vs-10-9-vs-12-9{% endblock %}
+{% block og_title %}Bolt Grades 8.8 vs 10.9 vs 12.9 — ISO 898-1 Explained | TERNS EXIM{% endblock %}
+{% block og_description %}A technical breakdown of ISO 898-1 bolt property classes: what 8.8, 10.9, and 12.9 mean, their tensile and yield strengths, typical applications, head markings, and coating compatibility rules.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bolt Grades Explained: 8.8 vs 10.9 vs 12.9",
+  "description": "A technical breakdown of ISO 898-1 bolt property classes — what the numbers mean, mechanical properties, applications, markings, and coating rules for grades 8.8, 10.9, and 12.9.",
+  "url": "https://ternsexim.com/blog/bolt-grades-8-8-vs-10-9-vs-12-9",
+  "datePublished": "2026-06-21",
+  "dateModified": "2026-06-21",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "url": "https://ternsexim.com"},
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Bolt Grades Explained", "item": "https://ternsexim.com/blog/bolt-grades-8-8-vs-10-9-vs-12-9"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does 8.8 mean on a bolt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The number 8.8 is an ISO 898-1 property class designation. The first '8' means the nominal tensile strength is 800 MPa (8 × 100). The second '8' means the minimum yield strength is 80% of the tensile strength — so 640 MPa (0.8 × 800). Together they define the bolt's minimum mechanical performance. An 8.8 bolt is made from medium carbon steel, quenched and tempered, and is suitable for most general structural and mechanical applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a grade 10.9 bolt stronger than 8.8?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Grade 10.9 has a minimum tensile strength of 1040 MPa versus 800 MPa for grade 8.8 — approximately 30% stronger. However, higher strength does not always mean a better choice. Grade 10.9 is less ductile, more sensitive to fatigue and hydrogen embrittlement, and requires more precise torque control during installation. It is the right choice when joint space is limited and high clamping force is needed, not simply because a stronger bolt is assumed to be safer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can grade 12.9 bolts be hot-dip galvanized?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Grade 12.9 bolts must never be hot-dip galvanized. The high-strength alloy steel used in 12.9 bolts is susceptible to hydrogen embrittlement — hydrogen absorbed during the acid pickling stage of the galvanizing process can cause sudden brittle fracture under load. The same risk applies to grade 10.9, where hot-dip galvanizing is strongly discouraged. For corrosion protection on 10.9 and 12.9 bolts, use mechanical zinc plating, Delta Tone, Geomet, or phosphate-and-oil coatings, all of which avoid the pickling process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What property class should I specify for a structural steel connection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most structural steel connections, grade 8.8 (ISO 4014/4017) is the standard specification and is referenced in EN 1993 (Eurocode 3) and equivalent national codes. Grade 10.9 is used in high-strength friction-grip (HSFG) connections and preloaded bolt assemblies under EN 14399. Grade 12.9 is rarely used in general structural work — it is primarily specified in precision machinery, automotive, and aerospace applications where space constraints demand the highest clamping force per bolt diameter."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== ARTICLE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>Bolt Grades Explained</span>
+    </div>
+    <h1>Bolt Grades Explained: <span class="text-accent">8.8 vs 10.9 vs 12.9</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">Technical Guide</span>
+      <span>21 June 2026</span>
+      <span>7 min read</span>
+      <span>ISO 898-1 Property Classes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE BODY ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#what-the-numbers-mean">What the numbers actually mean</a></li>
+          <li><a href="#comparison-table">Grade comparison table (8.8 / 10.9 / 12.9)</a></li>
+          <li><a href="#grade-8-8">Grade 8.8 — when to use it</a></li>
+          <li><a href="#grade-10-9">Grade 10.9 — when to use it</a></li>
+          <li><a href="#grade-12-9">Grade 12.9 — when to use it</a></li>
+          <li><a href="#head-markings">Head markings &amp; identification</a></li>
+          <li><a href="#coatings">Coatings and grade compatibility</a></li>
+          <li><a href="#mtc">Mill Test Certificates and supply</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>Look at a bolt head and you will usually see two numbers separated by a dot — <strong>8.8</strong>, <strong>10.9</strong>, or <strong>12.9</strong>. These are not model numbers or batch codes. They are <strong>ISO property class designations</strong> that precisely define the bolt's minimum mechanical strength. Specifying the wrong grade is one of the most common — and costly — mistakes in industrial procurement. This article explains exactly what the numbers mean and when to use each grade.</p>
+
+        <h2 id="what-the-numbers-mean">What the Numbers Actually Mean</h2>
+
+        <p>The property class system is defined in <strong>ISO 898-1:2013</strong> (Mechanical properties of fasteners — Bolts, screws and studs). It applies to metric fasteners made from carbon or alloy steel.</p>
+
+        <p>The designation has a simple mathematical structure:</p>
+        <ul>
+          <li><strong>First digit(s) × 100</strong> = nominal minimum tensile strength in MPa</li>
+          <li><strong>Second digit × 10%</strong> = the yield-to-tensile ratio (as a percentage)</li>
+        </ul>
+
+        <p>So for <strong>8.8</strong>: tensile strength = 8 × 100 = 800 MPa. Yield ratio = 8 × 10% = 80%. Minimum yield = 0.80 × 800 = <strong>640 MPa</strong>.</p>
+        <p>For <strong>10.9</strong>: tensile = 1000 MPa nominal (actual minimum 1040 MPa per ISO 898-1). Yield ratio = 90%. Minimum yield = <strong>940 MPa</strong>.</p>
+        <p>For <strong>12.9</strong>: tensile = 1200 MPa nominal (actual minimum 1220 MPa). Yield ratio = 90%. Minimum yield = <strong>1100 MPa</strong>.</p>
+
+        <blockquote>The first digit gives you the strength. The second digit tells you how close the bolt is to yielding at its maximum load — a useful measure of reserve ductility.</blockquote>
+
+        <h2 id="comparison-table">Grade Comparison Table</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr>
+                <th>Property Class</th>
+                <th>Min. Tensile Strength</th>
+                <th>Min. Yield Strength</th>
+                <th>Hardness (HV)</th>
+                <th>Material</th>
+                <th>Typical Applications</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>4.6</strong></td>
+                <td>400 MPa</td>
+                <td>240 MPa</td>
+                <td>120–220 HV</td>
+                <td>Low carbon steel</td>
+                <td>Light general purpose, non-structural</td>
+              </tr>
+              <tr>
+                <td><strong>8.8</strong></td>
+                <td>800 MPa (≤M16)<br>830 MPa (&gt;M16)</td>
+                <td>640 MPa (≤M16)<br>660 MPa (&gt;M16)</td>
+                <td>245–320 HV</td>
+                <td>Medium carbon steel, Q&amp;T</td>
+                <td>Structural steel, machinery, general high-strength</td>
+              </tr>
+              <tr>
+                <td><strong>10.9</strong></td>
+                <td>1040 MPa</td>
+                <td>940 MPa</td>
+                <td>320–380 HV</td>
+                <td>Low-alloy steel (B or Cr), Q&amp;T</td>
+                <td>HSFG connections, automotive, flanges, preloaded joints</td>
+              </tr>
+              <tr>
+                <td><strong>12.9</strong></td>
+                <td>1220 MPa</td>
+                <td>1100 MPa</td>
+                <td>385–435 HV</td>
+                <td>Alloy steel, Q&amp;T</td>
+                <td>Precision machinery, aerospace, die tooling, high-load clamps</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8rem; color:#6b7280; margin-top:-0.75rem; margin-bottom:1.5rem;">Q&amp;T = quenched and tempered. Values from ISO 898-1:2013.</p>
+
+        <h2 id="grade-8-8">Grade 8.8 — The Structural Workhorse</h2>
+
+        <p>Grade 8.8 is the most widely used high-strength bolt in construction and general engineering. It is referenced directly in <strong>EN 1993-1-8 (Eurocode 3)</strong> for structural steel connections and in equivalent codes worldwide. At 800 MPa tensile strength, it provides a substantial safety margin for most applications without the brittleness concerns of higher grades.</p>
+
+        <p><strong>Use grade 8.8 when:</strong></p>
+        <ul>
+          <li>You are connecting structural steelwork (beams, columns, base plates)</li>
+          <li>The joint is loaded primarily in shear or bearing</li>
+          <li>Hot-dip galvanizing is required for corrosion protection</li>
+          <li>The specification calls for "high-strength bolts" without a more specific grade</li>
+          <li>Field installation is done by general contractors (8.8 tolerates moderate installation variability)</li>
+        </ul>
+
+        <h2 id="grade-10-9">Grade 10.9 — Preloaded and High-Tension Applications</h2>
+
+        <p>Grade 10.9 is the standard for <strong>high-strength friction-grip (HSFG) bolts</strong> used in preloaded structural joints (EN 14399-4). It is also the dominant grade in automotive manufacturing and heavy machinery. At 1040 MPa tensile strength, a 10.9 bolt of a given diameter generates significantly more clamping force than an 8.8 — allowing smaller bolts or fewer of them for the same joint.</p>
+
+        <p><strong>Use grade 10.9 when:</strong></p>
+        <ul>
+          <li>The joint design requires preloading (tensioned bolting to slip-critical connections)</li>
+          <li>Vibration resistance is required — high preload reduces bolt loosening under dynamic loads</li>
+          <li>Space constraints mean fewer or smaller bolts are needed</li>
+          <li>The specification explicitly calls for 10.9 or HSFG bolts</li>
+        </ul>
+
+        <p>Important: grade 10.9 requires <strong>controlled torque installation</strong> with a calibrated torque wrench. Over-torquing a 10.9 bolt can induce plastic deformation or fracture. Do not use hot-dip galvanizing on 10.9 (see coatings section below).</p>
+
+        <h2 id="grade-12-9">Grade 12.9 — Maximum Strength, Maximum Care</h2>
+
+        <p>Grade 12.9 is the highest standardised property class and should be specified only when genuinely necessary. At 1220 MPa, it provides extreme clamping force in a compact fastener — which is why it dominates in <strong>precision machinery, die tooling, automotive engine components</strong>, and aerospace sub-assemblies. However, it is the most brittle of the common grades and the most susceptible to hydrogen embrittlement and stress-corrosion cracking.</p>
+
+        <p><strong>Use grade 12.9 when:</strong></p>
+        <ul>
+          <li>Space is severely constrained and maximum clamp load per bolt is critical</li>
+          <li>The design is verified by a mechanical or structural engineer</li>
+          <li>Precise installation torque and lubrication will be applied</li>
+          <li>The application is in controlled-environment machinery (not exposed weather or corrosive environments)</li>
+        </ul>
+
+        <p><strong>Never use grade 12.9 when:</strong></p>
+        <ul>
+          <li>Hot-dip galvanizing is required</li>
+          <li>The fasteners will be installed by workers without torque control tools</li>
+          <li>The joints will experience impact loading or vibration without preload retention measures</li>
+        </ul>
+
+        <h2 id="head-markings">Head Markings and Identification</h2>
+
+        <p>ISO 898-1 requires every fastener to carry two permanent markings on the head (or on the thread end of studs):</p>
+
+        <ol>
+          <li><strong>Property class</strong> — embossed or indented: <em>8.8</em>, <em>10.9</em>, or <em>12.9</em></li>
+          <li><strong>Manufacturer's identification mark</strong> — a letter, symbol, or number registered to the manufacturer for full traceability</li>
+        </ol>
+
+        <p>Some bolt heads also carry <strong>clock-position radial lines</strong> as an alternative identification method — three lines at 120° intervals on 12.9 bolts is a common convention, though the property class number takes precedence.</p>
+
+        <blockquote>Never install an unmarked bolt in a structural or safety-critical joint. The absence of a property class marking means the fastener's properties are unverified and should be treated as unknown.</blockquote>
+
+        <h2 id="coatings">Coatings and Grade Compatibility</h2>
+
+        <p>Coating choice is not independent of bolt grade. <strong>Hydrogen embrittlement</strong> — absorbed during acid pickling before hot-dip galvanizing or electroplating — becomes a catastrophic risk at higher strength levels because the material is less able to accommodate the trapped hydrogen.</p>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr><th>Grade</th><th>Hot-Dip Galvanized (HDG)</th><th>Zinc Electroplating</th><th>Mechanical Zinc Plating</th><th>Geomet / Delta Tone</th><th>Phosphate + Oil</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>8.8</strong></td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td></tr>
+              <tr><td><strong>10.9</strong></td><td style="color:#dc2626;">Not recommended</td><td style="color:#ca8a04;">With caution (bake relief required)</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td></tr>
+              <tr><td><strong>12.9</strong></td><td style="color:#dc2626;">Prohibited</td><td style="color:#dc2626;">Not recommended</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td><td style="color:#16a34a;">Permitted</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Guidance per ISO 4042 (electroplating) and ISO 10684 (hot-dip galvanizing). Where electroplating is used on 10.9, a hydrogen embrittlement relief bake (190°C for ≥4 hours, within 4 hours of plating) is required per ASTM B849.</p>
+
+        <h2 id="mtc">Mill Test Certificates and Supply from TERNS EXIM</h2>
+
+        <p>Every bolt shipment from TERNS EXIM is accompanied by a <strong>Mill Test Certificate (MTC)</strong> per EN 10204 Type 3.1 (or 2.2 where specified). The MTC records:</p>
+        <ul>
+          <li>Heat / melt number for full material traceability</li>
+          <li>Chemical composition (carbon, manganese, phosphorus, sulphur, boron/chromium for alloy grades)</li>
+          <li>Tensile strength, yield strength, and elongation test results</li>
+          <li>Hardness test results (Vickers HV)</li>
+          <li>Property class confirmation and standard reference (ISO 898-1)</li>
+          <li>Manufacturing plant name and test laboratory</li>
+        </ul>
+
+        <p>We supply grades 8.8, 10.9, and 12.9 in all standard metric sizes, in plain, zinc-plated, and mechanically plated finishes. Third-party pre-shipment inspection (SGS, Bureau Veritas, or TÜV) is available on request for high-value or safety-critical orders.</p>
+
+      </div><!-- .article-body -->
+    </div><!-- .article-wrap -->
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Need 8.8, 10.9, or 12.9 Bolts with Full MTC?</h2>
+      <p>Send us your ISO standard, property class, size range, quantity, and destination — we'll return a detailed quotation with Mill Test Certificate commitment within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20a%20quote%20for%20high-strength%20bolts%20(8.8%20%2F%2010.9%20%2F%2012.9)%20with%20Mill%20Test%20Certificates." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to blog -->
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

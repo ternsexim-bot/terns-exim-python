@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | Fastener Guides &amp; Export Insights | TERNS EXIM{% endblock %}
+{% block meta_description %}Fastener technical guides and export insights from TERNS EXIM — bolt grades explained, how to import from India, DIN/ISO/ASTM standards, Incoterms, and more.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog{% endblock %}
+{% block og_url %}https://ternsexim.com/blog{% endblock %}
+{% block og_title %}Blog | Fastener Guides &amp; Export Insights | TERNS EXIM{% endblock %}
+{% block og_description %}Technical guides and practical export knowledge from TERNS EXIM — bolt grades, import process, standards, Incoterms, and supplier vetting. Written for global industrial buyers.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "TERNS EXIM Blog — Fastener Guides & Export Insights",
+  "description": "Technical guides and export knowledge for global industrial buyers sourcing fasteners from India.",
+  "url": "https://ternsexim.com/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TERNS EXIM",
+    "url": "https://ternsexim.com"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <span>Blog</span>
+    </div>
+    <h1>TERNS EXIM Blog — <span class="text-accent">Fastener Guides &amp; Export Insights</span></h1>
+    <p>Technical knowledge and practical guidance for global buyers sourcing industrial fasteners from India.</p>
+  </div>
+</section>
+
+<!-- ===== ARTICLE GRID ===== -->
+<section class="section section-light">
+  <div class="container">
+
+    <div class="blog-grid">
+
+      <!-- Article 1: Bolt Grades -->
+      <article class="blog-card">
+        <span class="blog-card-tag">Technical Guide</span>
+        <h3><a href="{{ url_for('blog_bolt_grades') }}" style="color:inherit; text-decoration:none;">Bolt Grades Explained: 8.8 vs 10.9 vs 12.9</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 7 min read</p>
+        <p>What do the numbers on a bolt head actually mean? This guide breaks down the ISO 898-1 property class system, compares tensile and yield strengths, explains head markings, and tells you exactly when to specify each grade.</p>
+        <a href="{{ url_for('blog_bolt_grades') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+      <!-- Article 2: Import Guide -->
+      <article class="blog-card">
+        <span class="blog-card-tag">Buyer's Guide</span>
+        <h3><a href="{{ url_for('blog_import_guide') }}" style="color:inherit; text-decoration:none;">How to Import Fasteners from India: A Complete Buyer's Guide</a></h3>
+        <p class="blog-card-meta">21 June 2026 &nbsp;·&nbsp; 9 min read</p>
+        <p>A practical end-to-end guide covering supplier vetting, standards (DIN/ISO/ASTM), writing an RFQ, Incoterms, payment terms, quality assurance, shipping timelines, and the export documents you should expect to receive.</p>
+        <a href="{{ url_for('blog_import_guide') }}" class="blog-card-link">Read article &rarr;</a>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER / CTA ===== -->
+<section class="section section-dark" style="padding: 2.5rem 0;">
+  <div class="container" style="text-align:center; max-width:600px;">
+    <p class="section-eyebrow">Stay Informed</p>
+    <h2 class="section-title" style="font-size:1.35rem; margin-bottom:0.75rem;">Have a Technical Question?</h2>
+    <p style="color:rgba(255,255,255,0.65); margin-bottom:1.5rem; font-size:0.95rem;">Our team is happy to advise on grade selection, standards, and sourcing. Send us your specification and we'll respond within 24 working hours.</p>
+    <a href="{{ url_for('contact') }}" class="btn btn-primary">Contact Our Team</a>
+  </div>
+</section>
+
+{% endblock %}
