@@ -55,6 +55,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/export-process')
+def export_process():
+    return render_template('export_process.html')
+
 @app.route('/products')
 def products():
     return render_template('products.html')

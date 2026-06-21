@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+
+{% block title %}Export Process | How to Order from TERNS EXIM{% endblock %}
+{% block meta_description %}Step-by-step export process: how to order fasteners from TERNS EXIM. From inquiry to delivery — Proforma Invoice, payment terms, manufacturing, shipping, and export documents explained.{% endblock %}
+{% block canonical %}https://ternsexim.com/export-process{% endblock %}
+{% block og_url %}https://ternsexim.com/export-process{% endblock %}
+{% block og_title %}Export Process | How to Order from TERNS EXIM{% endblock %}
+{% block og_description %}Understand exactly how to source fasteners from India. Our 10-step export process covers inquiry, quotation, PI, payment, manufacturing, quality inspection, shipping, and delivery.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Export Process | How to Order from TERNS EXIM",
+  "description": "Step-by-step guide to ordering export fasteners from TERNS EXIM: inquiry, quotation, Proforma Invoice, payment, manufacturing, quality check, shipping, and delivery.",
+  "url": "https://ternsexim.com/export-process",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "TERNS EXIM",
+    "url": "https://ternsexim.com"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Export Process", "item": "https://ternsexim.com/export-process"}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+  /* ── Export Process page styles ── */
+  .ep-timeline {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0.5rem 0 2rem;
+  }
+
+  /* Vertical connector line */
+  .ep-timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #c9a84c 0%, rgba(201,168,76,0.15) 100%);
+  }
+
+  .ep-step {
+    position: relative;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .ep-step:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Number badge */
+  .ep-num {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #c9a84c;
+    color: #1a2a3a;
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 4px #1a2a3a, 0 0 0 6px rgba(201,168,76,0.25);
+  }
+
+  .ep-card {
+    flex: 1;
+    background: #1e2f42;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 1.1rem 1.4rem;
+    margin-top: 0.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .ep-card:hover {
+    border-color: rgba(201,168,76,0.55);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  }
+
+  .ep-card h3 {
+    color: #c9a84c;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ep-card h3 .ep-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: rgba(201,168,76,0.15);
+    color: #c9a84c;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 1px 7px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .ep-card p {
+    color: #c8d6e5;
+    margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  /* Highlight certain key terms */
+  .ep-card strong {
+    color: #e8edf2;
+    font-weight: 600;
+  }
+
+  /* CTA section */
+  .ep-cta-box {
+    background: #1e2f42;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-top: 3px solid #c9a84c;
+    border-radius: 8px;
+    padding: 2rem 2rem 1.75rem;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .ep-cta-box p {
+    color: #c8d6e5;
+    margin: 0 0 1.25rem;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .ep-cta-box .ep-cta-note {
+    font-size: 0.875rem;
+    color: #8aa0b8;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+
+  .ep-cta-box .ep-cta-note a {
+    color: #c9a84c;
+    text-decoration: none;
+  }
+
+  .ep-cta-box .ep-cta-note a:hover {
+    text-decoration: underline;
+  }
+
+  .ep-cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .ep-timeline::before {
+      left: 22px;
+    }
+    .ep-num {
+      width: 44px;
+      height: 44px;
+      font-size: 0.95rem;
+      box-shadow: 0 0 0 3px #1a2a3a, 0 0 0 5px rgba(201,168,76,0.2);
+    }
+    .ep-step {
+      gap: 1rem;
+    }
+    .ep-card {
+      padding: 0.9rem 1.1rem;
+    }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <span>Export Process</span>
+    </div>
+    <h1>How to Order — Our <span class="text-accent">Export Process</span></h1>
+    <p>Simple, transparent, and proven. Here is exactly what happens from your first message to the moment your shipment arrives.</p>
+  </div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">End-to-End Clarity</p>
+      <h2 class="section-title">No Surprises. No Guesswork.</h2>
+      <p class="section-subtitle">Many first-time importers hesitate because the process feels unfamiliar. We remove that barrier completely. Below is every step we take together — from your inquiry to your delivery — so you always know what to expect and what comes next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="section section-dark" style="padding-top: 1rem;">
+  <div class="container">
+    <div class="ep-timeline">
+
+      <!-- Step 1 -->
+      <div class="ep-step">
+        <div class="ep-num">1</div>
+        <div class="ep-card">
+          <h3>Inquiry <span class="ep-label">Day 1</span></h3>
+          <p>Send us your requirement via our <a href="{{ url_for('contact') }}" style="color:#c9a84c;">enquiry form</a>, email (<a href="mailto:sales@ternsexim.com" style="color:#c9a84c;">sales@ternsexim.com</a>), or WhatsApp. Include <strong>product, grade, quantity, and destination.</strong></p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="ep-step">
+        <div class="ep-num">2</div>
+        <div class="ep-card">
+          <h3>Quotation <span class="ep-label">Within 24 hrs</span></h3>
+          <p>We respond within <strong>24 working hours</strong> with a detailed quotation: unit price, Incoterms (FOB/CIF), lead time, and payment terms.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="ep-step">
+        <div class="ep-num">3</div>
+        <div class="ep-card">
+          <h3>Proforma Invoice</h3>
+          <p>On confirmation, we issue a <strong>Proforma Invoice (PI)</strong> detailing specifications, quantity, pricing, and terms for your approval.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="ep-step">
+        <div class="ep-num">4</div>
+        <div class="ep-card">
+          <h3>Payment Terms</h3>
+          <p><strong>Trial and first orders: 100% advance.</strong> Established buyers (after 5–8 successful shipments): 70–80% advance, balance against shipment. Payment via <strong>Wire Transfer (T/T)</strong> or <strong>Letter of Credit (L/C).</strong></p>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="ep-step">
+        <div class="ep-num">5</div>
+        <div class="ep-card">
+          <h3>Manufacturing <span class="ep-label">7–21 working days</span></h3>
+          <p>Production begins on payment confirmation. Manufacturing and dispatch: <strong>7–21 working days,</strong> depending on product, quantity, and specifications.</p>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="ep-step">
+        <div class="ep-num">6</div>
+        <div class="ep-card">
+          <h3>Quality Inspection</h3>
+          <p>Every order undergoes quality checks and is supplied with <strong>Mill Test Certificates (MTC).</strong> Third-party inspection (SGS / BV / TÜV) available on request.</p>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="ep-step">
+        <div class="ep-num">7</div>
+        <div class="ep-card">
+          <h3>Shipping</h3>
+          <p>Primarily <strong>sea freight;</strong> air freight available for urgent or sample shipments. Shipped on <strong>FOB or CIF terms</strong> from any major Indian port (Chennai, Tuticorin, Mumbai/Nhava Sheva, Mundra).</p>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="ep-step">
+        <div class="ep-num">8</div>
+        <div class="ep-card">
+          <h3>Balance Payment</h3>
+          <p>For established-buyer orders, the balance is settled against a copy of the <strong>Bill of Lading (B/L)</strong> before documents are released.</p>
+        </div>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="ep-step">
+        <div class="ep-num">9</div>
+        <div class="ep-card">
+          <h3>Export Documents</h3>
+          <p>We provide the complete export document set: <strong>Bill of Lading, Commercial Invoice, Mill Test Certificate,</strong> and <strong>Packing List.</strong></p>
+        </div>
+      </div>
+
+      <!-- Step 10 -->
+      <div class="ep-step">
+        <div class="ep-num">10</div>
+        <div class="ep-card">
+          <h3>Delivery <span class="ep-label">Destination port</span></h3>
+          <p>Your shipment arrives at the destination port. We remain available for support throughout <strong>customs clearance</strong> and beyond.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING CTA ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="ep-cta-box">
+      <p>From first inquiry to final delivery, our team guides you at every step.</p>
+      <div class="ep-cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quotation</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%27d%20like%20to%20start%20an%20order.%20Please%20guide%20me%20through%20your%20export%20process."
+           target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:-3px; margin-right:5px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <p class="ep-cta-note">Questions about the process? Contact us at <a href="mailto:sales@ternsexim.com">sales@ternsexim.com</a> or via <a href="https://wa.me/916369097465" target="_blank" rel="noopener">WhatsApp</a>.</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
