@@ -162,6 +162,19 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-2px);
 }
 
+.btn-download {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--gold-dark);
+  border-width: 2px;
+}
+.btn-download:hover {
+  background: var(--gold-grad);
+  color: var(--navy);
+  border-color: var(--gold-dark);
+  transform: translateY(-2px);
+}
+
 .btn-accent {
   background: var(--navy-light);
   color: var(--white);
