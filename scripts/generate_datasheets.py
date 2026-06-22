@@ -26,7 +26,7 @@ MARGIN = 14 * mm
 
 COMPANY = "TERNS EXIM"
 # ASCII-safe separators (middot U+00B7 is in Latin-1, fine for Helvetica)
-TAGLINE = "Registered Merchant Exporter - Coimbatore, India"
+TAGLINE = "Industrial Fastener Exporter - Coimbatore, India"
 EMAIL   = "sales@ternsexim.com"
 PHONE   = "+91 63690 97465"
 WEB     = "www.ternsexim.com"
@@ -438,10 +438,9 @@ def build_export_section(hs_code):
 
 def build_contact_bar():
     """Navy footer bar with company contact details."""
-    # FIX A: "Registered Merchant Exporter" — positive framing, no "Not a Manufacturer"
     text = (
         f"{COMPANY}  |  {EMAIL}  |  {PHONE}  |  {WEB}"
-        f"  |  Fastener & Merchant Exporter"
+        f"  |  Industrial Fastener Exporter - DIN / ISO / ASTM"
     )
     st = _style("cb", fontName="Helvetica-Bold", fontSize=8, textColor=WHITE, leading=12)
     avail = PAGE_W - 2 * MARGIN
