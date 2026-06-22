@@ -441,7 +441,7 @@ def build_contact_bar():
     # FIX A: "Registered Merchant Exporter" — positive framing, no "Not a Manufacturer"
     text = (
         f"{COMPANY}  |  {EMAIL}  |  {PHONE}  |  {WEB}"
-        f"  |  Registered Merchant Exporter"
+        f"  |  Fastener & Merchant Exporter"
     )
     st = _style("cb", fontName="Helvetica-Bold", fontSize=8, textColor=WHITE, leading=12)
     avail = PAGE_W - 2 * MARGIN
