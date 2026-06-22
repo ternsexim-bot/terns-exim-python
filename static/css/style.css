@@ -436,7 +436,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .nav-link {
@@ -444,10 +444,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
-  padding: 8px 16px;
+  padding: 8px 11px;
   border-radius: var(--radius);
   transition: all var(--transition);
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
