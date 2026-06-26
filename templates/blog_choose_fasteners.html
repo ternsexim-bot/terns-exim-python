@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block title %}How to Choose the Right Fastener: Size, Grade &amp; Material Guide | TERNS EXIM Blog{% endblock %}
+{% block meta_description %}A practical guide to selecting the right fastener: how to determine diameter, length and thread pitch, choose the correct grade (8.8/10.9/12.9) for your load, pick the right material by environment, and select the right coating.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/how-to-choose-fasteners-size-grade-material{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/how-to-choose-fasteners-size-grade-material{% endblock %}
+{% block og_title %}How to Choose the Right Fastener: Size, Grade &amp; Material Guide | TERNS EXIM{% endblock %}
+{% block og_description %}Step-by-step guide to fastener selection: diameter, length, thread pitch, property class (8.8/10.9/12.9), material (carbon steel, stainless A2/A4), and finish by corrosion exposure. Includes a decision checklist.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Choose the Right Fastener: Size, Grade & Material Guide",
+  "description": "A practical step-by-step guide to selecting the correct fastener size, property class, material, and coating for your application.",
+  "url": "https://ternsexim.com/blog/how-to-choose-fasteners-size-grade-material",
+  "datePublished": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "logo": {"@type": "ImageObject", "url": "https://ternsexim.com/static/images/logo.png"}},
+  "mainEntityOfPage": "https://ternsexim.com/blog/how-to-choose-fasteners-size-grade-material",
+  "about": "industrial fasteners selection",
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "How to Choose the Right Fastener", "item": "https://ternsexim.com/blog/how-to-choose-fasteners-size-grade-material"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I determine the correct bolt diameter for my application?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start from the load requirements. Calculate or estimate the shear and tensile forces on the joint, then divide by the number of bolts planned. Use the proof load for the intended grade to find the minimum stress area, which maps to a thread size. In practice, structural engineers use published joint design tables (EN 1993-1-8 for steel, for example). For general machinery, a common starting point is to match the bolt diameter to the plate thickness being joined — an M12 bolt through 12 mm plate is a reasonable heuristic — then verify through calculation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between coarse and fine thread pitch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Coarse pitch (e.g. M12 × 1.75) is the standard for most structural and general-purpose applications. It assembles faster, is more tolerant of damage and dirt, and is easier to find. Fine pitch (e.g. M12 × 1.25) has a higher thread stripping resistance per unit length and is used in precision machinery, thin-walled components, and applications requiring fine torque adjustment. Unless your design specifically calls for fine pitch, always default to coarse (ISO 68-1 standard pitch series)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I use stainless steel fasteners instead of carbon steel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use stainless steel (A2 or A4) when the fastener will be exposed to corrosive environments without the option of repainting or recoating — marine environments, food-processing equipment, chemical plant, outdoor architectural steel, and water treatment are typical cases. A4 (316 stainless) provides superior chloride resistance and is preferred for coastal and marine use. A2 (304 stainless) suits general outdoor and mildly corrosive environments. For high-load structural connections in corrosive environments, consider duplex stainless or hot-dip galvanized carbon steel 8.8 with appropriate thickness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I mix different grades of bolts in the same joint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — this should be avoided in any engineered joint. Mixing grades in a single bolt group means some bolts will reach their proof load before others, leading to uneven load distribution and premature joint failure. The weakest bolt governs, but the failure mode becomes unpredictable. Always specify a single consistent property class throughout a joint. If you inherit a mixed situation in the field, remove and replace all fasteners with a uniform grade verified by head marking and MTC."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== ARTICLE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>How to Choose the Right Fastener</span>
+    </div>
+    <h1>How to Choose the Right Fastener: <span class="text-accent">Size, Grade &amp; Material Guide</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">How-To Guide</span>
+      <span>23 June 2026</span>
+      <span>8 min read</span>
+      <span>Fastener Selection</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE BODY ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#size-diameter">Step 1 — Determine the right size (diameter &amp; length)</a></li>
+          <li><a href="#thread-pitch">Step 2 — Choose coarse or fine thread pitch</a></li>
+          <li><a href="#grade-selection">Step 3 — Select the grade by load and joint type</a></li>
+          <li><a href="#material-selection">Step 4 — Choose material by environment</a></li>
+          <li><a href="#finish-selection">Step 5 — Select the finish by corrosion exposure</a></li>
+          <li><a href="#decision-checklist">Fastener selection checklist</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>Ordering the wrong fastener costs more than just the price of a replacement box. A bolt that is under-strength fails at the joint. A bolt that is over-specified raises cost, weight, and sometimes creates brittleness risks. This guide walks through the five decisions — size, thread pitch, grade, material, and finish — in the order you should make them.</p>
+
+        <h2 id="size-diameter">Step 1 — Determine the Right Size: Diameter and Length</h2>
+
+        <p>The two key dimensions are the <strong>nominal diameter</strong> (the thread's major diameter, e.g. M12 = 12 mm) and the <strong>grip length</strong> (the thickness of the material being clamped).</p>
+
+        <h3>Nominal diameter</h3>
+        <p>Diameter is determined by the load the joint must carry, divided across the number of bolts. For structural steel, this calculation follows EN 1993-1-8 or AISC 360 depending on your standard. For general machinery, a practical rule of thumb is that the bolt diameter should be approximately equal to the plate thickness — an M12 bolt through a 12 mm plate is a reasonable starting point. Always verify through a load calculation for any safety-critical application.</p>
+
+        <h3>Grip length and bolt length</h3>
+        <p>The grip length is the total thickness of all plies being clamped. The bolt length should be long enough that at least one full thread protrudes beyond the nut after tightening (one pitch beyond the nut face is the ISO minimum), but not so long that excessive thread engages inside the joint shear plane. Standard bolt length series under <strong>ISO 4014 (hex bolt, partial thread)</strong> and <strong>ISO 4017 (hex bolt, full thread)</strong> are published in 5 mm and 10 mm increments for most sizes — select the shortest bolt that provides adequate thread protrusion.</p>
+
+        <blockquote>Thread engagement: the nut must engage at least one nominal diameter's worth of threads for full proof load. A M16 bolt requires at least 16 mm of nut thread engagement — a standard M16 hex nut (ISO 4032) provides this.</blockquote>
+
+        <h2 id="thread-pitch">Step 2 — Choose Coarse or Fine Thread Pitch</h2>
+
+        <p>ISO metric threads are defined by diameter and pitch (e.g. M16 × 2 for coarse, M16 × 1.5 for fine). <strong>Coarse pitch is the default</strong> and is used in the vast majority of structural, construction, and general industrial applications. Fine pitch is reserved for specific engineering situations:</p>
+
+        <ul>
+          <li><strong>Coarse pitch (ISO standard pitch)</strong> — faster assembly, more damage-tolerant, widely stocked, all standard nuts fit. Use for 95% of applications.</li>
+          <li><strong>Fine pitch</strong> — higher thread-stripping resistance per unit length, useful in thin-walled tapped holes, precision adjustment mechanisms, or where fine torque control is critical. Requires matching fine-pitch nuts — never mix with coarse-pitch hardware.</li>
+        </ul>
+
+        <h2 id="grade-selection">Step 3 — Select the Grade by Load and Joint Type</h2>
+
+        <p>Property class (grade) sets the bolt's mechanical strength. Three grades cover the majority of industrial applications — refer to our detailed article on <a href="{{ url_for('blog_bolt_grades') }}" style="color:#c9a84c;">bolt grades 8.8 vs 10.9 vs 12.9</a> for the full breakdown. A quick decision guide:</p>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr>
+                <th>Grade</th>
+                <th>Min. Tensile</th>
+                <th>Best For</th>
+                <th>Avoid When</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>4.6</strong></td>
+                <td>400 MPa</td>
+                <td>Light non-structural, access panels, formwork</td>
+                <td>Any structural or high-load joint</td>
+              </tr>
+              <tr>
+                <td><strong>8.8</strong></td>
+                <td>800 MPa</td>
+                <td>Structural steel, general machinery, hot-dip galvanized joints</td>
+                <td>Preloaded HSFG connections (use 10.9)</td>
+              </tr>
+              <tr>
+                <td><strong>10.9</strong></td>
+                <td>1040 MPa</td>
+                <td>HSFG, preloaded joints, automotive, compact flanges</td>
+                <td>Hot-dip galvanizing required</td>
+              </tr>
+              <tr>
+                <td><strong>12.9</strong></td>
+                <td>1220 MPa</td>
+                <td>Precision machinery, die tooling, aerospace sub-assemblies</td>
+                <td>Outdoor, corrosive, or impact-load environments</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>When in doubt between grades, choose the lower grade and increase the number of bolts — this is almost always cheaper and more reliable than stepping up to a higher grade with smaller safety margins.</p>
+
+        <h2 id="material-selection">Step 4 — Choose Material by Environment</h2>
+
+        <p>The bolt material determines its base corrosion resistance before any coating. There are three common families:</p>
+
+        <h3>Carbon and alloy steel (grades 4.6 through 12.9)</h3>
+        <p>The standard for structural and mechanical applications. Carbon steel has virtually no inherent corrosion resistance — it depends entirely on surface treatment (see Step 5). The advantage is the full range of strength grades, weldability, and cost efficiency. This is the right choice for any covered or coated environment.</p>
+
+        <h3>Stainless steel A2 (ISO 3506 — 304 grade)</h3>
+        <p>Good corrosion resistance in general outdoor, mildly acidic, and food-processing environments. Strength class A2-70 (equivalent to roughly 8.8 in tensile strength) is most common. Not suitable for prolonged chloride exposure — seawater, de-icing salt, or coastal splash zones.</p>
+
+        <h3>Stainless steel A4 (ISO 3506 — 316 grade)</h3>
+        <p>Molybdenum-alloyed for superior chloride resistance. Specify A4 for marine, coastal, chemical plant, and desalination applications. A4-80 provides the highest standard strength (800 MPa tensile). Available in <a href="/stainless-bolts" style="color:#c9a84c;">hex bolts and structural fasteners</a> from TERNS EXIM.</p>
+
+        <blockquote>Stainless steel fasteners are not inherently stronger than carbon steel — A4-80 at 800 MPa matches grade 8.8. If you need both corrosion resistance and high strength (above 8.8 equivalent), consult us about duplex stainless or super-duplex options.</blockquote>
+
+        <h2 id="finish-selection">Step 5 — Select the Finish by Corrosion Exposure</h2>
+
+        <p>For carbon steel fasteners, the surface finish determines corrosion life. The decision depends on exposure category and grade compatibility:</p>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr>
+                <th>Finish</th>
+                <th>Salt-Spray Hours</th>
+                <th>Grade Compatible</th>
+                <th>Typical Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Plain (black)</td>
+                <td>~24 h</td>
+                <td>All grades</td>
+                <td>Covered/indoor, short-term protection</td>
+              </tr>
+              <tr>
+                <td>Zinc electroplated</td>
+                <td>72–120 h</td>
+                <td>Up to 8.8 freely; 10.9 with bake</td>
+                <td>General light outdoor, domestic</td>
+              </tr>
+              <tr>
+                <td>Hot-dip galvanized (HDG)</td>
+                <td>480–1000+ h</td>
+                <td>8.8 only (not 10.9/12.9)</td>
+                <td>Structural outdoor, coastal construction</td>
+              </tr>
+              <tr>
+                <td>Geomet / Delta Tone</td>
+                <td>720–1000 h</td>
+                <td>All grades including 10.9/12.9</td>
+                <td>Automotive, preloaded joints, wind energy</td>
+              </tr>
+              <tr>
+                <td>Mechanical zinc plating</td>
+                <td>200–500 h</td>
+                <td>All grades</td>
+                <td>High-strength bolts requiring zinc protection</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8rem; color:#6b7280; margin-top:-0.75rem; margin-bottom:1.5rem;">Salt-spray hours are indicative. Actual performance depends on coating thickness and test method (ISO 9227).</p>
+
+        <h2 id="decision-checklist">Fastener Selection Checklist</h2>
+
+        <p>Before placing an order, confirm you have specified all of the following:</p>
+
+        <ul>
+          <li><strong>Fastener type</strong> — hex bolt, socket cap screw, stud bolt, anchor bolt, etc.</li>
+          <li><strong>Standard</strong> — ISO 4014/4017 (hex bolt), DIN 933, ASTM A193, or equivalent</li>
+          <li><strong>Nominal diameter</strong> — e.g. M16 or 5/8 inch</li>
+          <li><strong>Thread pitch</strong> — coarse (standard) or fine; metric or unified</li>
+          <li><strong>Nominal length</strong> — grip length plus nut height plus washer thickness plus 2–3 thread pitch clearance</li>
+          <li><strong>Property class / grade</strong> — 8.8, 10.9, 12.9, A2-70, A4-80, etc.</li>
+          <li><strong>Material</strong> — carbon steel, alloy steel, stainless (specify grade)</li>
+          <li><strong>Surface finish</strong> — plain, HDG, zinc electroplated, Geomet, etc.</li>
+          <li><strong>Nuts and washers</strong> — matching grade and standard (ISO 4032 nut, ISO 7089 washer, etc.)</li>
+          <li><strong>Certification</strong> — EN 10204 2.2 test report, or 3.1 MTC with heat number</li>
+          <li><strong>Quantity</strong> — number of pieces; specify whether spares are included</li>
+        </ul>
+
+        <p>TERNS EXIM supplies <a href="/hex-bolts" style="color:#c9a84c;">hex bolts</a>, <a href="/anchor-bolts" style="color:#c9a84c;">anchor bolts</a>, <a href="/stainless-bolts" style="color:#c9a84c;">stainless fasteners</a>, and the full range of associated nuts and washers with EN 10204 3.1 MTCs. Send us your completed specification and we will return a detailed quotation within 24 working hours.</p>
+
+      </div><!-- .article-body -->
+    </div><!-- .article-wrap -->
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ready to Specify? We'll Help You Get It Right.</h2>
+      <p>Share your application details — load, environment, standard, quantity, and destination — and our team will confirm the correct specification and return a quotation with MTC within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20help%20selecting%20the%20right%20fastener%20specification%20for%20my%20project." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to blog -->
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}

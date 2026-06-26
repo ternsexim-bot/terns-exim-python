@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block title %}How to Read a Mill Test Certificate (MTC): A Buyer's Guide | TERNS EXIM Blog{% endblock %}
+{% block meta_description %}What is a Mill Test Certificate? This guide explains EN 10204 types 2.1, 2.2, 3.1, and 3.2, how to read each section — heat number, chemical composition, mechanical properties, hardness — and why it matters for import quality assurance.{% endblock %}
+{% block canonical %}https://ternsexim.com/blog/how-to-read-mill-test-certificate{% endblock %}
+{% block og_url %}https://ternsexim.com/blog/how-to-read-mill-test-certificate{% endblock %}
+{% block og_title %}How to Read a Mill Test Certificate (MTC): A Buyer's Guide | TERNS EXIM{% endblock %}
+{% block og_description %}EN 10204 types explained, section-by-section MTC reading guide, what to verify before accepting a shipment, and why 3.1 MTCs are the minimum standard for import quality assurance.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Read a Mill Test Certificate (MTC): A Buyer's Guide",
+  "description": "A practical guide to understanding Mill Test Certificates — EN 10204 types, how to read each section, and what to verify before accepting a fastener shipment.",
+  "url": "https://ternsexim.com/blog/how-to-read-mill-test-certificate",
+  "datePublished": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "author": {"@type": "Organization", "name": "TERNS EXIM"},
+  "publisher": {"@type": "Organization", "name": "TERNS EXIM", "logo": {"@type": "ImageObject", "url": "https://ternsexim.com/static/images/logo.png"}},
+  "mainEntityOfPage": "https://ternsexim.com/blog/how-to-read-mill-test-certificate",
+  "about": "mill test certificate fasteners quality",
+  "inLanguage": "en",
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ternsexim.com"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ternsexim.com/blog"},
+      {"@type": "ListItem", "position": 3, "name": "How to Read a Mill Test Certificate", "item": "https://ternsexim.com/blog/how-to-read-mill-test-certificate"}
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a Mill Test Certificate (MTC)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Mill Test Certificate (MTC), also called a Material Test Report (MTR), is a quality assurance document issued by a steel manufacturer or fastener producer that certifies the chemical composition and mechanical properties of a specific production batch. It links the material to a specific heat (melt) number, enabling full traceability from the end-user back to the steelmaker. For imported fasteners, the MTC is the primary document a buyer uses to verify that the material actually meets the specified standard — without it, the claim that a bolt is 'grade 8.8' or 'A4-70' is unverified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between EN 10204 3.1 and 3.2?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both 3.1 and 3.2 are specific inspection documents under EN 10204 — the highest categories of material certification. Type 3.1 is signed by the manufacturer's authorised inspection representative, who is independent of the manufacturing department. Type 3.2 is validated by both the manufacturer's authorised representative AND an independent third-party inspector (such as SGS, Bureau Veritas, or a customer's own representative). For most commercial industrial imports, EN 10204 3.1 is the standard minimum. EN 10204 3.2 is specified for nuclear, aerospace, or other safety-critical applications, or when customers require independent witness to testing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What chemical elements should I check on an MTC for high-strength bolts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For grade 8.8 bolts: verify carbon (C ≤ 0.55%), manganese (Mn), phosphorus (P ≤ 0.048%), and sulphur (S ≤ 0.058%) are within ISO 898-1 limits. For 10.9 and 12.9, also check the alloying elements (chromium, boron, or molybdenum) that provide the necessary hardenability. Pay particular attention to boron (B) — boron-alloyed steels require controlled quenching and are susceptible to hydrogen embrittlement; their use in fasteners is restricted by ISO 898-1 Annex A for sizes above M39. If the heat shows unusually high boron content with no mention of controlled cooling, treat it with caution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I accept a fastener shipment without an MTC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can, but it is not recommended for any structural, pressure, or safety-critical application. Without an MTC, you have no documented assurance that the material meets the claimed grade. Head markings identify the grade claimed, but they do not prove the material meets it. Many customs authorities and end-client quality systems in the EU, UK, and Middle East require MTCs as part of material traceability records. If you receive fasteners without an MTC, request one from the supplier before the goods leave the port of origin — it is very difficult to obtain retrospectively."
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<!-- ===== ARTICLE HERO ===== -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{{ url_for('home') }}">Home</a>
+      <span>/</span>
+      <a href="{{ url_for('blog_index') }}">Blog</a>
+      <span>/</span>
+      <span>How to Read a Mill Test Certificate</span>
+    </div>
+    <h1>How to Read a Mill Test Certificate (MTC): <span class="text-accent">A Buyer's Guide</span></h1>
+    <div class="article-meta" style="margin-top:0.85rem;">
+      <span class="article-tag">How-To Guide</span>
+      <span>23 June 2026</span>
+      <span>7 min read</span>
+      <span>EN 10204 · Quality Assurance</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARTICLE BODY ===== -->
+<section class="section section-light">
+  <div class="container">
+    <div class="article-wrap">
+
+      <div class="article-toc">
+        <strong>In this article:</strong>
+        <ol>
+          <li><a href="#what-is-mtc">What is a Mill Test Certificate?</a></li>
+          <li><a href="#en10204-types">EN 10204 types explained (2.1 / 2.2 / 3.1 / 3.2)</a></li>
+          <li><a href="#reading-heat-number">Reading the heat number</a></li>
+          <li><a href="#chemical-composition">Chemical composition section</a></li>
+          <li><a href="#mechanical-properties">Mechanical properties section</a></li>
+          <li><a href="#hardness">Hardness results</a></li>
+          <li><a href="#customs-qa">Why it matters for import QA and customs</a></li>
+          <li><a href="#what-to-verify">What to verify before accepting a shipment</a></li>
+        </ol>
+      </div>
+
+      <div class="article-body">
+
+        <p>You receive a pallet of bolts from India. The invoice says "Grade 8.8 per ISO 898-1." The box is marked. But how do you know the material is actually what was claimed? The answer is the <strong>Mill Test Certificate (MTC)</strong> — and knowing how to read one is one of the most practical skills an import buyer can have. This article explains exactly what to look for.</p>
+
+        <h2 id="what-is-mtc">What Is a Mill Test Certificate?</h2>
+
+        <p>A Mill Test Certificate (also called a Material Test Report, or MTR) is a traceability document issued at the time of production that records the actual measured properties of a specific batch of material. It ties test results to a <strong>heat number</strong> — a unique identifier for the batch of steel from which the material was made. This chain from test result → heat number → fastener lot is what makes a claim of conformance verifiable rather than assumed.</p>
+
+        <p>MTCs are governed by <strong>EN 10204:2004</strong> in Europe (and widely referenced globally, including in the Gulf, Southeast Asia, and Australia). EN 10204 defines four types of document, each offering a different level of assurance.</p>
+
+        <h2 id="en10204-types">EN 10204 Types Explained</h2>
+
+        <div style="overflow-x:auto; margin-bottom:1.5rem;">
+          <table class="pl-spec-table">
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Based On</th>
+                <th>Signed By</th>
+                <th>Typical Use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2.1</strong></td>
+                <td>Declaration of Compliance</td>
+                <td>Non-specific inspection; product standard</td>
+                <td>Manufacturer</td>
+                <td>Low-risk, commercial-grade bulk supply</td>
+              </tr>
+              <tr>
+                <td><strong>2.2</strong></td>
+                <td>Test Report</td>
+                <td>Non-specific inspection; may use typical values</td>
+                <td>Manufacturer</td>
+                <td>General commercial; some tender requirements</td>
+              </tr>
+              <tr>
+                <td><strong>3.1</strong></td>
+                <td>Inspection Certificate 3.1</td>
+                <td>Specific inspection of the batch supplied</td>
+                <td>Manufacturer's authorised representative (independent of production)</td>
+                <td>Standard for structural, oil &amp; gas, construction, industrial imports</td>
+              </tr>
+              <tr>
+                <td><strong>3.2</strong></td>
+                <td>Inspection Certificate 3.2</td>
+                <td>Specific inspection of the batch supplied</td>
+                <td>Manufacturer's representative + independent third party or customer representative</td>
+                <td>Nuclear, aerospace, safety-critical, customer-witnessed testing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>TERNS EXIM provides EN 10204 Type 3.1 MTCs on every order</strong> as standard. Type 2.2 is available where a buyer's specification explicitly permits it; 3.2 with third-party witness (SGS, Bureau Veritas, or TÜV) is available on request for critical orders.</p>
+
+        <blockquote>Never accept a Type 2.1 document for structural fasteners. It contains no actual test data — it is simply a manufacturer's statement that the product conforms to a standard, without any test evidence attached.</blockquote>
+
+        <h2 id="reading-heat-number">Reading the Heat Number</h2>
+
+        <p>The <strong>heat number</strong> (also called melt number, cast number, or charge number) is the most important field on the MTC. It identifies the specific batch of molten steel from which the material was cast. Every other field on the certificate relates to testing performed on material drawn from that heat.</p>
+
+        <p>When you receive a shipment, verify that:</p>
+        <ul>
+          <li>The heat number on the MTC matches the heat number on the package markings or delivery note</li>
+          <li>The quantity on the MTC is consistent with (or covers) the quantity shipped</li>
+          <li>The product description on the MTC matches what you ordered (size, standard, grade)</li>
+        </ul>
+
+        <p>A mismatched heat number is a red flag — it may indicate the certificate has been re-used from a different batch. Request clarification before accepting the goods.</p>
+
+        <h2 id="chemical-composition">Chemical Composition Section</h2>
+
+        <p>The chemical composition table shows the measured percentage of each element in the steel. For carbon and alloy steel fasteners (grades 4.6 through 12.9 per <strong>ISO 898-1</strong>), the key elements are:</p>
+
+        <ul>
+          <li><strong>Carbon (C)</strong> — governs hardness and strength. ISO 898-1 limits C to ≤ 0.55% for grades through 12.9. Higher carbon increases strength but reduces weldability and toughness.</li>
+          <li><strong>Manganese (Mn)</strong> — hardenability element; typical range 0.50–1.10% for structural grades.</li>
+          <li><strong>Phosphorus (P) and Sulphur (S)</strong> — impurities; ISO 898-1 limits P ≤ 0.048% and S ≤ 0.058%. Elevated levels indicate lower-quality steel and increase brittleness.</li>
+          <li><strong>Boron (B)</strong> — micro-alloy hardenability additive. ISO 898-1 Annex A restricts boron content for certain grades and sizes due to hydrogen embrittlement risk.</li>
+          <li><strong>Chromium (Cr) and Molybdenum (Mo)</strong> — alloy steel elements used in higher grades (10.9 and 12.9) for deep hardenability.</li>
+        </ul>
+
+        <p>Compare each value against the limits in the applicable standard (ISO 898-1, ASTM A307, or whichever was specified). If any element exceeds the standard's limit, the material is non-conforming regardless of what the mechanical test results show.</p>
+
+        <h2 id="mechanical-properties">Mechanical Properties Section</h2>
+
+        <p>This section records the results of destructive testing on specimens drawn from the heat. For bolts and fasteners, the key values are:</p>
+
+        <ul>
+          <li><strong>Proof load / Proof stress (MPa)</strong> — the load at which 0.0048D permanent elongation occurs (ISO 898-1 proof load test). For grade 8.8 M12: 580 MPa.</li>
+          <li><strong>Tensile strength / Ultimate tensile strength, UTS (MPa)</strong> — the maximum load before fracture. Must meet the ISO minimum for the stated grade (800 MPa for 8.8, 1040 MPa for 10.9, 1220 MPa for 12.9).</li>
+          <li><strong>Yield strength / 0.2% proof stress (MPa)</strong> — the stress at which 0.2% permanent strain occurs. Must meet grade minimum (e.g. 640 MPa for 8.8).</li>
+          <li><strong>Elongation at break (%)</strong> — ductility indicator. ISO 898-1 requires ≥12% for grade 8.8, ≥9% for 10.9, ≥8% for 12.9.</li>
+        </ul>
+
+        <p>A test result that meets tensile strength but fails elongation indicates brittle material — this is as serious a non-conformance as a strength shortfall.</p>
+
+        <h2 id="hardness">Hardness Results</h2>
+
+        <p>Hardness testing (Vickers HV or Rockwell HRC) provides a rapid non-destructive cross-check of material condition. ISO 898-1 specifies hardness ranges for each grade:</p>
+
+        <ul>
+          <li><strong>Grade 8.8</strong>: 245–320 HV (23–34 HRC)</li>
+          <li><strong>Grade 10.9</strong>: 320–380 HV (33–39 HRC)</li>
+          <li><strong>Grade 12.9</strong>: 385–435 HV (39–45 HRC)</li>
+        </ul>
+
+        <p>A result below the minimum indicates under-hardening (insufficient quench or too-low carbon). A result above the maximum is often more dangerous — over-hardened material is brittle and susceptible to stress-corrosion cracking. Both are grounds for rejection.</p>
+
+        <h2 id="customs-qa">Why It Matters for Import QA and Customs</h2>
+
+        <p>An MTC is increasingly required by importers' own QA systems and, in some jurisdictions, by customs or certification bodies. In the EU, <strong>Construction Products Regulation (CPR)</strong> requires traceability documentation for structural fasteners used in CE-marked assemblies. In the UAE and Saudi Arabia, SASO and ESMA standards require MTCs for many categories of imported fasteners.</p>
+
+        <p>Beyond compliance, the practical risk of operating without MTCs is real: multiple product liability cases in construction and manufacturing have turned on whether the buyer had documentation proving the material met specification at time of supply. An MTC is that documentation.</p>
+
+        <h2 id="what-to-verify">What to Verify Before Accepting a Shipment</h2>
+
+        <p>Run through this checklist when an MTC arrives with a shipment:</p>
+
+        <ul>
+          <li>Heat number matches the delivery note and package markings</li>
+          <li>Document type is EN 10204 3.1 or higher (not 2.1 or 2.2 unless your spec permits)</li>
+          <li>Product description, standard, and grade match your purchase order</li>
+          <li>Chemical composition values are within standard limits — especially P and S</li>
+          <li>Tensile strength, yield strength, and elongation all meet grade minimums</li>
+          <li>Hardness result is within the ISO 898-1 range for the stated grade</li>
+          <li>Certificate is signed by the authorised signatory (not just stamped)</li>
+          <li>Date of test is consistent with the production batch — not backdated years prior</li>
+        </ul>
+
+        <p>TERNS EXIM provides 3.1 MTCs covering all of these fields as standard on every shipment. For <a href="/hex-bolts" style="color:#c9a84c;">hex bolts</a>, <a href="/anchor-bolts" style="color:#c9a84c;">anchor bolts</a>, stud bolts, and the full fastener range, the MTC is included with the shipping documents — no additional cost or special request needed. For more on how our export process works, see <a href="/export-process" style="color:#c9a84c;">our export process page</a>.</p>
+
+      </div><!-- .article-body -->
+    </div><!-- .article-wrap -->
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Every TERNS EXIM Order Ships with a 3.1 MTC</h2>
+      <p>Send us your specification — product type, standard, grade, size, quantity, and destination. We will return a quotation with MTC commitment within 24 working hours.</p>
+      <div class="cta-actions">
+        <a href="{{ url_for('contact') }}" class="btn btn-primary btn-lg">Request a Quote</a>
+        <a href="https://wa.me/916369097465?text=Hi%20TERNS%20EXIM%2C%20I%20need%20fasteners%20with%20EN%2010204%203.1%20MTCs.%20Please%20share%20a%20quotation." target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Back to blog -->
+<div class="section section-light" style="padding: 1.25rem 0; border-top: 1px solid #e0e7ef;">
+  <div class="container"><a href="{{ url_for('blog_index') }}" style="color:#c9a84c; text-decoration:none; font-size:0.9rem;">&larr; Back to Blog</a></div>
+</div>
+
+{% endblock %}
