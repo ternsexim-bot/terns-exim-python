@@ -120,7 +120,7 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(to bottom, #c9a84c 0%, rgba(201,168,76,0.15) 100%);
+    background: linear-gradient(to bottom, var(--gold) 0%, rgba(var(--gold-rgb),0.15) 100%);
   }
 
   .ep-step {
@@ -140,8 +140,8 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #c9a84c;
-    color: #1a2a3a;
+    background: var(--gold);
+    color: var(--navy);
     font-weight: 700;
     font-size: 1.15rem;
     display: flex;
@@ -149,13 +149,13 @@
     justify-content: center;
     position: relative;
     z-index: 1;
-    box-shadow: 0 0 0 4px #1a2a3a, 0 0 0 6px rgba(201,168,76,0.25);
+    box-shadow: 0 0 0 4px var(--navy), 0 0 0 6px rgba(var(--gold-rgb),0.25);
   }
 
   .ep-card {
     flex: 1;
     background: #1e2f42;
-    border: 1px solid rgba(201,168,76,0.2);
+    border: 1px solid rgba(var(--gold-rgb),0.2);
     border-radius: 8px;
     padding: 1.1rem 1.4rem;
     margin-top: 0.5rem;
@@ -163,12 +163,12 @@
   }
 
   .ep-card:hover {
-    border-color: rgba(201,168,76,0.55);
+    border-color: rgba(var(--gold-rgb),0.55);
     box-shadow: 0 4px 18px rgba(0,0,0,0.25);
   }
 
   .ep-card h3 {
-    color: #c9a84c;
+    color: var(--gold);
     font-size: 1rem;
     font-weight: 600;
     margin: 0 0 0.4rem;
@@ -180,9 +180,9 @@
   .ep-card h3 .ep-label {
     font-size: 0.7rem;
     font-weight: 500;
-    background: rgba(201,168,76,0.15);
-    color: #c9a84c;
-    border: 1px solid rgba(201,168,76,0.35);
+    background: rgba(var(--gold-rgb),0.15);
+    color: var(--gold);
+    border: 1px solid rgba(var(--gold-rgb),0.35);
     border-radius: 3px;
     padding: 1px 7px;
     letter-spacing: 0.04em;
@@ -205,8 +205,8 @@
   /* CTA section */
   .ep-cta-box {
     background: #1e2f42;
-    border: 1px solid rgba(201,168,76,0.3);
-    border-top: 3px solid #c9a84c;
+    border: 1px solid rgba(var(--gold-rgb),0.3);
+    border-top: 3px solid var(--gold);
     border-radius: 8px;
     padding: 2rem 2rem 1.75rem;
     text-align: center;
@@ -229,7 +229,7 @@
   }
 
   .ep-cta-box .ep-cta-note a {
-    color: #c9a84c;
+    color: var(--gold);
     text-decoration: none;
   }
 
@@ -253,7 +253,7 @@
       width: 44px;
       height: 44px;
       font-size: 0.95rem;
-      box-shadow: 0 0 0 3px #1a2a3a, 0 0 0 5px rgba(201,168,76,0.2);
+      box-shadow: 0 0 0 3px var(--navy), 0 0 0 5px rgba(var(--gold-rgb),0.2);
     }
     .ep-step {
       gap: 1rem;
@@ -301,7 +301,7 @@
         <div class="ep-num">1</div>
         <div class="ep-card">
           <h3>Inquiry <span class="ep-label">Day 1</span></h3>
-          <p>Send us your requirement via our <a href="{{ url_for('contact') }}" style="color:#c9a84c;">enquiry form</a>, email (<a href="mailto:sales@ternsexim.com" style="color:#c9a84c;">sales@ternsexim.com</a>), or WhatsApp. Include <strong>product, grade, quantity, and destination.</strong></p>
+          <p>Send us your requirement via our <a href="{{ url_for('contact') }}" style="color:var(--gold);">enquiry form</a>, email (<a href="mailto:sales@ternsexim.com" style="color:var(--gold);">sales@ternsexim.com</a>), or WhatsApp. Include <strong>product, grade, quantity, and destination.</strong></p>
         </div>
       </div>
 

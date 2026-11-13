@@ -3,8 +3,17 @@ import { getLeads, getStats, updateLead, deleteLead, createLead } from '../api/l
 import LeadStats from './LeadStats'
 import LeadsTable from './LeadsTable'
 import AddLeadModal from './AddLeadModal'
+import { Button } from '@/components/ui/button'
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
 
 const STATUSES = ['New', 'Contacted', 'Negotiation', 'Won', 'Lost']
+const ALL_STATUS = '__all__'
 
 const EMPTY_STATS = { total: 0, new: 0, contacted: 0, negotiation: 0, won: 0, lost: 0 }
 
@@ -75,37 +84,51 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="dashboard">
-      <div className="topbar">
-        <div className="topbar-brand">
-          TERNS EXIM <span>CRM</span>
+    <div className="flex min-h-screen flex-col">
+      <div className="sticky top-0 z-[100] flex h-14 items-center justify-between bg-navy px-7 text-white shadow-md">
+        <div className="text-[17px] font-bold tracking-wide">
+          TERNS EXIM <span className="text-gold">CRM</span>
         </div>
-        <div className="topbar-meta">Lead Management Dashboard</div>
+        <div className="text-xs text-white/50">Lead Management Dashboard</div>
       </div>
 
-      <div className="main-content">
-        {error && <div className="error-bar">{error}</div>}
+      <div className="mx-auto w-full max-w-[1600px] flex-1 p-7">
+        {error && (
+          <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-2.5 text-[13px] text-red-800">
+            {error}
+          </div>
+        )}
 
         <LeadStats stats={stats} />
 
-        <div className="table-section">
-          <div className="table-header">
-            <div className="table-title">
+        <div>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="text-base font-semibold text-slate-900">
               All Leads ({leads.length})
             </div>
-            <div className="filter-bar">
-              <select value={statusFilter} onChange={e => setFilter(e.target.value)}>
-                <option value="">All Status</option>
-                {STATUSES.map(s => (
-                  <option key={s} value={s}>{s}</option>
-                ))}
-              </select>
-              <button className="btn-refresh" onClick={load}>
+            <div className="flex items-center gap-2">
+              <Select
+                value={statusFilter || ALL_STATUS}
+                onValueChange={(v) => setFilter(v === ALL_STATUS ? '' : v)}
+              >
+                <SelectTrigger className="h-9 w-[160px]"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={ALL_STATUS}>All Status</SelectItem>
+                  {STATUSES.map(s => (
+                    <SelectItem key={s} value={s}>{s}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Button variant="outline" size="sm" onClick={load}>
                 ↻ Refresh
-              </button>
-              <button className="btn-primary" onClick={() => setShowModal(true)}>
+              </Button>
+              <Button
+                size="sm"
+                className="bg-gold text-navy hover:bg-gold-dark hover:text-white"
+                onClick={() => setShowModal(true)}
+              >
                 + Add Lead
-              </button>
+              </Button>
             </div>
           </div>
 

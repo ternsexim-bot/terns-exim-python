@@ -111,6 +111,22 @@ def blog_construction():
 def blog_marine():
     return render_template('blog_marine.html')
 
+@app.route('/blog/how-to-calculate-bolt-torque')
+def blog_bolt_torque():
+    return render_template('blog_bolt_torque.html')
+
+@app.route('/blog/how-to-choose-fasteners-size-grade-material')
+def blog_choose_fasteners():
+    return render_template('blog_choose_fasteners.html')
+
+@app.route('/blog/fastener-export-order-checklist')
+def blog_order_checklist():
+    return render_template('blog_order_checklist.html')
+
+@app.route('/blog/how-to-read-mill-test-certificate')
+def blog_read_mtc():
+    return render_template('blog_read_mtc.html')
+
 @app.route('/products')
 def products():
     return render_template('products.html')

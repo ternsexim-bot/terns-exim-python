@@ -92,55 +92,75 @@
 <section class="hero">
   <div class="hero-bg-pattern"></div>
   <div class="container hero-container">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Industrial Fastener Exporter · DIN / ISO / ASTM
+    <div class="hero-main">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Industrial Fastener Exporter · DIN / ISO / ASTM
+      </div>
+      <h1 class="hero-title">
+        India's Trusted<br />
+        <span class="text-accent">Fastener Exporter</span><br />
+        &amp; OEM Supplier
+      </h1>
+      <p class="hero-subtitle">
+        TERNS EXIM exports ISO-grade hex bolts, nuts, screws, washers, threaded rods,
+        anchor bolts and custom fasteners to industrial buyers across USA, UAE, Europe
+        and 30+ countries worldwide.
+      </p>
+      <p class="hero-seo-text">
+        Based in Coimbatore, Tamil Nadu — India's precision manufacturing hub — TERNS EXIM
+        is a registered merchant exporter and OEM fastener supplier. We handle end-to-end
+        export: sourcing, quality inspection, documentation, freight, and delivery.
+        Global shipping from Chennai and Tuticorin ports.
+      </p>
+      <div class="hero-actions">
+        <button type="button" onclick="openEnquiryModal()" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Get Fastener Quotation
+        </button>
+        <button type="button" onclick="openEnquiryModal()" class="btn btn-outline-light btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 014-10z"/></svg>
+          Merchant Export Inquiry
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Fastener Variants</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">Export Countries</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">ISO</span>
+          <span class="stat-label">Grade Certified</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">24h</span>
+          <span class="stat-label">Quote Response</span>
+        </div>
+      </div>
     </div>
-    <h1 class="hero-title">
-      India's Trusted<br />
-      <span class="text-accent">Fastener Exporter</span><br />
-      &amp; OEM Supplier
-    </h1>
-    <p class="hero-subtitle">
-      TERNS EXIM exports ISO-grade hex bolts, nuts, screws, washers, threaded rods,
-      anchor bolts and custom fasteners to industrial buyers across USA, UAE, Europe
-      and 30+ countries worldwide.
-    </p>
-    <p class="hero-seo-text">
-      Based in Coimbatore, Tamil Nadu — India's precision manufacturing hub — TERNS EXIM
-      is a registered merchant exporter and OEM fastener supplier. We handle end-to-end
-      export: sourcing, quality inspection, documentation, freight, and delivery.
-      Global shipping from Chennai and Tuticorin ports.
-    </p>
-    <div class="hero-actions">
-      <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-primary btn-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        Get Fastener Quotation
-      </a>
-      <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-outline-light btn-lg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 014-10z"/></svg>
-        Merchant Export Inquiry
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number">50+</span>
-        <span class="stat-label">Fastener Variants</span>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-photo-stack">
+        <div class="hero-photo hero-photo-1">
+          <img src="{{ url_for('static', filename='images/products/hexbolt.jpg') }}" alt="" loading="eager" decoding="async" />
+        </div>
+        <div class="hero-photo hero-photo-2">
+          <img src="{{ url_for('static', filename='images/products/nuts.jpg') }}" alt="" loading="eager" decoding="async" />
+        </div>
+        <div class="hero-photo hero-photo-3">
+          <img src="{{ url_for('static', filename='images/products/threaded_rods.jpg') }}" alt="" loading="lazy" decoding="async" />
+        </div>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-number">30+</span>
-        <span class="stat-label">Export Countries</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-number">ISO</span>
-        <span class="stat-label">Grade Certified</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-number">24h</span>
-        <span class="stat-label">Quote Response</span>
+      <div class="hero-visual-badge">
+        <span class="hvb-number">ISO</span>
+        <span class="hvb-label">Grade Certified<br />Mill Test Certificates</span>
       </div>
     </div>
   </div>
@@ -720,12 +740,12 @@
       <h2>Ready to Source Export-Quality Fasteners from India?</h2>
       <p>Get a detailed quotation within 24 hours. TERNS EXIM — India's trusted fastener exporter and OEM supplier. No minimum order for first inquiry.</p>
       <div class="cta-actions">
-        <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-primary btn-lg">
+        <button type="button" onclick="openEnquiryModal()" class="btn btn-primary btn-lg">
           Get Fastener Quotation
-        </a>
-        <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-outline-light btn-lg">
+        </button>
+        <button type="button" onclick="openEnquiryModal()" class="btn btn-outline-light btn-lg">
           Merchant Export Inquiry
-        </a>
+        </button>
       </div>
     </div>
   </div>

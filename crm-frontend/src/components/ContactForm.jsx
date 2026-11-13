@@ -1,5 +1,17 @@
 import { useState } from 'react'
 import { createLead } from '../api/leads'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
+import { cn } from '@/lib/utils'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -49,6 +61,7 @@ export default function ContactForm() {
   const [status, setStatus]         = useState(null) // 'success' | 'error'
 
   const set = (k) => (e) => setForm(prev => ({ ...prev, [k]: e.target.value }))
+  const setField = (k) => (v) => setForm(prev => ({ ...prev, [k]: v }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -81,70 +94,72 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="contact-page">
-      <div className="contact-card">
-        <h1 className="contact-title">Product Enquiry</h1>
-        <p className="contact-sub">
+    <div className="mx-auto max-w-xl p-6">
+      <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+        <h1 className="text-2xl font-bold text-navy">Product Enquiry</h1>
+        <p className="mt-1.5 text-sm text-slate-500">
           Fill in the form and our team will get back to you shortly.
         </p>
 
         {status === 'success' && (
-          <div className="alert alert-success">
+          <div className="mt-4 rounded-md border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
             Enquiry submitted successfully. We will contact you shortly.
           </div>
         )}
         {status === 'error' && (
-          <div className="alert alert-error">
+          <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
             Something went wrong. Please try again.
           </div>
         )}
 
-        <form onSubmit={handleSubmit} noValidate className="contact-form">
-          <div className="form-group">
-            <label>Name *</label>
-            <input
+        <form onSubmit={handleSubmit} noValidate className="mt-6 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <Label>Name *</Label>
+            <Input
               value={form.name}
               onChange={set('name')}
               placeholder="Your full name"
-              className={errors.name ? 'input-error' : ''}
+              className={cn(errors.name && 'border-red-400 focus-visible:ring-red-400')}
             />
-            {errors.name && <span className="field-error">{errors.name}</span>}
+            {errors.name && <span className="text-xs text-red-600">{errors.name}</span>}
           </div>
 
-          <div className="form-group">
-            <label>Email *</label>
-            <input
+          <div className="flex flex-col gap-1.5">
+            <Label>Email *</Label>
+            <Input
               type="email"
               value={form.email}
               onChange={set('email')}
               placeholder="email@example.com"
-              className={errors.email ? 'input-error' : ''}
+              className={cn(errors.email && 'border-red-400 focus-visible:ring-red-400')}
             />
-            {errors.email && <span className="field-error">{errors.email}</span>}
+            {errors.email && <span className="text-xs text-red-600">{errors.email}</span>}
           </div>
 
-          <div className="form-group">
-            <label>Phone *</label>
-            <input
+          <div className="flex flex-col gap-1.5">
+            <Label>Phone *</Label>
+            <Input
               value={form.phone}
               onChange={set('phone')}
               placeholder="+91 99999 99999"
-              className={errors.phone ? 'input-error' : ''}
+              className={cn(errors.phone && 'border-red-400 focus-visible:ring-red-400')}
             />
-            {errors.phone && <span className="field-error">{errors.phone}</span>}
+            {errors.phone && <span className="text-xs text-red-600">{errors.phone}</span>}
           </div>
 
-          <div className="form-group">
-            <label>Product</label>
-            <select value={form.product_interest} onChange={set('product_interest')}>
-              <option value="">Select product (optional)</option>
-              {PRODUCTS.map(p => <option key={p} value={p}>{p}</option>)}
-            </select>
+          <div className="flex flex-col gap-1.5">
+            <Label>Product</Label>
+            <Select value={form.product_interest} onValueChange={setField('product_interest')}>
+              <SelectTrigger><SelectValue placeholder="Select product (optional)" /></SelectTrigger>
+              <SelectContent>
+                {PRODUCTS.map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="form-group">
-            <label>Message</label>
-            <textarea
+          <div className="flex flex-col gap-1.5">
+            <Label>Message</Label>
+            <Textarea
               value={form.message}
               onChange={set('message')}
               placeholder="Tell us about your requirements..."
@@ -152,9 +167,9 @@ export default function ContactForm() {
             />
           </div>
 
-          <button type="submit" className="btn-submit" disabled={submitting}>
+          <Button type="submit" disabled={submitting} className="mt-2 bg-gold text-navy hover:bg-gold-dark hover:text-white">
             {submitting ? 'Submitting...' : 'Send Enquiry'}
-          </button>
+          </Button>
         </form>
       </div>
     </div>

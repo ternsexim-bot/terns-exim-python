@@ -12,7 +12,7 @@
     gtag('config', 'G-GFQ1X9DYTC');
   </script>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}?v=6" />
 
   <!-- SEO Meta Tags -->
   <title>{% block title %}TERNS EXIM – Fastener Exporter India | Hex Bolts, Nuts, Screws{% endblock %}</title>
@@ -28,13 +28,13 @@
   <meta property="og:description" content="{% block og_description %}India's trusted fastener exporter and OEM supplier. Export-quality hex bolts, nuts, screws, washers, threaded rods and custom fasteners from Coimbatore. Supplying USA, UAE, Europe and 30+ countries.{% endblock %}" />
   <meta property="og:url" content="{% block og_url %}https://ternsexim.com{% endblock %}" />
   <meta property="og:site_name" content="TERNS EXIM" />
-  <meta property="og:image" content="{% block og_image %}https://ternsexim.com/static/images/logo.png{% endblock %}" />
+  <meta property="og:image" content="{% block og_image %}https://ternsexim.com/static/images/logo.png?v=6{% endblock %}" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="TERNS EXIM – Fastener Exporter India" />
   <meta name="twitter:description" content="India's trusted OEM fastener exporter — hex bolts, nuts, screws, washers, threaded rods. Global shipping from Coimbatore." />
-  <meta name="twitter:image" content="https://ternsexim.com/static/images/logo.png" />
+  <meta name="twitter:image" content="https://ternsexim.com/static/images/logo.png?v=6" />
 
   <!-- Schema.org JSON-LD – Organization -->
   <script type="application/ld+json">
@@ -43,8 +43,8 @@
     "@type": "Organization",
     "name": "TERNS EXIM",
     "url": "https://ternsexim.com",
-    "logo": "https://ternsexim.com/static/images/logo.png",
-    "image": "https://ternsexim.com/static/images/logo.png",
+    "logo": "https://ternsexim.com/static/images/logo.png?v=6",
+    "image": "https://ternsexim.com/static/images/logo.png?v=6",
     "description": "TERNS EXIM is a B2B fastener and merchant exporter based in Coimbatore, India, supplying hex bolts, nuts, screws, washers, threaded rods, anchor bolts, and custom OEM fasteners conforming to DIN, ISO, ASTM, BS, JIS, and BIS standards to global industrial buyers.",
     "email": "sales@ternsexim.com",
     "telephone": "+91 63690 97465",
@@ -100,7 +100,7 @@
   <nav class="navbar" id="navbar">
     <div class="container nav-container">
       <a href="{{ url_for('home') }}" class="nav-logo">
-        <img src="{{ url_for('static', filename='images/logo.png') }}"
+        <img src="{{ url_for('static', filename='images/logo.png') }}?v=6"
              alt="TERNS EXIM – Industrial Fastener Exporter India"
              class="nav-logo-img"
              width="220" height="60" />
@@ -410,7 +410,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="{{ url_for('static', filename='images/logo.png') }}"
+            <img src="{{ url_for('static', filename='images/logo.png') }}?v=6"
                  alt="TERNS EXIM – Industrial Fastener Exporter India"
                  class="footer-logo-img"
                  width="220" height="60" />
@@ -468,8 +468,8 @@
             </li>
           </ul>
           <div class="footer-inquiry-btns">
-            <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-sm btn-outline">Fastener Quote</a>
-            <a href="#" onclick="openEnquiryModal(); return false;" class="btn btn-sm btn-outline">Export Inquiry</a>
+            <button type="button" onclick="openEnquiryModal()" class="btn btn-sm btn-outline">Fastener Quote</button>
+            <button type="button" onclick="openEnquiryModal()" class="btn btn-sm btn-outline">Export Inquiry</button>
           </div>
         </div>
       </div>

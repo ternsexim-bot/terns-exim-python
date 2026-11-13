@@ -1,7 +1,12 @@
+---
+name: product-page-geo
+description: Apply the required GEO (AI-answer-engine optimization) structure to TERNS EXIM product pages — direct-answer block, spec tables, buyer FAQ, FAQPage schema — so AI engines cite these pages as a source. Use when creating or editing any templates/*.html product page.
+---
+
 # Product Page GEO Skill
 
 ## Purpose
-Apply identical extraction-optimized structure to every TERNS EXIM product page so AI engines (ChatGPT, Perplexity, Gemini, Google AI Overviews) cite these pages directly as a source.
+Apply identical extraction-optimized structure to every TERNS EXIM product page so AI engines (ChatGPT, Perplexity, Gemini, Google AI Overviews) cite these pages directly as a source. This is the product-page-specific implementation of the broader GEO principles in [[seo]] §9, using the exact palette and voice defined in [[terns-exim]] and domain facts from [[fastener-industry]].
 
 ## Reference implementation
 `templates/hex_bolts.html` (commit `84d7943`) is the gold-standard example. Mirror its structure exactly.
@@ -67,7 +72,7 @@ Inside the same section as Element 1, after the answer block div.
 ---
 
 ### Element 3 — COMPARISON TABLE
-Inside the same section, after the spec table. For products with grades (bolts, rods): use property class vs MPa values. For products with types (nuts, washers): compare type vs use case.
+Inside the same section, after the spec table. For products with grades (bolts, rods): use property class vs MPa values. For products with types (nuts, washers): compare type vs use case. See [[fastener-industry]] §3 for the canonical ISO 898-1 reference values.
 
 **Pattern for grade comparison (ISO 898-1 values — safe to use):**
 ```html
@@ -100,7 +105,7 @@ Inside the same section, after the spec table. For products with grades (bolts, 
 ---
 
 ### Element 4 — BUYER FAQ SECTION (visible HTML)
-Placed before the `<!-- REQUEST QUOTE FORM -->` comment. Three Q&As phrased as real importer questions. Use `section-light` background.
+Placed before the `<!-- REQUEST QUOTE FORM -->` comment. Three Q&As phrased as real importer questions. Use `section-light` background. See [[export-copywriting]] for tone guidance on FAQ answers.
 
 **Exact HTML pattern:**
 ```html
@@ -132,7 +137,7 @@ Placed before the `<!-- REQUEST QUOTE FORM -->` comment. Three Q&As phrased as r
 ---
 
 ### Element 5 — FAQPage JSON-LD
-Added inside `{% block extra_schema %}`, after the existing Product and WebPage `<script>` blocks, before `{% endblock %}`. NEVER remove or modify existing schema blocks.
+Added inside `{% block extra_schema %}`, after the existing Product and WebPage `<script>` blocks, before `{% endblock %}`. NEVER remove or modify existing schema blocks. See [[seo]] §5 for the broader structured-data requirements this fits into.
 
 **Exact pattern:**
 ```html
@@ -177,11 +182,11 @@ After adding, `grep -c "application/ld+json"` on the page must return **3** (Pro
 ## Content rules
 
 - **Use ONLY confirmed specs.** If grades, sizes, or standards are unknown for a product, STOP and ask the user before writing anything. Never invent numbers.
-- **ISO 898-1 tensile/yield MPa values are safe to use** for standard property classes (8.8, 10.9, 12.9) without asking.
+- **ISO 898-1 tensile/yield MPa values are safe to use** for standard property classes (8.8, 10.9, 12.9) without asking — see [[fastener-industry]] §3.
 - **MOQ is always:** 10,000 pieces or 700 kg — confirmed business fact, use verbatim.
 - **Certifications are always:** Mill Test Certificates; optional SGS / BV / TUV — use verbatim.
 - **Do not add new global CSS classes.** Use `pl-spec-table`, `section`, `section-light`, `container`, `section-header`, `section-eyebrow`, `section-title` — all already defined. Use inline styles for the answer block and FAQ cards exactly as shown above.
-- **Fact density over marketing language.** Exact grades, sizes, standards, MPa values — not adjectives.
+- **Fact density over marketing language.** Exact grades, sizes, standards, MPa values — not adjectives. See [[export-copywriting]].
 - **The visible FAQ Q&As and the JSON-LD FAQPage must match word-for-word.**
 
 ---

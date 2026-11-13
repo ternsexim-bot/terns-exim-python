@@ -1,25 +1,19 @@
-const COLOR = {
-  New:         'background:#dbeafe;color:#1d4ed8',
-  Contacted:   'background:#ede9fe;color:#6d28d9',
-  Negotiation: 'background:#fef3c7;color:#92400e',
-  Won:         'background:#d1fae5;color:#065f46',
-  Lost:        'background:#fee2e2;color:#991b1b',
+import { Badge } from '@/components/ui/badge'
+
+const STATUS_CLASSES = {
+  New: 'border-transparent bg-blue-100 text-blue-700 hover:bg-blue-100',
+  Contacted: 'border-transparent bg-violet-100 text-violet-700 hover:bg-violet-100',
+  Negotiation: 'border-transparent bg-amber-100 text-amber-800 hover:bg-amber-100',
+  Won: 'border-transparent bg-emerald-100 text-emerald-800 hover:bg-emerald-100',
+  Lost: 'border-transparent bg-red-100 text-red-800 hover:bg-red-100',
 }
 
+const DEFAULT_CLASSES = 'border-transparent bg-slate-100 text-slate-600 hover:bg-slate-100'
+
 export default function StatusBadge({ status }) {
-  const style = COLOR[status] ?? 'background:#f1f5f9;color:#374151'
   return (
-    <span style={{
-      display: 'inline-block',
-      padding: '3px 10px',
-      borderRadius: 99,
-      fontSize: 11,
-      fontWeight: 700,
-      letterSpacing: 0.3,
-      textTransform: 'uppercase',
-      ...Object.fromEntries(style.split(';').map(s => s.split(':')))
-    }}>
+    <Badge className={`${STATUS_CLASSES[status] ?? DEFAULT_CLASSES} font-bold uppercase tracking-wide text-[11px]`}>
       {status}
-    </span>
+    </Badge>
   )
 }

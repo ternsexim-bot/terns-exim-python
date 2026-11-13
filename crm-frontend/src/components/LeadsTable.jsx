@@ -1,3 +1,20 @@
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from '@/components/ui/table'
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
+
 const STATUSES = ['New', 'Contacted', 'Negotiation', 'Won', 'Lost']
 
 function fmt(iso) {
@@ -9,70 +26,73 @@ function fmt(iso) {
 
 export default function LeadsTable({ leads, loading, onStatusChange, onDelete }) {
   if (loading) {
-    return <div className="loading">Loading leads...</div>
+    return <div className="py-16 text-center text-slate-500">Loading leads...</div>
   }
 
   if (!leads.length) {
     return (
-      <div className="empty-state">
-        <div className="empty-icon">📋</div>
+      <div className="flex flex-col items-center gap-3 py-16 text-slate-500">
+        <div className="text-4xl">📋</div>
         <p>No leads found. Add your first lead!</p>
       </div>
     )
   }
 
   return (
-    <div className="table-wrapper">
-      <table className="leads-table">
-        <thead>
-          <tr>
-            <th>Name / Email</th>
-            <th>Phone</th>
-            <th>Company</th>
-            <th>Country</th>
-            <th>Product Interest</th>
-            <th>Status</th>
-            <th>Source</th>
-            <th>Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="rounded-lg border border-slate-200">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name / Email</TableHead>
+            <TableHead>Phone</TableHead>
+            <TableHead>Company</TableHead>
+            <TableHead>Country</TableHead>
+            <TableHead>Product Interest</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Source</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {leads.map(lead => (
-            <tr key={lead.id}>
-              <td>
-                <div className="lead-name">{lead.name}</div>
-                {lead.email && <div className="lead-email">{lead.email}</div>}
-              </td>
-              <td>{lead.phone || '—'}</td>
-              <td>{lead.company || '—'}</td>
-              <td>{lead.country || '—'}</td>
-              <td>{lead.product_interest || '—'}</td>
-              <td>
-                <select
-                  className="status-select"
-                  value={lead.status}
-                  onChange={e => onStatusChange(lead.id, e.target.value)}
-                >
-                  {STATUSES.map(s => (
-                    <option key={s} value={s}>{s}</option>
-                  ))}
-                </select>
-              </td>
-              <td>{lead.source || '—'}</td>
-              <td>{fmt(lead.created_at)}</td>
-              <td>
-                <button
-                  className="btn-delete"
+            <TableRow key={lead.id}>
+              <TableCell>
+                <div className="font-medium text-slate-900">{lead.name}</div>
+                {lead.email && <div className="text-xs text-slate-500">{lead.email}</div>}
+              </TableCell>
+              <TableCell>{lead.phone || '—'}</TableCell>
+              <TableCell>{lead.company || '—'}</TableCell>
+              <TableCell>{lead.country || '—'}</TableCell>
+              <TableCell>{lead.product_interest || '—'}</TableCell>
+              <TableCell>
+                <Select value={lead.status} onValueChange={(v) => onStatusChange(lead.id, v)}>
+                  <SelectTrigger className="h-8 w-[140px] text-sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {STATUSES.map(s => (
+                      <SelectItem key={s} value={s}>{s}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </TableCell>
+              <TableCell>{lead.source || '—'}</TableCell>
+              <TableCell>{fmt(lead.created_at)}</TableCell>
+              <TableCell className="text-right">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700"
                   onClick={() => onDelete(lead.id)}
                 >
                   Delete
-                </button>
-              </td>
-            </tr>
+                </Button>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   )
 }
